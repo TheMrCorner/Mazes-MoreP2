@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: 36daa7448aec4a341a905ba568985094
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7638574660498779764
+    second: logo_hd_0
+  - first:
+      213: 1576679581289634814
+    second: logo_hd_1
+  - first:
+      213: 5189252771691207633
+    second: logo_hd_2
+  - first:
+      213: -3061128179302818694
+    second: logo_hd_3
+  - first:
+      213: -3062466606984676431
+    second: logo_hd_4
+  - first:
+      213: 4387178335199781172
+    second: logo_hd_5
+  - first:
+      213: 8326651052847658606
+    second: logo_hd_6
+  - first:
+      213: -53807441241242431
+    second: logo_hd_7
+  - first:
+      213: 1612549167477154987
+    second: logo_hd_8
+  - first:
+      213: 6437608812028167600
+    second: logo_hd_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +70,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +101,54 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: logo_hd_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 392
+        width: 1200
+        height: 120
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47e645dce2ba10a60800000000000000
+      internalID: 7638574660498779764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
