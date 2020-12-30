@@ -1,7 +1,265 @@
 fileFormatVersion: 2
 guid: 68419d8632a020c43a811f081b58f5cb
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6451302858210378397
+    second: assisted_icon
+  - first:
+      213: -270419419024237713
+    second: assisted_icon_pressed
+  - first:
+      213: -6511278882978655876
+    second: back_button
+  - first:
+      213: -623413875393535166
+    second: back_button_pressed
+  - first:
+      213: -9197509781159237634
+    second: button_big
+  - first:
+      213: 6414614485875610299
+    second: button_big_pressed
+  - first:
+      213: -7269184355723280746
+    second: button_medium
+  - first:
+      213: 672651737092404045
+    second: button_medium_pressed
+  - first:
+      213: -5650508378218866165
+    second: button_small
+  - first:
+      213: -557211101093274660
+    second: button_small_pressed
+  - first:
+      213: -3961320469895135596
+    second: buy_one_pressed
+  - first:
+      213: 6449418656648635669
+    second: buy_three
+  - first:
+      213: -7351478647764530071
+    second: buy_three_pressed
+  - first:
+      213: 7925118879706242422
+    second: buy_two
+  - first:
+      213: -5542823927723647660
+    second: buy_two_pressed
+  - first:
+      213: -7644068818816124226
+    second: categories_button
+  - first:
+      213: -5075193338698725012
+    second: categories_button_pressed
+  - first:
+      213: 4726905450668705289
+    second: check_button
+  - first:
+      213: -6984150846593417556
+    second: check_button_pressed
+  - first:
+      213: 5807286064229907439
+    second: classic
+  - first:
+      213: 2807315191410355828
+    second: classic_pressed
+  - first:
+      213: 8755254813954124445
+    second: clock
+  - first:
+      213: 3919373317260978536
+    second: close_button_white_circled_pressed
+  - first:
+      213: 3067596868690597006
+    second: enemies
+  - first:
+      213: 2331081301216260019
+    second: enemies_pressed
+  - first:
+      213: 4594845868103375045
+    second: fog
+  - first:
+      213: 1816370096188080822
+    second: fog_pressed
+  - first:
+      213: 3123581953130923619
+    second: hint_small
+  - first:
+      213: -3247016994586271239
+    second: hint_small_pressed
+  - first:
+      213: 1775592702960557364
+    second: ice_floor_new
+  - first:
+      213: 8300999423182613312
+    second: ice_floor_pressed
+  - first:
+      213: -5036712540234765948
+    second: leaderboard
+  - first:
+      213: 1264582852247984332
+    second: leaderboard_icon
+  - first:
+      213: 5064746739153902048
+    second: leaderboard_pressed
+  - first:
+      213: 6122952483417703827
+    second: level_bar
+  - first:
+      213: -208329312166639464
+    second: level_bar_bg
+  - first:
+      213: 1944840212182281015
+    second: level_button
+  - first:
+      213: -2379077401850920637
+    second: level_button_pressed
+  - first:
+      213: 4012978911208081389
+    second: level_lock
+  - first:
+      213: -8672433399265867438
+    second: level_lock_pressed
+  - first:
+      213: 8464627282614862601
+    second: lock
+  - first:
+      213: 4799070892332786081
+    second: lock_category
+  - first:
+      213: -561341750371129994
+    second: maximize_icon
+  - first:
+      213: 3439614496373853824
+    second: maximize_icon_pressed
+  - first:
+      213: -3045957812851779154
+    second: maze_more_logo
+  - first:
+      213: 4524943107771663553
+    second: memorygames
+  - first:
+      213: 1460432661189226717
+    second: memorygames_pressed
+  - first:
+      213: -5669639410593085472
+    second: menu_icon_pressed
+  - first:
+      213: 8529037556224321110
+    second: minimize_icon
+  - first:
+      213: -5848661952108738044
+    second: next_level_pressed
+  - first:
+      213: 7429914694830084677
+    second: pause
+  - first:
+      213: 6536984075327213581
+    second: pause_pressed
+  - first:
+      213: 6963994117791204665
+    second: play_active
+  - first:
+      213: -3187848721825432286
+    second: play_icon
+  - first:
+      213: -3433682642278779663
+    second: popup_button_pressed
+  - first:
+      213: 3408491599969063704
+    second: progress_bg
+  - first:
+      213: -4445792058244516076
+    second: purchase_5_bubble
+  - first:
+      213: -3845428414974985717
+    second: puzzlerama
+  - first:
+      213: 6634587429574538930
+    second: puzzlerama_pressed
+  - first:
+      213: 8661130359272929281
+    second: rate
+  - first:
+      213: -4745779444998926535
+    second: rate_pressed
+  - first:
+      213: -3284553199989933178
+    second: restore
+  - first:
+      213: 1595146258317926680
+    second: restore_pressed
+  - first:
+      213: 4348492581985570511
+    second: reward_video_inactive
+  - first:
+      213: 2961019900444938742
+    second: rewarded_video_reverse_colors
+  - first:
+      213: 7740369231830379227
+    second: setting_menu_button
+  - first:
+      213: 328682959803201729
+    second: setting_menu_button_pressed
+  - first:
+      213: 4230216764240656230
+    second: settings
+  - first:
+      213: 918357308772842458
+    second: settings_pressed
+  - first:
+      213: 8923652389658480066
+    second: star_big
+  - first:
+      213: 4192293421043220046
+    second: star_medium
+  - first:
+      213: -4353016054876007489
+    second: store
+  - first:
+      213: 2673104160257600649
+    second: store_button
+  - first:
+      213: 7366586616999301637
+    second: store_button_pressed
+  - first:
+      213: -697298117452378591
+    second: store_pressed
+  - first:
+      213: 5390817084826497582
+    second: store_white
+  - first:
+      213: 8988069695443988320
+    second: time_trial
+  - first:
+      213: -9163199625266409811
+    second: time_trial_locked
+  - first:
+      213: -75101575104121292
+    second: time_trial_pressed
+  - first:
+      213: -2183820401348008055
+    second: traps
+  - first:
+      213: 2988090094233564578
+    second: unlock
+  - first:
+      213: -3470524049823107840
+    second: unlock_ice_floor_window_bg
+  - first:
+      213: -1494386305422361133
+    second: unlock_level_window_bg
+  - first:
+      213: -1261721416898880733
+    second: unlock_time_trial_window_bg
+  - first:
+      213: -859003678692580428
+    second: unlock_traps_window_bg
+  - first:
+      213: 8391902243327126342
+    second: white_bg
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +355,1813 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: assisted_icon
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 1139
+        width: 117
+        height: 100
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d928712e4c1a78950800000000000000
+      internalID: 6451302858210378397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: assisted_icon_pressed
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 1378
+        width: 117
+        height: 100
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6b51bc98f64f3cf0800000000000000
+      internalID: -270419419024237713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: back_button
+      rect:
+        serializedVersion: 2
+        x: 1903
+        y: 433
+        width: 141
+        height: 99
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c711e8aaa5a43a5a0800000000000000
+      internalID: -6511278882978655876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: back_button_pressed
+      rect:
+        serializedVersion: 2
+        x: 1893
+        y: 661
+        width: 141
+        height: 99
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2436e1122603957f0800000000000000
+      internalID: -623413875393535166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_big
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 340
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef7a2d3a591eb5080800000000000000
+      internalID: -9197509781159237634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_big_pressed
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 746
+        width: 177
+        height: 177
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb2d0b983e9450950800000000000000
+      internalID: 6414614485875610299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_medium
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 446
+        width: 100
+        height: 100
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e794e975bae1b90800000000000000
+      internalID: -7269184355723280746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_medium_pressed
+      rect:
+        serializedVersion: 2
+        x: 1767
+        y: 1369
+        width: 100
+        height: 100
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4331f6e03db55900800000000000000
+      internalID: 672651737092404045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_small
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1969
+        width: 77
+        height: 77
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0a55e3519c5591b0800000000000000
+      internalID: -5650508378218866165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_small_pressed
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1969
+        width: 77
+        height: 77
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb5e6ea4736448f0800000000000000
+      internalID: -557211101093274660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buy_one_pressed
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1629
+        width: 546
+        height: 166
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49eba6645009609c0800000000000000
+      internalID: -3961320469895135596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buy_three
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1799
+        width: 546
+        height: 166
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515a1550910f08950800000000000000
+      internalID: 6449418656648635669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buy_three_pressed
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 340
+        width: 546
+        height: 166
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96c4022ae1d4af990800000000000000
+      internalID: -7351478647764530071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buy_two
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1629
+        width: 546
+        height: 166
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67dd1abc1adabfd60800000000000000
+      internalID: 7925118879706242422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buy_two_pressed
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 1799
+        width: 546
+        height: 166
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d1f7f310fe313b0800000000000000
+      internalID: -5542823927723647660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: categories_button
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 550
+        width: 504
+        height: 151
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba33d7c8efcae590800000000000000
+      internalID: -7644068818816124226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: categories_button_pressed
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 705
+        width: 504
+        height: 151
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c690f684c8a4199b0800000000000000
+      internalID: -5075193338698725012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: check_button
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 2
+        width: 149
+        height: 149
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90647f19677599140800000000000000
+      internalID: 4726905450668705289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: check_button_pressed
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 155
+        width: 149
+        height: 149
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cae3e030fcf431f90800000000000000
+      internalID: -6984150846593417556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: classic
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 860
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: febff7738ef979050800000000000000
+      internalID: 5807286064229907439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: classic_pressed
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1002
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47e6294fa4695f620800000000000000
+      internalID: 2807315191410355828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock
+      rect:
+        serializedVersion: 2
+        x: 1877
+        y: 1327
+        width: 100
+        height: 100
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9aa3cfadd9e08970800000000000000
+      internalID: 8755254813954124445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: close_button_white_circled_pressed
+      rect:
+        serializedVersion: 2
+        x: 1801
+        y: 1577
+        width: 66
+        height: 66
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8692c7d2449646630800000000000000
+      internalID: 3919373317260978536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1144
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e845768691b429a20800000000000000
+      internalID: 3067596868690597006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemies_pressed
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 1286
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bfec85c71aa95020800000000000000
+      internalID: 2331081301216260019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fog
+      rect:
+        serializedVersion: 2
+        x: 1234
+        y: 510
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c819f5f8fb24cf30800000000000000
+      internalID: 4594845868103375045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fog_pressed
+      rect:
+        serializedVersion: 2
+        x: 1234
+        y: 652
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2ceeb9afa053910800000000000000
+      internalID: 1816370096188080822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hint_small
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 764
+        width: 115
+        height: 113
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3668037ac31395b20800000000000000
+      internalID: 3123581953130923619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hint_small_pressed
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 1022
+        width: 115
+        height: 113
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f167023f3740f2d0800000000000000
+      internalID: -3247016994586271239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_floor_new
+      rect:
+        serializedVersion: 2
+        x: 1234
+        y: 794
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43d5db5e72c24a810800000000000000
+      internalID: 1775592702960557364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_floor_pressed
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 936
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04ba58baef2133370800000000000000
+      internalID: 8300999423182613312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaderboard
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 1969
+        width: 75
+        height: 73
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4892d8b51a00a1ab0800000000000000
+      internalID: -5036712540234765948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaderboard_icon
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 1561
+        width: 75
+        height: 59
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc89a417763bc8110800000000000000
+      internalID: 1264582852247984332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: leaderboard_pressed
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 1969
+        width: 76
+        height: 73
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e916983358994640800000000000000
+      internalID: 5064746739153902048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level_bar
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 1166
+        height: 218
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39545b6c7d819f450800000000000000
+      internalID: 6122952483417703827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level_bar_bg
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 224
+        width: 1166
+        height: 218
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8988108289ddb1df0800000000000000
+      internalID: -208329312166639464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level_button
+      rect:
+        serializedVersion: 2
+        x: 1903
+        y: 308
+        width: 121
+        height: 121
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b25086ed57dfa10800000000000000
+      internalID: 1944840212182281015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level_button_pressed
+      rect:
+        serializedVersion: 2
+        x: 1893
+        y: 536
+        width: 121
+        height: 121
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 341448935b1dbfed0800000000000000
+      internalID: -2379077401850920637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level_lock
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 1969
+        width: 51
+        height: 73
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de701bdde07f0b730800000000000000
+      internalID: 4012978911208081389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: level_lock_pressed
+      rect:
+        serializedVersion: 2
+        x: 1994
+        y: 764
+        width: 51
+        height: 73
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 259468a95c355a780800000000000000
+      internalID: -8672433399265867438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lock
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 1431
+        width: 100
+        height: 100
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 903c6508aa5687570800000000000000
+      internalID: 8464627282614862601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lock_category
+      rect:
+        serializedVersion: 2
+        x: 1994
+        y: 841
+        width: 50
+        height: 68
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a1a96dcc89b99240800000000000000
+      internalID: 4799070892332786081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maximize_icon
+      rect:
+        serializedVersion: 2
+        x: 1981
+        y: 1327
+        width: 65
+        height: 65
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6756883f6a6b538f0800000000000000
+      internalID: -561341750371129994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maximize_icon_pressed
+      rect:
+        serializedVersion: 2
+        x: 1981
+        y: 1396
+        width: 65
+        height: 65
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08ec5ac1927fbbf20800000000000000
+      internalID: 3439614496373853824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maze_more_logo
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1460
+        width: 883
+        height: 165
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea9d424e1859ab5d0800000000000000
+      internalID: -3045957812851779154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: memorygames
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 1078
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c4059748c3dbce30800000000000000
+      internalID: 4524943107771663553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: memorygames_pressed
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 1220
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd0ff8484cf744410800000000000000
+      internalID: 1460432661189226717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: menu_icon_pressed
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 1561
+        width: 49
+        height: 45
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e74b0fbef46151b0800000000000000
+      internalID: -5669639410593085472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: minimize_icon
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 1243
+        width: 136
+        height: 80
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65667b6f77a3d5670800000000000000
+      internalID: 8529037556224321110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: next_level_pressed
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 521
+        width: 195
+        height: 221
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a473d21f065dea0800000000000000
+      internalID: -5848661952108738044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 1139
+        width: 115
+        height: 113
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5425dc0bc0c5c1760800000000000000
+      internalID: 7429914694830084677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause_pressed
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 1022
+        width: 115
+        height: 113
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d009340d16808ba50800000000000000
+      internalID: 6536984075327213581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: play_active
+      rect:
+        serializedVersion: 2
+        x: 1975
+        y: 1465
+        width: 71
+        height: 83
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 935cad8d0c315a060800000000000000
+      internalID: 6963994117791204665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: play_icon
+      rect:
+        serializedVersion: 2
+        x: 1727
+        y: 1577
+        width: 70
+        height: 80
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22d79e93a7c72c3d0800000000000000
+      internalID: -3187848721825432286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: popup_button_pressed
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 1947
+        width: 249
+        height: 99
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f47c8b44db1950d0800000000000000
+      internalID: -3433682642278779663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: progress_bg
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1969
+        width: 314
+        height: 58
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8131f0c1d056d4f20800000000000000
+      internalID: 3408491599969063704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purchase_5_bubble
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 1256
+        width: 110
+        height: 118
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41735178daf5d42c0800000000000000
+      internalID: -4445792058244516076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puzzlerama
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 1362
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0af8340b3b42aac0800000000000000
+      internalID: -3845428414974985717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: puzzlerama_pressed
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 1504
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b6ff0b9d1ac21c50800000000000000
+      internalID: 6634587429574538930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rate
+      rect:
+        serializedVersion: 2
+        x: 961
+        y: 1969
+        width: 75
+        height: 73
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10870d15c24823870800000000000000
+      internalID: 8661130359272929281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rate_pressed
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 1969
+        width: 76
+        height: 73
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93f0d7e2dba932eb0800000000000000
+      internalID: -4745779444998926535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: restore
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 1139
+        width: 115
+        height: 113
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b3ab4544cea62d0800000000000000
+      internalID: -3284553199989933178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: restore_pressed
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 1022
+        width: 115
+        height: 113
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81165db0219132610800000000000000
+      internalID: 1595146258317926680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: reward_video_inactive
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 1428
+        width: 70
+        height: 72
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcecba9c6f2f85c30800000000000000
+      internalID: 4348492581985570511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rewarded_video_reverse_colors
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 1535
+        width: 90
+        height: 90
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f112ea49e7a71920800000000000000
+      internalID: 2961019900444938742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: setting_menu_button
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 927
+        width: 312
+        height: 91
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdaec9d5ec05b6b60800000000000000
+      internalID: 7740369231830379227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: setting_menu_button_pressed
+      rect:
+        serializedVersion: 2
+        x: 1693
+        y: 1947
+        width: 312
+        height: 92
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c83bc61967bf8400800000000000000
+      internalID: 328682959803201729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: settings
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 1552
+        width: 75
+        height: 73
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66777730cbfb4ba30800000000000000
+      internalID: 4230216764240656230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: settings_pressed
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 1969
+        width: 76
+        height: 73
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adbf94e4b19aebc00800000000000000
+      internalID: 918357308772842458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: star_big
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 1504
+        width: 161
+        height: 155
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cdc8a0a19e27db70800000000000000
+      internalID: 8923652389658480066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: star_medium
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 1256
+        width: 113
+        height: 109
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4efc7b97a40e2a30800000000000000
+      internalID: 4192293421043220046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 1969
+        width: 76
+        height: 73
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb31b8b16faf693c0800000000000000
+      internalID: -4353016054876007489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_button
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 446
+        width: 334
+        height: 100
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98ce5cf2216c81520800000000000000
+      internalID: 2673104160257600649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_button_pressed
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 1930
+        width: 334
+        height: 100
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 502d3619f7f5b3660800000000000000
+      internalID: 7366586616999301637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_pressed
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 1969
+        width: 76
+        height: 73
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12ec3be7e03b256f0800000000000000
+      internalID: -697298117452378591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: store_white
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 1561
+        width: 76
+        height: 64
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e22b03ea39700da40800000000000000
+      internalID: 5390817084826497582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: time_trial
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 1646
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06f646564c90cbc70800000000000000
+      internalID: 8988069695443988320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: time_trial_locked
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 1788
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daec0025d76c5d080800000000000000
+      internalID: -9163199625266409811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: time_trial_pressed
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 1663
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 436b8dde38f25fef0800000000000000
+      internalID: -75101575104121292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: traps
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 1805
+        width: 456
+        height: 138
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987a6645ae281b1e0800000000000000
+      internalID: -2183820401348008055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unlock
+      rect:
+        serializedVersion: 2
+        x: 1767
+        y: 1473
+        width: 100
+        height: 100
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a5b7afeb14d77920800000000000000
+      internalID: 2988090094233564578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unlock_ice_floor_window_bg
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 2
+        width: 720
+        height: 334
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 005f7d9a3c836dfc0800000000000000
+      internalID: -3470524049823107840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unlock_level_window_bg
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 446
+        width: 720
+        height: 334
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd7714a29fd24be0800000000000000
+      internalID: -1494386305422361133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unlock_time_trial_window_bg
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 784
+        width: 720
+        height: 334
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32b5d346e077d7ee0800000000000000
+      internalID: -1261721416898880733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: unlock_traps_window_bg
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1122
+        width: 720
+        height: 334
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b366c694b43414f0800000000000000
+      internalID: -859003678692580428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_bg
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 1428
+        width: 202
+        height: 129
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64b215bc0a6067470800000000000000
+      internalID: 8391902243327126342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

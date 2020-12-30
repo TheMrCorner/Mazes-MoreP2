@@ -32,6 +32,9 @@ TextureImporter:
   - first:
       213: 6437608812028167600
     second: logo_hd_9
+  - first:
+      213: 6973341628372400424
+    second: logo
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +130,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: logo
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 390
+        width: 1200
+        height: 120
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829b490c34946c060800000000000000
+      internalID: 6973341628372400424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
