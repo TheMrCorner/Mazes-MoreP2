@@ -24,6 +24,14 @@ public class Tile : MonoBehaviour
     private GameObject wallLeft;
     [SerializeField] [Tooltip("Child component that stores the goal sprite")]
     private GameObject goal;
+    [SerializeField] [Tooltip("Trail looking up")]
+    private GameObject trailUp;
+    [SerializeField] [Tooltip("Trail looking Right")]
+    private GameObject trailRight;
+    [SerializeField] [Tooltip("Trail looking down")]
+    private GameObject trailDown;
+    [SerializeField] [Tooltip("Trail looking left")]
+    private GameObject trailLeft;
     #endregion //variables
 
     #region methods
