@@ -113,4 +113,4 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 2991755ed53885344a4537253f526b5d, type: 3}
   - {fileID: 4900000, guid: c06812e1a1ab0b1478e0cdf0954407d4, type: 3}
   - {fileID: 4900000, guid: 71120a9479191a24c86118f83b6e4af8, type: 3}
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerColor: {r: 0, g: 0.735849, b: 0.3931779, a: 0}
