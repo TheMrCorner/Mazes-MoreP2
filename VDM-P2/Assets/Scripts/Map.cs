@@ -51,8 +51,6 @@ public class TileInfo
     public bool wallTop = false, wallLeft = false;
     public bool iceFloor = false;
     public bool goal = false;
-    public bool trailUp = false, trailRight = false, trailDown = false, trailLeft = false;
-    public bool hintPoint = false;
 }
 
 [System.Serializable]
@@ -70,7 +68,8 @@ public class Map
     /// <param name="e">Enemy array</param>
     public Map(int c, int r, Point s, Point[] h, Wall[] w, PointDouble[] i, Point[] e)
     {
-        tileInfoMatrix = new TileInfo[c + 1, r + 1]; //one extra col & row to draw the bottom and right walls of the map
+        X = c + 1; Y = r + 1;
+        tileInfoMatrix = new TileInfo[X, Y]; //one extra col & row to draw the bottom and right walls of the map
         for (int col = 0; col <= c; ++col)
         {
             for (int row = 0; row <= r; ++row)
@@ -78,11 +77,19 @@ public class Map
                 tileInfoMatrix[col, row] = new TileInfo();
             }
         }
+
+        start = s;
+
         // hint information
-        tileInfoMatrix[s.x, Mathf.Abs(s.y - r + 1)].hintPoint = true;
+        //tileInfoMatrix[s.x, Mathf.Abs(s.y - r + 1)].hintPoint = true;
+        hintArray = new Vector2[h.Length + 1];
+        int index = 0;
+        hintArray[index] = new Vector2(s.x, Mathf.Abs(s.y - r + 1));
         foreach (Point hint in h)
         {
-            tileInfoMatrix[hint.x, Mathf.Abs(hint.y - r + 1)].hintPoint = true;
+            ++index;
+            hintArray[index] = new Vector2(hint.x, Mathf.Abs(hint.y - r + 1));
+            //tileInfoMatrix[hint.x, Mathf.Abs(hint.y - r + 1)].hintPoint = true;
         }
 
         // wall information
@@ -108,7 +115,10 @@ public class Map
     /// Matrix that stores all the information needed for the creation of tiles.
     /// Access with tileInfoMatrix[x,y]
     /// </summary>
-    TileInfo[,] tileInfoMatrix;
+    public TileInfo[,] tileInfoMatrix;
+    public Vector2[] hintArray;
+    public Point start;
+    public int X, Y;
 
     /// <summary>
     /// Reads a json level file and creates an instance of Map with a filled TileInfo matrix
