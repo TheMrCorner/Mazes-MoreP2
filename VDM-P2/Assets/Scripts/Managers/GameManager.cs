@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     // Public ------------------------------------------
 #if UNITY_EDITOR
-    public int _levelToPlay;
+    public int _levelToPlay = 1;
 #endif
     public LevelManager _levelManager;
     public LevelPackage[] _levelPackages;
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     // for level handling
     enum GameMode { CLASSIC, ICE};
-    GameMode _gameMode;
+    GameMode _gameMode = GameMode.CLASSIC;
 
     /// <summary>
     /// Awake function of GameManager. Checks if another instance of this GameObject exists and 
