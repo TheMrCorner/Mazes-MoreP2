@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-// TODO: do we want 4 wall types and have it easier, or 2 types and have it cleaner?
 public struct WallType
 {
     public bool top, left;

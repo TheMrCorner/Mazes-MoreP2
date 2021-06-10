@@ -6,8 +6,10 @@ using UnityEngine;
 public class BoardManager : MonoBehaviour
 {
     public Tile tilePrefab;
+    public Character characterPrefab;
 
     Tile[,] _tiles;
+    Character _character;
     Vector2[] _hintArray;
     Point _start;
 
@@ -33,18 +35,18 @@ public class BoardManager : MonoBehaviour
             }
         }
 
-        // TODO: change vector to screen dimensions 
-        gameObject.transform.Translate(new Vector3(-3, -3));
+        _character = Instantiate(characterPrefab, new Vector3(_start.x, _start.y, 0), Quaternion.identity, transform);
+
+        gameObject.transform.Translate(new Vector3(-(map.X - 1) / 2.0f, -(map.Y - 1)/2.0f));
+        //TODO: scale, but using which method? ResizeObjectScale?
     }
 
     void SetTile(TileInfo info, Tile tile)
     {
-        // TODO: something is broken with infoWalls 
         WallType infoWalls; infoWalls.left = info.wallLeft; infoWalls.top = info.wallTop;
         if (info.goal) tile.EnableGoal();
         if (info.iceFloor) tile.EnableIce();
         if (info.wallLeft || info.wallTop) tile.EnableWalls(infoWalls);
-
     }
 }
 

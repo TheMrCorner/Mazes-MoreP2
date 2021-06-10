@@ -78,7 +78,7 @@ public class Map
             }
         }
 
-        start = s;
+        start.x = s.x; start.y = s.y + 1; // +1 to account for bottom row being just there for the walls
 
         // hint information
         //tileInfoMatrix[s.x, Mathf.Abs(s.y - r + 1)].hintPoint = true;

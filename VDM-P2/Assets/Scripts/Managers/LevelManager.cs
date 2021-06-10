@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    //TODO: do we still use the underscore for public fields like this?
     [Tooltip("Board Manager object")]
     public BoardManager _boardManager;
 

@@ -91,6 +91,24 @@ public class GameManager : MonoBehaviour
                 return "";
         }
     }
+
+    public void AdEnded()
+    {
+        // TODO: fill out 
+
+        //if (GetInstance().adRewardCoins)
+        //{
+        //    AddCoins();
+        //}
+        //else if (GetInstance().adDoubleChallenge)
+        //{
+        //    AddChallengeExtraCoins();
+        //}
+        //else if (GetInstance().adChallengeInit)
+        //{
+        //    InitChallenge();
+        //}
+    }
 } // GameManager
 
 
