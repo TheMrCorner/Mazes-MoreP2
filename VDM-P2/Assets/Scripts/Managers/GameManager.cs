@@ -46,48 +46,73 @@ public class GameManager : MonoBehaviour
     
     #endregion
 
-    #region Utilities
-    /// <summary>
-    /// Converts the actual date and hour into seconds.
-    /// </summary>
-    /// <returns>Date transformed in seconds</returns>
-    int ConvertDateToSecond()
-    {
-        int totalHours = 0;
+//    /*
+//    // GAME/SCENE MANAGEMENT
+//    /// <summary>  Last position of the hints array </summary>
+//    Vector2 _lastTouchPosition;
+//    /// <summary> LevelManager, for communication in-game </summary>
+//    LevelManager _lm;
+//    /// <summary> Random instance for generating random levels </summary>
+//    Random _rnd; 
+//    MainMenu _mm;
+//    /// <summary> Scene before actual scene </summary>
+//    int _lastScene;
+//    /// <summary> Max difficulty in game (data driven) </summary>
+//    int _maxDifficulty = 4;
+//    /// <summary> Flag to control when ad is requested </summary>
+//    bool _adRewardCoins = false;
+//    /// <summary> Flag to double challenge win bounty </summary>
+//    bool _adDoubleChallenge = false;
+//    /// <summary> After ad init challenge </summary>
+//    bool _adChallengeInit = false;
+//    /// <summary> Flag to check if challenge has been completed </summary>
+//    bool _challengeWaiting = false;
+//    /// <summary> Time for the next challenge </summary>
+//    float _timeChallengeWait = 0.0f;
+//    /// <summary> Android focus in the app management </summary>
+//    bool isPaused = false;
+//    */
+//    #endregion
 
-        totalHours += System.DateTime.Now.Second;
-        totalHours += System.DateTime.Now.Minute * 60;
-        totalHours += System.DateTime.Now.Hour * 60 * 60;
-        totalHours += System.DateTime.Now.Day * 24 * 60 * 60;
-        totalHours += System.DateTime.Now.Month * 30 * 24 * 60 * 60;
+//    #region Utilities
+//    /// <summary>
+//    /// Converts the actual date and hour into seconds.
+//    /// </summary>
+//    /// <returns>Date transformed in seconds</returns>
+//    int ConvertDateToSecond()
+//    {
+//        int totalHours = 0;
 
-        return totalHours;
-    }
-    #endregion
+//        totalHours += System.DateTime.Now.Second;
+//        totalHours += System.DateTime.Now.Minute * 60;
+//        totalHours += System.DateTime.Now.Hour * 60 * 60;
+//        totalHours += System.DateTime.Now.Day * 24 * 60 * 60;
+//        totalHours += System.DateTime.Now.Month * 30 * 24 * 60 * 60;
 
-    #region StartUpGameManager
-    /// <summary>
-    /// Variable that stores the instance of the GameManager, Singleton
-    /// </summary>
-    private static GameManager _instance;
+//        return totalHours;
+//    }
+//    #endregion
 
-    /// <summary>
-    /// Awake function of GameManager. Checks if another instance of this GameObject exists and 
-    /// if not, initializes all required atributes and values of the GameManager, creating a new
-    /// one. 
-    /// 
-    /// If the GameManager already exists, destroy this gameObject. 
-    /// </summary>
-    private void Awake()
-    {
-        // If GameManager is not created and initialized...
-        if (_instance == null)
-        {
-            // Set this GameManager as instance
-            _instance = this;
+//    #region StartUpGameManager
+//    /// <summary>
+//    /// Variable that stores the instance of the GameManager, Singleton
+//    /// </summary>
+//    private static GameManager _instance;
 
-            // Set this gameObject to not Destroy when changing between scenes
-            DontDestroyOnLoad(gameObject);
+//    /// <summary>
+//    /// Awake function of GameManager. Checks if another instance of this GameObject exists and 
+//    /// if not, initializes all required atributes and values of the GameManager, creating a new
+//    /// one. 
+//    /// 
+//    /// If the GameManager already exists, destroy this gameObject. 
+//    /// </summary>
+//    private void Awake()
+//    {
+//        // If GameManager is not created and initialized...
+//        if (_instance == null)
+//        {
+//            // Set this GameManager as instance
+//            _instance = this;
 
             string[] packagesNames = new string[_levels.Length];
 
@@ -99,8 +124,8 @@ public class GameManager : MonoBehaviour
             // Store canvas' scaling reference resolution
             _scalingReferenceResolution = _cnv.GetComponent<CanvasScaler>().referenceResolution;
 
-            // Initialize Scaling with cam values and scalingreference values
-            _scalator = new Scaling(new Vector2(Screen.width, Screen.height), _scalingReferenceResolution, (int)_cam.orthographicSize);
+//            // Store canvas' scaling reference resolution
+//            _scalingReferenceResolution = _cnv.GetComponent<CanvasScaler>().referenceResolution;
 
             // Initialize random value
             _rnd = new Random();
@@ -115,6 +140,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+//            // Set the time waiting for challenge info
+//            SetTimeForChallenge();
+//            */
+//        }
+//        else if (_instance != this)
+//        {
+//            Destroy(gameObject);
+//        }
+//    }
 
     
     /// <summary>
@@ -135,6 +169,26 @@ public class GameManager : MonoBehaviour
     } // ReloadPanels
     
 
+//    /*
+//    /// <summary>
+//    /// Load all panels in scene for dimensions info. 
+//    /// </summary>
+//    public void ReloadPanels()
+//    {
+//        // Search in the canvas and check names
+//        foreach (Transform child in GetInstance()._cnv.transform)
+//        {
+//            if (child.name == "Top")
+//            {
+//                GetInstance()._panelSuperior = child.GetComponent<RectTransform>();
+//            }
+//            else if (child.name == "Bottom")
+//            {
+//                GetInstance()._panelInferior = child.GetComponent<RectTransform>();
+//            }
+//        }
+//    }
+//    */
 
     /// <summary>
     /// 
@@ -149,111 +203,121 @@ public class GameManager : MonoBehaviour
     } // GetInstance
     #endregion
 
-    #region GameManagement
-    /*
-    /// <summary>
-    /// Updates the time remaining for the next challenge. Notifies the 
-    /// MainMenu to update the time left text. 
-    /// </summary>
-    private void Update()
-    {
-        // If is waiting time
-        if (GetInstance()._challengeWaiting)
-        {
-            // Calculates the elapsed time since the last frame
-            GetInstance()._timeChallengeWait -= Time.deltaTime;
+//    /// <summary>
+//    /// Gives access to the GameManager instance for the rest of scripts and objects, 
+//    /// also is used for changing some values in the gameManager only by the GameManager.
+//    /// </summary>
+//    /// <returns>Actual instance of the GameManager</returns>
+//    public static GameManager GetInstance()
+//    {
+//        return _instance;
+//    }
+//    #endregion
 
-            if (SceneManager.GetActiveScene().buildIndex == 0)
-                GetInstance()._mm.UpdateTime(GetInstance()._timeChallengeWait);
+//    #region GameManagement
+//    /*
+//    /// <summary>
+//    /// Updates the time remaining for the next challenge. Notifies the 
+//    /// MainMenu to update the time left text. 
+//    /// </summary>
+//    private void Update()
+//    {
+//        // If is waiting time
+//        if (GetInstance()._challengeWaiting)
+//        {
+//            // Calculates the elapsed time since the last frame
+//            GetInstance()._timeChallengeWait -= Time.deltaTime;
 
-            // If the timer ends
-            if (GetInstance()._timeChallengeWait <= 0)
-            {
-                // Restart the time information and the original state of the main menu
-                // The challenge button is active and not blocked again 
-                GetInstance()._timeChallengeWait = GetInstance()._gc._challengeWaitTime;
-                GetInstance()._challengeWaiting = false;
-            }
-        }
-    }
-    */
+//            if (SceneManager.GetActiveScene().buildIndex == 0)
+//                GetInstance()._mm.UpdateTime(GetInstance()._timeChallengeWait);
 
-
-    /*
-    /// <summary>
-    /// Function called by the InputManager when the player touches the 
-    /// screen. Checks if the actual scene is the Game one, and manages all
-    /// necesary communication with the LevelManager. 
-    /// </summary>
-    /// <param name="touchPosition">Position of the Input in Screen</param>
-    public void ScreenTouched(Vector2 touchPosition)
-    {
-        // Check if the actual scene is the game scene
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            // Check if the Input happened in the play zone
-            if (IsInPlayZone(touchPosition))
-            {
-                // Inform the LevelManager
-                touchPosition = GetInstance()._scalator.ScreenToWorldPosition(touchPosition);
-                GetInstance()._lm.ScreenTouched(touchPosition);
-            }
-        }
-        // If not, the GameManager doesn't have to manage the input
-    }
-    */
+//            // If the timer ends
+//            if (GetInstance()._timeChallengeWait <= 0)
+//            {
+//                // Restart the time information and the original state of the main menu
+//                // The challenge button is active and not blocked again 
+//                GetInstance()._timeChallengeWait = GetInstance()._gc._challengeWaitTime;
+//                GetInstance()._challengeWaiting = false;
+//            }
+//        }
+//    }
+//    */
 
 
-    /*
-    /// <summary>
-    /// Function called when the InputManager detects that the player has 
-    /// released the scren (stopped touching it). Informs the LevelManager
-    /// if the current scene is the Game scene. 
-    /// </summary>
-    public void ScreenReleased()
-    {
-        // Check actual scene is GameScene
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-            GetInstance()._lm.ScreenReleased();
-    }
-    */
+//    /*
+//    /// <summary>
+//    /// Function called by the InputManager when the player touches the 
+//    /// screen. Checks if the actual scene is the Game one, and manages all
+//    /// necesary communication with the LevelManager. 
+//    /// </summary>
+//    /// <param name="touchPosition">Position of the Input in Screen</param>
+//    public void ScreenTouched(Vector2 touchPosition)
+//    {
+//        // Check if the actual scene is the game scene
+//        if (SceneManager.GetActiveScene().buildIndex == 2)
+//        {
+//            // Check if the Input happened in the play zone
+//            if (IsInPlayZone(touchPosition))
+//            {
+//                // Inform the LevelManager
+//                touchPosition = GetInstance()._scalator.ScreenToWorldPosition(touchPosition);
+//                GetInstance()._lm.ScreenTouched(touchPosition);
+//            }
+//        }
+//        // If not, the GameManager doesn't have to manage the input
+//    }
+//    */
 
 
-    /*
-    /// <summary>
-    /// Checks if some coordinates are between the two panels, top and bottom.
-    /// </summary>
-    /// <param name="position">Coordinates to check</param>
-    /// <returns>Whether position is in PlayZone or not</returns>
-    public bool IsInPlayZone(Vector2 position)
-    {
-        // Check if actual scene is GameScene
-        if (SceneManager.GetActiveScene().buildIndex == 2)
-            // Return if the coordinates are in the PlayZone
-            return position.y < (GetInstance()._scalator.CurrentResolution().y - panelSuperiorHeight()
-                * GetInstance()._cnv.scaleFactor) && position.y > (panelInferiorHeight() * GetInstance()._cnv.scaleFactor);
-        else
-            return false;
-    }
-    */
+//    /*
+//    /// <summary>
+//    /// Function called when the InputManager detects that the player has 
+//    /// released the scren (stopped touching it). Informs the LevelManager
+//    /// if the current scene is the Game scene. 
+//    /// </summary>
+//    public void ScreenReleased()
+//    {
+//        // Check actual scene is GameScene
+//        if (SceneManager.GetActiveScene().buildIndex == 2)
+//            GetInstance()._lm.ScreenReleased();
+//    }
+//    */
 
 
-    /*
-    /// <summary>
-    /// Function called when the Level is completed. Updates player information
-    /// with the new level completed. 
-    /// </summary>
-    public void LevelCompleted()
-    {
-        // Checks if the actual level is the last one completed
-        if (GetInstance()._level == GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty])
-        {
-            // If so, unlocks the next level
-            GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty] += 1;
-        }
-    }
-    */
+//    /*
+//    /// <summary>
+//    /// Checks if some coordinates are between the two panels, top and bottom.
+//    /// </summary>
+//    /// <param name="position">Coordinates to check</param>
+//    /// <returns>Whether position is in PlayZone or not</returns>
+//    public bool IsInPlayZone(Vector2 position)
+//    {
+//        // Check if actual scene is GameScene
+//        if (SceneManager.GetActiveScene().buildIndex == 2)
+//            // Return if the coordinates are in the PlayZone
+//            return position.y < (GetInstance()._scalator.CurrentResolution().y - panelSuperiorHeight()
+//                * GetInstance()._cnv.scaleFactor) && position.y > (panelInferiorHeight() * GetInstance()._cnv.scaleFactor);
+//        else
+//            return false;
+//    }
+//    */
 
+
+//    /*
+//    /// <summary>
+//    /// Function called when the Level is completed. Updates player information
+//    /// with the new level completed. 
+//    /// </summary>
+//    public void LevelCompleted()
+//    {
+//        // Checks if the actual level is the last one completed
+//        if (GetInstance()._level == GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty])
+//        {
+//            // If so, unlocks the next level
+//            GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty] += 1;
+//        }
+//    }
+//    */
 
     /*
     /// <summary>
@@ -266,6 +330,16 @@ public class GameManager : MonoBehaviour
     }
     */
 
+//    /*
+//    /// <summary>
+//    /// Function called by Buttons to return the level to it's initial state. 
+//    /// </summary>
+//    public void ResetLevel()
+//    {
+//        // Call LevelManager to reset the level
+//        GetInstance()._lm.ReloadLevel();
+//    }
+//    */
 
     /*
     /// <summary>
@@ -295,7 +369,33 @@ public class GameManager : MonoBehaviour
     }
     
 
-    #endregion
+//    /*
+//    /// <summary>
+//    /// Function that notifies when an ad has ended and manages what happens next. 
+//    /// If the ad played was a rewarded ad, gives coins to the player. If the ad 
+//    /// was for doubling the bounty earned in a challenge, calls that function. 
+//    /// If the ad was for initiating a challenge, calls all necessary functions. 
+//    /// </summary>
+//    public void AdEnded()
+//    {
+//        // Ad for coins reward
+//        if (GetInstance()._adRewardCoins)
+//        {
+//            AddCoins();
+//        }
+//        // Ad for double reward in challenge
+//        else if (GetInstance()._adDoubleChallenge)
+//        {
+//            AddChallengeExtraCoins();
+//        }
+//        // Ad for playing a Challenge
+//        else if (GetInstance()._adChallengeInit)
+//        {
+//            InitChallenge();
+//        }
+//    }
+//    */
+//    #endregion
 
     #region SceneManagement
     
@@ -329,45 +429,51 @@ public class GameManager : MonoBehaviour
         // Increase actual level
         GetInstance()._level += 1;
 
-        // Check which level is the next one
-        if (GetInstance()._level > 100)
-        {
-            // Load the level 1
-            GetInstance()._level = 1;
 
-            // Increase difficulty
-            GetInstance()._difficulty += 1;
-            // Check difficulty after increase
-            if (GetInstance()._difficulty > GetInstance()._maxDifficulty)
-            {
-                // Return to first difficulty
-                GetInstance()._difficulty = 0;
-            }
-        }
+//    /*
+//    /// <summary>
+//    /// Loads the next level after completing one. Checks if it is the last level of it's
+//    /// difficulty and if so, loads the next difficulty and it's first level. If the difficuñty
+//    /// is the last one, returns to the first difficulty.
+//    /// </summary>
+//    public void NextLevel()
+//    {
+//        // Increase actual level
+//        GetInstance()._level += 1;
 
-        // Reloads the LevelScene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    */
+//        // Check which level is the next one
+//        if (GetInstance()._level > 100)
+//        {
+//            // Load the level 1
+//            GetInstance()._level = 1;
+
+//            // Increase difficulty
+//            GetInstance()._difficulty += 1;
+//            // Check difficulty after increase
+//            if (GetInstance()._difficulty > GetInstance()._maxDifficulty)
+//            {
+//                // Return to first difficulty
+//                GetInstance()._difficulty = 0;
+//            }
+//        }
+
+//        // Reloads the LevelScene
+//        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+//    }
+//    */
 
 
-    /*
-    /// <summary>
-    /// Loads the Game scene with a concrete level selected. 
-    /// </summary>
-    /// <param name="l">Level to be loaded</param>
-    public void InitLevel(int l)
-    {
-        // Store last scene for later loading it if necessary
-        GetInstance()._lastScene = SceneManager.GetActiveScene().buildIndex;
-        // Establish the level
-        GetInstance()._level = l;
-
-        // Load Game scene
-        SceneManager.LoadScene(2);
-    }
-    */
-
+//    /*
+//    /// <summary>
+//    /// Loads the Game scene with a concrete level selected. 
+//    /// </summary>
+//    /// <param name="l">Level to be loaded</param>
+//    public void InitLevel(int l)
+//    {
+//        // Store last scene for later loading it if necessary
+//        GetInstance()._lastScene = SceneManager.GetActiveScene().buildIndex;
+//        // Establish the level
+//        GetInstance()._level = l;
 
     
     /// <summary>
@@ -415,25 +521,40 @@ public class GameManager : MonoBehaviour
     }
     
 
+//    /*
+//    /// <summary>
+//    /// Sets the remaining time for the next challenge. Stores it for later use. 
+//    /// </summary>
+//    /// <param name="timing">Time for the next challenge</param>
+//    public void SetChallengeTimeRemaining(int timing)
+//    {
+//        // Calculate the date for it
+//        GetInstance()._currentPlayerData._dateForNextChallenge = GetInstance().ConvertDateToSecond() + timing;
+//    }
+//    */
+//    #endregion
 
-    /// <summary>
-    /// Gives access to the canvas stored in instance.
-    /// </summary>
-    /// <returns>Canvas canvas access</returns>
-    public Canvas GetCanvas()
-    {
-        return GetInstance()._cnv;
-    }
+//    #region Getters
+//    /*
+//    /// <summary>
+//    /// Gives access to the scalator instance.
+//    /// </summary>
+//    /// <returns>Scaling scaling instance stored in GM instance</returns>
+//    public Scaling GetScaling()
+//    {
+//        return GetInstance()._scalator;
+//    }
+//    */
 
 
-    /// <summary>
-    /// Gives the screen resolution for lates use.
-    /// </summary>
-    /// <returns>Vector2 Screen resolution</returns>
-    public Vector2 getResolution()
-    {
-        return new Vector2(Screen.width, Screen.height);
-    }
+//    /// <summary>
+//    /// Gives access to the canvas stored in instance.
+//    /// </summary>
+//    /// <returns>Canvas canvas access</returns>
+//    public Canvas GetCanvas()
+//    {
+//        return GetInstance()._cnv;
+//    }
 
 
     
@@ -488,15 +609,18 @@ public class GameManager : MonoBehaviour
     } // GetPlayerData
     #endregion
 
-    #region ApplicationLifeManagement
-    /// <summary>
-    /// Function called by buttons to quit application.
-    /// </summary>
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
 
+//    /*
+//    /// <summary>
+//    /// Gives how many challenges has the player completed successfully. 
+//    /// </summary>
+//    /// <returns>int Number of challenges completed</returns>
+//    public int getChallengesCompleted()
+//    {
+//        return GetInstance()._currentPlayerData._challengesCompleted;
+//    }
+//    */
+//    #endregion
 
     
     // /// <summary>
@@ -529,6 +653,10 @@ public class GameManager : MonoBehaviour
     // }
     
 
+//        if (focus)
+//        {
+//            // Get Player information and store it
+//            GetInstance()._currentPlayerData = LoadingFiles.ReadPlayerData(GetInstance()._maxDifficulty);
 
     
     // /// <summary>
@@ -550,6 +678,20 @@ public class GameManager : MonoBehaviour
     // }
     
 
+//    /*
+//    /// <summary>
+//    /// When the app loses focus, saves the info about the player, because the 
+//    /// mobilephone can have the functionality to stop apps that don't have 
+//    /// the focus, this way we ensure the player information is safe.
+//    /// </summary>
+//    /// <param name="pause"></param>
+//    private void OnApplicationPause(bool pause)
+//    {
+//        // Update _currentPlayerData 
+//        if (GetInstance()._challengeWaiting)
+//        {
+//            GetInstance()._currentPlayerData._dateForNextChallenge = (int)(ConvertDateToSecond() + GetInstance()._timeChallengeWait);
+//        }
 
     
     // /// <summary>
