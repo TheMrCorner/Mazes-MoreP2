@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a31e85dfe0b3948b02e42782dfb068, type: 3}
   m_Name: Traps
   m_EditorClassIdentifier: 
+  name: Traps
   levels:
   - {fileID: 4900000, guid: 99c1329d73588ee4c8e2cf51d824d2ab, type: 3}
   - {fileID: 4900000, guid: 17eb00b8a9940b04b8eb94bd032884cd, type: 3}
@@ -113,4 +114,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 4f24b0945c0ca25448dbbbc65ffb1777, type: 3}
   - {fileID: 4900000, guid: 4cd1f610ef9e9ea48bbc52244aa49719, type: 3}
   - {fileID: 4900000, guid: 5812df9d971002940b9be34e34ddf145, type: 3}
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerColor: {r: 0.37647063, g: 0.48627454, b: 0.54901963, a: 1}
+  buttonUp: {fileID: -2183820401348008055, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}
+  buttonDown: {fileID: 6242714526660803437, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}

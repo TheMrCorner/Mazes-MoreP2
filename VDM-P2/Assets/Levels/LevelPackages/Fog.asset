@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a31e85dfe0b3948b02e42782dfb068, type: 3}
   m_Name: Fog
   m_EditorClassIdentifier: 
+  name: Fog
   levels:
   - {fileID: 4900000, guid: fae5e6f20e17c034f96d4c7f99968aa1, type: 3}
   - {fileID: 4900000, guid: 13b2c2b5b2a919647b7f2dcdffcd41f9, type: 3}
@@ -113,4 +114,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 9447f2e0e8e975446b48adc0acc4c37d, type: 3}
   - {fileID: 4900000, guid: 162b36872c9590a48bdec6aac40922a9, type: 3}
   - {fileID: 4900000, guid: 16fa6c6aa1fec664694ee74af1f6e1c7, type: 3}
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerColor: {r: 0.61960787, g: 0.61960787, b: 0.62352943, a: 1}
+  buttonUp: {fileID: 4594845868103375045, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}
+  buttonDown: {fileID: 1816370096188080822, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}
