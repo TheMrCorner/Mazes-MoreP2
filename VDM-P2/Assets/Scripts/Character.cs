@@ -43,32 +43,38 @@ public class Character : MonoBehaviour
 
     public void TryToMove(Tile[,] board, InputManager.InputType it)
     {
+        bool hasMoved = false;
+
         switch (it)
         {// TODO: add boundaries check for all of these
             case InputManager.InputType.S_UP:
-                while (!board[tileX, tileY].IsTopWall()) 
+                while (!board[tileX, tileY].IsTopWall() && (!hasMoved || (board[tileX, tileY].IsLeftWall() && board[tileX + 1, tileY].IsLeftWall())))
                 {
+                    hasMoved = true;
                     tileY++;
                     UpdatePosition(0, 1);
                 }
                 break;
             case InputManager.InputType.S_DOWN:
-                while (!board[tileX, tileY - 1].IsTopWall()) 
+                while (!board[tileX, tileY - 1].IsTopWall() && (!hasMoved || (board[tileX, tileY].IsLeftWall() && board[tileX + 1, tileY].IsLeftWall())))
                 {
+                    hasMoved = true;
                     tileY--;
                     UpdatePosition(0, -1);
                 }
                 break;
             case InputManager.InputType.S_RIGHT:
-                while (!board[tileX + 1, tileY].IsLeftWall())
+                while (!board[tileX + 1, tileY].IsLeftWall() && (!hasMoved || (board[tileX, tileY].IsTopWall() && board[tileX, tileY - 1].IsTopWall())))
                 {
+                    hasMoved = true;
                     tileX++;
                     UpdatePosition(1, 0);
                 }
                 break;
             case InputManager.InputType.S_LEFT:
-                while (!board[tileX, tileY].IsLeftWall())
+                while (!board[tileX, tileY].IsLeftWall() && (!hasMoved || (board[tileX, tileY].IsTopWall() && board[tileX, tileY - 1].IsTopWall())))
                 {
+                    hasMoved = true;
                     tileX--;
                     UpdatePosition(-1, 0);
                 }
