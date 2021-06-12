@@ -15,6 +15,23 @@ public class BoardManager : MonoBehaviour
 
     LevelManager _levelManager;
 
+    // ----------------------------------------------
+    // --------------- CUSTOM METHODS ---------------
+    // ----------------------------------------------
+
+    // ------------------ PRIVATE -------------------
+
+    void SetTile(TileInfo info, Tile tile)
+    {
+        WallType infoWalls; infoWalls.left = info.wallLeft; infoWalls.top = info.wallTop;
+        if (info.goal) tile.EnableGoal();
+        if (info.iceFloor) tile.EnableIce();
+        if (info.wallLeft || info.wallTop) tile.EnableWalls(infoWalls);
+    }
+
+
+    // ------------------- PUBLIC -------------------
+
     public void Init(LevelManager levelManager)
     {
         _levelManager = levelManager;
@@ -41,13 +58,18 @@ public class BoardManager : MonoBehaviour
         //TODO: scale, but using which method? ResizeObjectScale?
     }
 
-    void SetTile(TileInfo info, Tile tile)
+    public void ReceiveInput(InputManager.InputType it)
     {
-        WallType infoWalls; infoWalls.left = info.wallLeft; infoWalls.top = info.wallTop;
-        if (info.goal) tile.EnableGoal();
-        if (info.iceFloor) tile.EnableIce();
-        if (info.wallLeft || info.wallTop) tile.EnableWalls(infoWalls);
+        if (it == InputManager.InputType.TAP)
+        {
+            Debug.Log("Tap");
+        }
+        else
+        {
+            // TODO: move character
+        }
     }
+
 }
 
 

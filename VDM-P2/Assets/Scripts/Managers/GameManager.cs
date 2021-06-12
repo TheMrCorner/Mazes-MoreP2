@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour
     enum GameMode { CLASSIC, ICE};
     GameMode _gameMode = GameMode.CLASSIC;
 
+
+
+    // ----------------------------------------------
+    // --------------- UNITY METHODS ----------------
+    // ----------------------------------------------
+
     /// <summary>
     /// Awake function of GameManager. Checks if another instance of this GameObject exists and 
     /// if not, initializes all required atributes and values of the GameManager, creating a new
@@ -59,6 +65,11 @@ public class GameManager : MonoBehaviour
 
     } // Update
 
+    // ----------------------------------------------
+    // --------------- CUSTOM METHODS ---------------
+    // ----------------------------------------------
+
+    // ------------------ PRIVATE -------------------
     /// <summary>
     /// Gives access to the GameManager instance for the rest of scripts and objects, 
     /// also is used for changing some values in the gameManager only by the GameManager.
@@ -77,6 +88,14 @@ public class GameManager : MonoBehaviour
             //level manager->load levelToPlay
             _levelManager.PlayLevel(_levelToPlay);
         }
+    }
+
+
+    // ------------------- PUBLIC -------------------
+
+    public void ReceiveInput(InputManager.InputType it)
+    {
+        _levelManager.ReceiveInput(it);
     }
 
     public string GetGameMode()
