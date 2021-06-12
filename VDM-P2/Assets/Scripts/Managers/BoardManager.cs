@@ -53,6 +53,7 @@ public class BoardManager : MonoBehaviour
         }
 
         _character = Instantiate(characterPrefab, new Vector3(_start.x, _start.y, 0), Quaternion.identity, transform);
+        _character.tileX = _start.x; _character.tileY = _start.y;
 
         gameObject.transform.Translate(new Vector3(-(map.X - 1) / 2.0f, -(map.Y - 1)/2.0f));
         //TODO: scale, but using which method? ResizeObjectScale?
@@ -66,7 +67,7 @@ public class BoardManager : MonoBehaviour
         }
         else
         {
-            // TODO: move character
+            _character.TryToMove(_tiles, it);
         }
     }
 

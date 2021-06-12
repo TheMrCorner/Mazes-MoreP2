@@ -8,7 +8,7 @@ public class InputManager : MonoBehaviour
     private Vector3 lp;   //Last touch position
     private float dragDistance;  //minimum distance for a swipe to be registered
 
-    public enum InputType { S_UP, S_DOWN, S_RIGHT, S_LEFT, TAP};
+    public enum InputType { NONE, S_UP, S_DOWN, S_RIGHT, S_LEFT, TAP};
 
     void Start()
     {
@@ -59,6 +59,8 @@ public class InputManager : MonoBehaviour
 
     void CheckSwipes()
     {
+        InputManager.InputType it = InputType.NONE;
+
         //Check if drag distance is greater than 20% of the screen height
         if (Mathf.Abs(lp.x - fp.x) > dragDistance || Mathf.Abs(lp.y - fp.y) > dragDistance)
         {//It's a drag
@@ -68,10 +70,12 @@ public class InputManager : MonoBehaviour
                 if ((lp.x > fp.x))  //If the movement was to the right)
                 {   //Right swipe
                     Debug.Log("Right Swipe");
+                    it = InputType.S_RIGHT;
                 }
                 else
                 {   //Left swipe
                     Debug.Log("Left Swipe");
+                    it = InputType.S_LEFT;
                 }
             }
             else
@@ -79,16 +83,24 @@ public class InputManager : MonoBehaviour
                 if (lp.y > fp.y)  //If the movement was up
                 {   //Up swipe
                     Debug.Log("Up Swipe");
+                    it = InputType.S_UP;
                 }
                 else
                 {   //Down swipe
                     Debug.Log("Down Swipe");
+                    it = InputType.S_DOWN;
                 }
             }
         }
         else
         {   //It's a tap as the drag distance is less than 20% of the screen height
             Debug.Log("Tap");
+            it = InputType.TAP;
+        }
+
+        if (it != InputType.NONE)
+        {
+            GameManager.GetInstance().ReceiveInput(it);
         }
     }
     
