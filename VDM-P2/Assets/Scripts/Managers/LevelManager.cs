@@ -8,7 +8,11 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Board Manager object")]
     public BoardManager _boardManager;
 
-    
+
+    // ----------------------------------------------
+    // --------------- UNITY METHODS ----------------
+    // ----------------------------------------------
+
     void Awake()
     {
         if (_boardManager == null)
@@ -27,9 +31,19 @@ public class LevelManager : MonoBehaviour
         
     }
 
+    // ----------------------------------------------
+    // --------------- CUSTOM METHODS ---------------
+    // ----------------------------------------------
+
+    // ------------------- PUBLIC -------------------
     public void PlayLevel(int level)
     {
-        Map map = Map.FromJson("Assets/Levels/" + GameManager.GetInstance().GetGameMode() + "/" + level.ToString() + ".json");
+        Map map = Map.FromJson("Assets/Levels/" + GameManager.GetInstance().GetPackageName() + "/" + level.ToString() + ".json");
         _boardManager.SetMap(map);
+    }
+
+    public void ReceiveInput(InputManager.InputType it)
+    {
+        _boardManager.ReceiveInput(it);
     }
 }

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public Camera _cam;
 
     [Header("Levels")]
+    public LevelManager _levelManager = null;
     public LevelPackage[] _levels;          // Array of LevelPackages
 
     [Header("Debugging")]
@@ -96,8 +97,9 @@ public class GameManager : MonoBehaviour
             // Store canvas' scaling reference resolution
             _scalingReferenceResolution = _cnv.GetComponent<CanvasScaler>().referenceResolution;
 
-            // Store canvas' scaling reference resolution
-            _scalingReferenceResolution = _cnv.GetComponent<CanvasScaler>().referenceResolution;
+            // Create scalator
+            Vector2 res = new Vector2(Screen.width, Screen.height);
+            _scalator = new Scaling(res, _scalingReferenceResolution, (int)_cam.orthographicSize);
 
             // Initialize random value
             _rnd = new Random();
@@ -110,8 +112,18 @@ public class GameManager : MonoBehaviour
         }
         else if (_instance != this)
         {
+            _instance._levelManager = _levelManager;
+
             Destroy(gameObject);
         }
+    }
+
+
+    // ------------------- PUBLIC -------------------
+
+    public void ReceiveInput(InputManager.InputType it)
+    {
+        _levelManager.ReceiveInput(it);
     }
 
 
@@ -143,7 +155,7 @@ public class GameManager : MonoBehaviour
     {
         return _instance;
     } // GetInstance
-#endregion
+    #endregion
 
     #region GameManagement
     //    /*
@@ -272,19 +284,24 @@ public class GameManager : MonoBehaviour
     //    }
     //    */
 
-    /*
-    /// <summary>
-    /// Function that notifies when an ad has ended and manages what happens next. 
-    /// If the ad played was a rewarded ad, gives coins to the player. If the ad 
-    /// was for doubling the bounty earned in a challenge, calls that function. 
-    /// If the ad was for initiating a challenge, calls all necessary functions. 
-    /// </summary>
     public void AdEnded()
     {
-        
+        // TODO: fill out 
+
+        //if (GetInstance().adRewardCoins)
+        //{
+        //    AddCoins();
+        //}
+        //else if (GetInstance().adDoubleChallenge)
+        //{
+        //    AddChallengeExtraCoins();
+        //}
+        //else if (GetInstance().adChallengeInit)
+        //{
+        //    InitChallenge();
+        //}
     }
-    */
-#endregion
+    #endregion
 
     #region LevelSelectionManagement
 

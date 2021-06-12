@@ -67,7 +67,7 @@ public class FileLoader
         {
             BinaryFormatter bf = new BinaryFormatter();
 
-            FileStream f = File.Open(Application.persistentDataPath + "creta.dat", FileMode.Open);
+            FileStream f = File.Open(Application.persistentDataPath + "/creta.dat", FileMode.Open);
 
             PlayerData d = (PlayerData)bf.Deserialize(f);
 

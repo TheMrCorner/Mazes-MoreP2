@@ -15,6 +15,23 @@ public class BoardManager : MonoBehaviour
 
     LevelManager _levelManager;
 
+    // ----------------------------------------------
+    // --------------- CUSTOM METHODS ---------------
+    // ----------------------------------------------
+
+    // ------------------ PRIVATE -------------------
+
+    void SetTile(TileInfo info, Tile tile)
+    {
+        WallType infoWalls; infoWalls.left = info.wallLeft; infoWalls.top = info.wallTop;
+        if (info.goal) tile.EnableGoal();
+        if (info.iceFloor) tile.EnableIce();
+        if (info.wallLeft || info.wallTop) tile.EnableWalls(infoWalls);
+    }
+
+
+    // ------------------- PUBLIC -------------------
+
     public void Init(LevelManager levelManager)
     {
         _levelManager = levelManager;
@@ -36,18 +53,24 @@ public class BoardManager : MonoBehaviour
         }
 
         _character = Instantiate(characterPrefab, new Vector3(_start.x, _start.y, 0), Quaternion.identity, transform);
+        _character.tileX = _start.x; _character.tileY = _start.y;
 
         gameObject.transform.Translate(new Vector3(-(map.X - 1) / 2.0f, -(map.Y - 1)/2.0f));
         //TODO: scale, but using which method? ResizeObjectScale?
     }
 
-    void SetTile(TileInfo info, Tile tile)
+    public void ReceiveInput(InputManager.InputType it)
     {
-        WallType infoWalls; infoWalls.left = info.wallLeft; infoWalls.top = info.wallTop;
-        if (info.goal) tile.EnableGoal();
-        if (info.iceFloor) tile.EnableIce();
-        if (info.wallLeft || info.wallTop) tile.EnableWalls(infoWalls);
+        if (it == InputManager.InputType.TAP)
+        {
+            Debug.Log("Tap");
+        }
+        else
+        {
+            _character.TryToMove(_tiles, it);
+        }
     }
+
 }
 
 

@@ -94,5 +94,15 @@ public class Tile : MonoBehaviour
     {
         goal.SetActive(false);
     }
+
+    public bool IsTopWall()
+    {
+        return wallTop.active;
+    }
+
+    public bool IsLeftWall()
+    {
+        return wallLeft.active;
+    }
     #endregion //methods
 }
