@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
             // Get Player information and store it
             _player = FileLoader.ReadPlayerData(packagesNames);
 
+            DontDestroyOnLoad(_instance);
+
         }
         else if (_instance != this)
         {
@@ -442,6 +444,12 @@ public class GameManager : MonoBehaviour
         return GetInstance()._scalingReferenceResolution;
     }
 
+    /// <summary>
+    /// 
+    /// Get the name of the current 
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public string GetPackageName()
     {
         return _package;
@@ -483,7 +491,6 @@ public class GameManager : MonoBehaviour
         return _player;
     } // GetPlayerData
     #endregion
-
 
     #region AppLifeManagement
     /// <summary>
