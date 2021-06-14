@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a31e85dfe0b3948b02e42782dfb068, type: 3}
   m_Name: IceFloor
   m_EditorClassIdentifier: 
+  name: IceFloor
   levels:
   - {fileID: 4900000, guid: bb1b19de3d0b27846984390cae9535fa, type: 3}
   - {fileID: 4900000, guid: 4fb7e1fa85d695140930acbd33169a5b, type: 3}
@@ -58,4 +59,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 671ebaf6516b6e94f85fc37475ac4b34, type: 3}
   - {fileID: 4900000, guid: f330d7e38f45c07479dba34546797fff, type: 3}
   - {fileID: 4900000, guid: 78a0af9a67d25d947a95a85e95169571, type: 3}
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerColor: {r: 0, g: 0.65882355, b: 0.9568628, a: 1}
+  buttonUp: {fileID: 1775592702960557364, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}
+  buttonDown: {fileID: 8300999423182613312, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}

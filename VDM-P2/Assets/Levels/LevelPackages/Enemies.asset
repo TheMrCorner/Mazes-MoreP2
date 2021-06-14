@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a31e85dfe0b3948b02e42782dfb068, type: 3}
   m_Name: Enemies
   m_EditorClassIdentifier: 
+  name: Enemies
   levels:
   - {fileID: 4900000, guid: 29b7cd1a6bbe90e44a642d6cad25810c, type: 3}
   - {fileID: 4900000, guid: 217c8fd680c569b4aa5727189c00126d, type: 3}
@@ -113,4 +114,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: ba0da1ecf36eda64c96339085cc29c9a, type: 3}
   - {fileID: 4900000, guid: ada22ba2034953e4c87aecf0a1f88d6f, type: 3}
   - {fileID: 4900000, guid: e5921a0df2e4365408dd0a492a22a4c0, type: 3}
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerColor: {r: 0.39607847, g: 0.227451, b: 0.7176471, a: 1}
+  buttonUp: {fileID: 3067596868690597006, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}
+  buttonDown: {fileID: 2331081301216260019, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}

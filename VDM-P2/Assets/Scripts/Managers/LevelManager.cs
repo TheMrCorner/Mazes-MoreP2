@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour
     // ------------------- PUBLIC -------------------
     public void PlayLevel(int level)
     {
-        Map map = Map.FromJson("Assets/Levels/" + GameManager.GetInstance().GetGameMode() + "/" + level.ToString() + ".json");
+        Map map = Map.FromJson("Assets/Levels/" + GameManager.GetInstance().GetPackageName() + "/" + level.ToString() + ".json");
         _boardManager.SetMap(map);
     }
 

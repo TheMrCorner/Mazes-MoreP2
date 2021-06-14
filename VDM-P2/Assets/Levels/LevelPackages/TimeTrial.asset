@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a31e85dfe0b3948b02e42782dfb068, type: 3}
   m_Name: TimeTrial
   m_EditorClassIdentifier: 
+  name: TimeTrial
   levels:
   - {fileID: 4900000, guid: 7878feddc4d3ced4880ad074bccb76e8, type: 3}
   - {fileID: 4900000, guid: 9739fd4d00a574540b371c2fffbb1719, type: 3}
@@ -113,4 +114,8 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 308e167e91122fa4cbcdc99c703f9983, type: 3}
   - {fileID: 4900000, guid: 54c5ba2748cdd4a4dae30874acd7ecde, type: 3}
   - {fileID: 4900000, guid: d68ae5bfab5f48e47a9c4a48d32b823a, type: 3}
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  playerColor: {r: 1, g: 0.6, b: 0, a: 1}
+  buttonUp: {fileID: 8988069695443988320, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}
+  buttonDown: {fileID: -75101575104121292, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}
