@@ -12,8 +12,10 @@ public class Character : MonoBehaviour
     [HideInInspector]
     public int _tileX, _tileY;          // used for moving along the board
     public float _scalingFactor = 1;    // used for transforming board steps into world steps
+    
     Stack<TrailType> _directions;       // directions taken by the character
-
+    TrailType comingFrom;
+    TrailType nextDir;
 
     void Awake()
     {
@@ -32,24 +34,97 @@ public class Character : MonoBehaviour
     // ----------------------------------------------
 
     // ------------------ PRIVATE -------------------
-    void MoveCharacter(Tile[,] board, ref TrailType comingFrom, TrailType nextDir)
+
+    /// <summary>
+    /// Coroutine that moves the character one step along nextDir and then 
+    /// until it finds a crossroad
+    /// </summary>
+    /// <param name="board">(Tile[,]) Matrix that contains the game tiles</param>
+    /// <returns></returns>
+    IEnumerator MoveCharacter(Tile[,] board)
     {
         UpdateTrails(board, nextDir);
-        UpdatePosition(nextDir);
+        yield return StartCoroutine("UpdatePosition", nextDir);
+        //UpdatePosition(nextDir);
         comingFrom = GetOppositeDir(nextDir);
+
+        bool crossroad = false;
+        // keep moving until we find a crossroad in the board
+        while (!crossroad)
+        {
+            if (OnlyOneWay(board)) // for the next ones any is fine as long as it doesnt go backwards
+            {
+                UpdateTrails(board, nextDir);
+                yield return StartCoroutine("UpdatePosition", nextDir);
+                //UpdatePosition(nextDir);
+                comingFrom = GetOppositeDir(nextDir);
+            }
+            else
+                crossroad = true; // we found a crossroad
+        }
     }
+
+    /// <summary>
+    /// Updates the character's position in board and world coordinates using a lerp 
+    /// to animate the character
+    /// </summary>
+    /// <param name="dir">(TrailType) Direction the player is moving towards</param>
+    IEnumerator UpdatePosition(TrailType dir)
+    {
+        float xIncrement = 0, yIncrement = 0;
+        switch (dir)
+        {
+            case TrailType.NORTH:
+                yIncrement = _scalingFactor;
+                _tileY++;
+                break;
+            case TrailType.SOUTH:
+                yIncrement = -_scalingFactor;
+                _tileY--;
+                break;
+            case TrailType.EAST:
+                xIncrement = _scalingFactor;
+                _tileX++;
+                break;
+            case TrailType.WEST:
+                xIncrement = -_scalingFactor;
+                _tileX--;
+                break;
+            default:
+                break;
+        }
+
+        float timeElapsed = 0, animationDuration = 0.06f;
+        Vector3 startPos = transform.position;
+        Vector3 currentPos = transform.position;
+        Vector3 finalPos = new Vector3(transform.position.x + xIncrement, transform.position.y + yIncrement, 0);
+
+        while (timeElapsed < animationDuration)
+        {
+            currentPos.x = Mathf.Lerp(startPos.x, finalPos.x, timeElapsed / animationDuration);
+            currentPos.y = Mathf.Lerp(startPos.y, finalPos.y, timeElapsed / animationDuration);
+
+            transform.position = currentPos;
+
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = finalPos;
+    }
+
 
     /// <summary>
     /// Checks the corresponding tiles depending on the direction taken, then checks if
     /// it needs to undo trails or add them instead
     /// </summary>
     /// <param name="board">(Tile[,]) Tile matrix that stores the board's tiles</param>
-    /// <param name="tt">(TrailType) Direction of movement</param>
-    void UpdateTrails(Tile[,] board, TrailType tt)
+    /// <param name="dir">(TrailType) Direction of movement</param>
+    void UpdateTrails(Tile[,] board, TrailType dir)
     {
         Tile startTile = board[_tileX, _tileY];
         Tile endTile = null;
-        switch (tt)
+        switch (dir)
         {
             case TrailType.NORTH:
                 endTile = board[_tileX, _tileY + 1];
@@ -83,40 +158,7 @@ public class Character : MonoBehaviour
                 break;
         }
     }
-
-
-    /// <summary>
-    /// Updates the character's position in board and world coordinates
-    /// </summary>
-    /// <param name="dir">(TrailType) Direction the player is moving towards</param>
-    void UpdatePosition(TrailType dir)
-    {
-        float xIncrement = 0, yIncrement = 0;
-        switch (dir)
-        {
-            case TrailType.NORTH:
-                yIncrement = _scalingFactor;
-                _tileY++;
-                break;
-            case TrailType.SOUTH:
-                yIncrement = -_scalingFactor;
-                _tileY--;
-                break;
-            case TrailType.EAST:
-                xIncrement = _scalingFactor;
-                _tileX++;
-                break;
-            case TrailType.WEST:
-                xIncrement = -_scalingFactor;
-                _tileX--;
-                break;
-            default:
-                break;
-        }
-
-        transform.position = new Vector3(transform.position.x + xIncrement, transform.position.y + yIncrement, 0);
-    }
-
+    
     /// <summary>
     /// Checks wether an undo of the trail is necessary, and follows the appropriate 
     /// steps in case it is needed
@@ -158,48 +200,48 @@ public class Character : MonoBehaviour
 
     
 
-    bool OnlyOneWay(Tile[,] board, TrailType sideItComesFrom, ref TrailType nextSide)
+    bool OnlyOneWay(Tile[,] board)
     {
         bool onlyOneWay = true;
-        switch (sideItComesFrom)
+        switch (comingFrom)
         {
             case TrailType.NORTH:
                 if (!IsSouthAWall(board) && IsWestAWall(board) && IsEastAtWall(board))
-                    nextSide = TrailType.SOUTH;
+                    nextDir = TrailType.SOUTH;
                 else if (IsSouthAWall(board) && !IsWestAWall(board) && IsEastAtWall(board))
-                    nextSide = TrailType.WEST;
+                    nextDir = TrailType.WEST;
                 else if (IsSouthAWall(board) && IsWestAWall(board) && !IsEastAtWall(board))
-                    nextSide = TrailType.EAST;
+                    nextDir = TrailType.EAST;
                 else
                     onlyOneWay = false;
                 break;
             case TrailType.SOUTH:
                 if (!IsNorthAWall(board) && IsWestAWall(board) && IsEastAtWall(board))
-                    nextSide = TrailType.NORTH;
+                    nextDir = TrailType.NORTH;
                 else if (IsNorthAWall(board) && !IsWestAWall(board) && IsEastAtWall(board))
-                    nextSide = TrailType.WEST;
+                    nextDir = TrailType.WEST;
                 else if (IsNorthAWall(board) && IsWestAWall(board) && !IsEastAtWall(board))
-                    nextSide = TrailType.EAST;
+                    nextDir = TrailType.EAST;
                 else
                     onlyOneWay = false;
                 break;
             case TrailType.EAST:
                 if (!IsNorthAWall(board) && IsWestAWall(board) && IsSouthAWall(board))
-                    nextSide = TrailType.NORTH;
+                    nextDir = TrailType.NORTH;
                 else if (IsNorthAWall(board) && !IsWestAWall(board) && IsSouthAWall(board))
-                    nextSide = TrailType.WEST;
+                    nextDir = TrailType.WEST;
                 else if (IsNorthAWall(board) && IsWestAWall(board) && !IsSouthAWall(board))
-                    nextSide = TrailType.SOUTH;
+                    nextDir = TrailType.SOUTH;
                 else
                     onlyOneWay = false;
                 break;
             case TrailType.WEST:
                 if (!IsNorthAWall(board) && IsSouthAWall(board) && IsEastAtWall(board))
-                    nextSide = TrailType.NORTH;
+                    nextDir = TrailType.NORTH;
                 else if (IsNorthAWall(board) && !IsSouthAWall(board) && IsEastAtWall(board))
-                    nextSide = TrailType.SOUTH;
+                    nextDir = TrailType.SOUTH;
                 else if (IsNorthAWall(board) && IsSouthAWall(board) && !IsEastAtWall(board))
-                    nextSide = TrailType.EAST;
+                    nextDir = TrailType.EAST;
                 else
                     onlyOneWay = false;
                 break;
@@ -277,31 +319,30 @@ public class Character : MonoBehaviour
     public void TryToMove(Tile[,] board, InputManager.InputType it)
     {
         bool hasMoved = false;
-        TrailType comingFrom, nextDir;
         switch (it)
         {
             case InputManager.InputType.S_UP:
                 comingFrom = TrailType.SOUTH;
                 nextDir = TrailType.NORTH;
-                if (!hasMoved && !IsNorthAWall(board)) // for the first movement, it has to follow the swipe direction
+                if (!IsNorthAWall(board)) // for the first movement, it has to follow the swipe direction
                     hasMoved = true;
                 break;
             case InputManager.InputType.S_DOWN:
                 comingFrom = TrailType.NORTH;
                 nextDir = TrailType.SOUTH;
-                if (!hasMoved && !IsSouthAWall(board)) // for the first movement, it has to follow the swipe direction
+                if (!IsSouthAWall(board)) // for the first movement, it has to follow the swipe direction
                     hasMoved = true;
                 break;
             case InputManager.InputType.S_RIGHT:
                 comingFrom = TrailType.WEST;
                 nextDir = TrailType.EAST;
-                if (!hasMoved && !IsEastAtWall(board)) // for the first movement, it has to follow the swipe direction
+                if (!IsEastAtWall(board)) // for the first movement, it has to follow the swipe direction
                     hasMoved = true;
                 break;
             case InputManager.InputType.S_LEFT:
                 comingFrom = TrailType.EAST;
                 nextDir = TrailType.WEST;
-                if (!hasMoved && !IsWestAWall(board)) // for the first movement, it has to follow the swipe direction
+                if (!IsWestAWall(board)) // for the first movement, it has to follow the swipe direction
                     hasMoved = true;
                 break;
             case InputManager.InputType.TAP:
@@ -310,21 +351,25 @@ public class Character : MonoBehaviour
                 return;
         }
 
+        //if (hasMoved)
+        //{
+        //    StartCoroutine("FirstMove", board);
+        //}
         if (hasMoved)
         {
-            MoveCharacter(board, ref comingFrom, nextDir);
+            StartCoroutine("MoveCharacter", board);
         }
-
-        bool crossroad = false;
-        // keep moving until we find a crossroad in the board
-        while (!crossroad)
-        {
-            if (OnlyOneWay(board, comingFrom, ref nextDir)) // for the next ones any is fine as long as it doesnt go backwards
-            {
-                MoveCharacter(board, ref comingFrom, nextDir);
-            }
-            else
-                crossroad = true; // we found a crossroad
-        }
+        
+        //bool crossroad = false;
+        //// keep moving until we find a crossroad in the board
+        //while (!crossroad)
+        //{
+        //    if (OnlyOneWay(board)) // for the next ones any is fine as long as it doesnt go backwards
+        //    {
+        //        StartCoroutine("MoveCharacter", board);
+        //    }
+        //    else
+        //        crossroad = true; // we found a crossroad
+        //}
     }
 }
