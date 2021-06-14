@@ -128,7 +128,7 @@ public class FileLoader
 
         for (int i = 0; i < packages.Length; i++)
         {
-            completed.Add(packages[i], 7);
+            completed.Add(packages[i], 0);
         } // for
 
         PlayerData dat = new PlayerData(0.0f, completed, 0, false);

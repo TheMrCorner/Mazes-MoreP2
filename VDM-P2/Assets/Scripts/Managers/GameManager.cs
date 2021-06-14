@@ -406,7 +406,7 @@ public class GameManager : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="package"> (string) Name of the package to update it. </param>
-    public void ChangeToLevelSelection(string package)
+    public void ChangeToLevelSelection()
     {
         // Update last Scene
         GetInstance()._lastScene = SceneManager.GetActiveScene().buildIndex;
@@ -430,6 +430,11 @@ public class GameManager : MonoBehaviour
         // Set the camera
         GetInstance()._cam = c;
     }
+
+    public void SetPackage(string p)
+    {
+        _package = p;
+    } // SetPackage
     #endregion
 
     #region Getters
@@ -461,6 +466,11 @@ public class GameManager : MonoBehaviour
         return GetInstance()._scalingReferenceResolution;
     }
 
+    public int GetNumPackages()
+    {
+        return _levels.Length;
+    } // GetNumPackages
+
     /// <summary>
     /// 
     /// Get the name of the current 
@@ -472,6 +482,11 @@ public class GameManager : MonoBehaviour
         return _package;
     } // GetPackageName
 
+
+    public LevelPackage GetLevelPackage(int i)
+    {
+        return _levels[i];
+    } // GetPackage
 
     /// <summary>
     /// 

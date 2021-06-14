@@ -15,7 +15,6 @@ public class LevelSelectionManager : MonoBehaviour
     public RectTransform _buttonZone;               // Empty rectangle to put buttons
     public RectTransform _columns;                  // Rectangle to manage columns
     public RectTransform _raws;                     // Rectangle to manage raws
-    public LevelData _data;                         // Data of the current package
 
     [Header("Limits and info")]
     public int _levelsCompleted = 0;                // Number of levels completed
@@ -25,7 +24,6 @@ public class LevelSelectionManager : MonoBehaviour
     public int _spaceRaws = 12;                     // Space between raws
 
     private int _currentButton;                             // Number of buttons in this bundle
-
     private LevelPackage _lp;                               // Current level package
 
     // Start is called before the first frame update
