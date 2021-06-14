@@ -158,33 +158,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region GameManagement
-    //    /*
-    //    /// <summary>
-    //    /// Updates the time remaining for the next challenge. Notifies the 
-    //    /// MainMenu to update the time left text. 
-    //    /// </summary>
-    //    private void Update()
-    //    {
-    //        // If is waiting time
-    //        if (GetInstance()._challengeWaiting)
-    //        {
-    //            // Calculates the elapsed time since the last frame
-    //            GetInstance()._timeChallengeWait -= Time.deltaTime;
-
-    //            if (SceneManager.GetActiveScene().buildIndex == 0)
-    //                GetInstance()._mm.UpdateTime(GetInstance()._timeChallengeWait);
-
-    //            // If the timer ends
-    //            if (GetInstance()._timeChallengeWait <= 0)
-    //            {
-    //                // Restart the time information and the original state of the main menu
-    //                // The challenge button is active and not blocked again 
-    //                GetInstance()._timeChallengeWait = GetInstance()._gc._challengeWaitTime;
-    //                GetInstance()._challengeWaiting = false;
-    //            }
-    //        }
-    //    }
-    //    */
 
 
     //    /*
@@ -286,21 +259,8 @@ public class GameManager : MonoBehaviour
 
     public void AdEnded()
     {
-        // TODO: fill out 
-
-        //if (GetInstance().adRewardCoins)
-        //{
-        //    AddCoins();
-        //}
-        //else if (GetInstance().adDoubleChallenge)
-        //{
-        //    AddChallengeExtraCoins();
-        //}
-        //else if (GetInstance().adChallengeInit)
-        //{
-        //    InitChallenge();
-        //}
-    }
+        GetInstance()._player._hints++;
+    } // AdEnded
     #endregion
 
     #region LevelSelectionManagement

@@ -5,26 +5,54 @@ using UnityEngine.Advertisements;
 
 public class AdManager : MonoBehaviour, IUnityAdsListener
 {
-    private string gameID = "1234567";
+    // Singleton instance
+    private static AdManager _instance;
+
+    // Different game ID's for different platforms
+#if UNITY_ANDROID
+    private string _gameID = "3714873";
+#elif UNITY_IOS
+    private string _gameID = "3714872";
+#else
+    private string _gameID = "3714874";
+#endif
 
     // Ad type 
     string placementVideo = "video";
     string placementIdRewardedVideo = "rewardedVideo";
     string placementBannerID = "bannerPlacement";
 
+    void Awake()
+    {
+        // Create Instance
+        if (_instance == null)
+        {
+            _instance = this;
+            Object.DontDestroyOnLoad(this);
+        } // if
+        // If instance already exists, destroy current GameObject
+        else
+        {
+            Destroy(this.gameObject);
+        } // else
+    } // Awake
+
     // Start is called before the first frame update
     void Start()
     {
-        Advertisement.AddListener(this);
-        Advertisement.Initialize(gameID, true);
+        Advertisement.AddListener(GetInstance());
+        Advertisement.Initialize(_gameID, true);
         StartCoroutine(ShowBannerWhenInitialized());
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Function that returns the instance of AdManager.
+    /// </summary>
+    /// <returns>AdManager instance of singleton</returns>
+    public static AdManager GetInstance()
     {
-
-    }
+        return _instance;
+    } // GetInstance
 
     IEnumerator ShowBannerWhenInitialized()
     {
@@ -32,40 +60,51 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         {
             yield return new WaitForSeconds(0.5f);
         }
-        Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
+        Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
         Advertisement.Banner.Show(placementBannerID);
-    }
+    } // ShowBannerWhenInitialized
+
+    public void ShowVideo()
+    {
+        if (Advertisement.IsReady(placementVideo))
+        {
+            Advertisement.Show(placementVideo);
+        } // if
+        else
+        {
+            Debug.Log("Rewarded video is not ready at the moment! Try again later!");
+        } // else
+    } // ShowVideo
 
     public void ShowRewardedVideo()
     {
         if (Advertisement.IsReady(placementIdRewardedVideo))
         {
             Advertisement.Show(placementIdRewardedVideo);
-        }
+        } // if
         else
         {
             Debug.Log("Rewarded video is not ready at the moment! Try again later!");
-        }
-    }
+        } // else
+    } // ShowRewardedVideo
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult res)
     {
-        if (res == ShowResult.Finished || res == ShowResult.Skipped)
+        if (placementId == placementIdRewardedVideo)
         {
-            GameManager.GetInstance().AdEnded();
-        }
-        else if (res == ShowResult.Failed)
-        {
-            Debug.LogWarning("The ad did not finish due to an error");
-        }
-    }
+            if (res == ShowResult.Finished || res == ShowResult.Skipped)
+            {
+                GameManager.GetInstance().AdEnded();
+            } // if
+            else if (res == ShowResult.Failed)
+            {
+                Debug.LogWarning("The ad did not finish due to an error");
+            } // else if
+        } // if
+    } // OnUnityAdsDidFinish
 
     public void OnUnityAdsReady(string placementId)
     {
-        if (placementId == placementIdRewardedVideo)
-        {
-
-        }
     }
 
     public void OnUnityAdsDidError(string message)
@@ -74,4 +113,4 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     }
 
     public void OnUnityAdsDidStart(string placementId) { }
-}
+} // AdManager

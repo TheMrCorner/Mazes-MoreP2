@@ -172,8 +172,6 @@ public class MainMenuManager : MonoBehaviour
         float nLevels = lp.levels.Length;
         int percentage = (int)((completedLevels / nLevels) * 100);
 
-        Debug.Log(percentage + "%");
-
         b.GetComponent<PackageSelectionButton>().SetPercentage(percentage);
         b.GetComponent<PackageSelectionButton>().SetSprites(lp.buttonUp, lp.buttonDown);
     } // SetButton
