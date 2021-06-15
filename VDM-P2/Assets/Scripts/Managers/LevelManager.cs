@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
     public GameObject _pausePanel;
     public GameObject _restorePanel;
     public GameObject _hintsPanel;
+    public GameObject _optionsPanel;
 
     private bool _paused = false;
 
@@ -49,6 +50,11 @@ public class LevelManager : MonoBehaviour
         _levelAndMode.text = GameManager.GetInstance().GetPackageName() + 
             " - " + GameManager.GetInstance().GetLevel().ToString();
         _hints.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();
+
+        _pausePanel.SetActive(false);
+        _restorePanel.SetActive(false);
+        _hintsPanel.SetActive(false);
+        _optionsPanel.SetActive(false);
 
         PlayLevel();
     }

@@ -110,7 +110,7 @@ public class BoardManager : MonoBehaviour
 
         _character._scalingFactor = factor;
 
-        gameObject.transform.Translate(new Vector3((-(map.X - 1) / 2.0f) * factor, (-(map.Y - 1) / 2.0f) * factor));
+        gameObject.transform.Translate(new Vector3((-(map.X - 1) / 2.0f) * factor, ((-(map.Y - 1) / 2.0f) * factor) - 1));
     } // SetMap
 
     public void ReceiveInput(InputManager.InputType it)
