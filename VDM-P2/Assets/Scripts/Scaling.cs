@@ -244,15 +244,15 @@ public class Scaling
         Vector3 scalated = new Vector3();
 
         // Check width of the object
-        if(orUnits.x > currUnits.x){
-            // Calculate new scale
-            scalated.x = scalated.y = (currUnits.x * scale.x) / orUnits.x;
-        } // if
+        // Calculate new scale
+        scalated.x = scalated.y = (currUnits.x * scale.x) / orUnits.x;
 
         // check height
-        if (orUnits.y > currUnits.y){
+        if (orUnits.y > currUnits.y)
+        {
             // If new scale is calculated, reboot it
-            if(scalated.y != 0 && scalated.y != 0) {
+            if (scalated.y != 0 && scalated.y != 0)
+            {
                 scalated.x = scalated.y = 0;
             } // if
 
