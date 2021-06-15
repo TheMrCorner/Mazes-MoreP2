@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,6 +12,17 @@ public class LevelManager : MonoBehaviour
     public Camera _camera;
     public RectTransform _topPanel;
     public RectTransform _botPanel;
+
+    [Header("Texts and data settings")]
+    public Text _levelAndMode;
+    public Text _hints;
+
+    [Header("Options panels")]
+    public GameObject _pausePanel;
+    public GameObject _restorePanel;
+    public GameObject _hintsPanel;
+
+    private bool _paused = false;
 
 
     // ----------------------------------------------
@@ -33,6 +45,10 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.GetInstance().SetCamera(_camera);
         GameManager.GetInstance().SetCanvas(_canvas);
+
+        _levelAndMode.text = GameManager.GetInstance().GetPackageName() + 
+            " - " + GameManager.GetInstance().GetLevel().ToString();
+        _hints.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();
 
         PlayLevel();
     }
@@ -61,6 +77,45 @@ public class LevelManager : MonoBehaviour
 
     public void ReceiveInput(InputManager.InputType it)
     {
-        _boardManager.ReceiveInput(it);
-    }
-}
+        if (!_paused)
+        {
+            _boardManager.ReceiveInput(it);
+        } // if
+    } // ReceiveInput
+
+    public void PauseGame()
+    {
+        _pausePanel.SetActive(true);
+        _paused = true;
+    } // PauseGame
+
+    public void UnPauseGame()
+    {
+        _pausePanel.SetActive(false);
+        _paused = false;
+    } // UnPauseGame
+
+    public void RestoreGameScreen()
+    {
+        _restorePanel.SetActive(true);
+        _paused = true;
+    } // PauseGame
+
+    public void UnRestoreGameScreen()
+    {
+        _restorePanel.SetActive(false);
+        _paused = false;
+    } // UnPauseGame
+
+    public void HintsScreen()
+    {
+        _hintsPanel.SetActive(true);
+        _paused = true;
+    } // PauseGame
+
+    public void UnHintsScreen()
+    {
+        _hintsPanel.SetActive(false);
+        _paused = false;
+    } // UnPauseGame
+} // LevelManager
