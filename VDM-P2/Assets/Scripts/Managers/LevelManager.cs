@@ -9,7 +9,12 @@ public class LevelManager : MonoBehaviour
     public BoardManager _boardManager;
     public Canvas _canvas;
     public Camera _camera;
+<<<<<<< HEAD
     public GameObject _endPanel;
+=======
+    public RectTransform _topPanel;
+    public RectTransform _botPanel;
+>>>>>>> main
 
 
     // ----------------------------------------------

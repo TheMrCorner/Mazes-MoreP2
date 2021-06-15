@@ -33,7 +33,11 @@ public class GameManager : MonoBehaviour
 
 
     private string _package = "Classic";     // Sets game difficulty
+<<<<<<< HEAD
     private int _level = 1;                  // Sets the level to be loaded
+=======
+    private int _level = 99;                  // Sets the level to be loaded
+>>>>>>> main
 
     // SCALING DATA
     private Vector2 _scalingReferenceResolution;
@@ -43,6 +47,7 @@ public class GameManager : MonoBehaviour
     private Random _rnd;
     private PlayerData _player;
     private RectTransform _topPanel;
+    private RectTransform _bottomPanel;
     private MainMenuManager _mainMenu;
     private int _lastScene;
     private bool _adReward = false;
@@ -143,6 +148,10 @@ public class GameManager : MonoBehaviour
             if (child.name == "Top")
             {
                 GetInstance()._topPanel = child.GetComponent<RectTransform>();
+            } // if
+            else if (child.name == "Bottom")
+            {
+                GetInstance()._bottomPanel = child.GetComponent<RectTransform>();
             } // if
         } // foreach
     } // ReloadPanels
@@ -411,6 +420,7 @@ public class GameManager : MonoBehaviour
     public void SetCanvas(Canvas c)
     {
         GetInstance()._cnv = c;
+        ReloadPanels();
     } // SetCanvas
 
     public void SetPackage(string p)
@@ -448,6 +458,16 @@ public class GameManager : MonoBehaviour
     {
         return GetInstance()._cnv;
     }
+
+    public float GetTopPanelHeight()
+    {
+        return GetInstance()._topPanel.rect.height;
+    } // GetTopPanelHeight
+
+    public float GetBottomPanelHeight()
+    {
+        return GetInstance()._bottomPanel.rect.height;
+    } // GetTopPanelHeight
 
     /// <summary>
     /// Gives the reference resolution used when scaling things for later use. 
