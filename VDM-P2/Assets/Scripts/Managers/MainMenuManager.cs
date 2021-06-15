@@ -13,6 +13,8 @@ public class MainMenuManager : MonoBehaviour
     public RectTransform _buttonZone;
     public RectTransform _columns;
     public RectTransform _button;
+    public Animator _hintsMessage;
+    public GameObject _hintsMessagePanel;
 
     [Header("Panels")]
     public GameObject _topPanel;
@@ -36,12 +38,16 @@ public class MainMenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _optionsAndStore.SetActive(true);
+
         // Set this scene camera as the GameManager's camera
         GameManager.GetInstance().SetCamera(_sceneCamera);
+        GameManager.GetInstance().SetMainMenuManager(this);
 
         _buttonZone.gameObject.SetActive(false);
-
         _categoriesText.gameObject.SetActive(false);
+        _hintsMessagePanel.SetActive(false);
+        _optionsAndStore.SetActive(false);
 
         // First get level package for loading information
         _levelPlayer.text = Math.Floor(GameManager.GetInstance().GetPlayerData()._playerLevel).ToString();        
@@ -113,6 +119,21 @@ public class MainMenuManager : MonoBehaviour
         _centerPanel.SetActive(true);
         _bottomPanel.SetActive(true);
     } // Backwards
+    #endregion
+
+    #region AdResults
+
+    public void AdCompleted()
+    {
+        _hintsMessagePanel.SetActive(true);
+        //_hintsMessage.Play("hints_window");
+    } // AdCompleted
+
+    public void MessageExit()
+    {
+        _hintsMessagePanel.SetActive(false);
+    } // MessageExit
+
     #endregion
 
     public void Play()

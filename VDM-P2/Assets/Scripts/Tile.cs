@@ -175,7 +175,11 @@ public class Tile : MonoBehaviour
     {
         return _trailCounter[(int)tt];
     }
-
+    public bool IsGoal()
+    {
+        return _goal.active;
+    }
+     
     public void IncrementTrailCounter(TrailType tt)
     {
         if (_trailCounter[(int)tt] == 0)
@@ -199,5 +203,7 @@ public class Tile : MonoBehaviour
         }
            
     }
+
+    
     #endregion //methods
 }

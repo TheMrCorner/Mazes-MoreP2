@@ -10,7 +10,7 @@ public class ButtonToggleSprite : MonoBehaviour
     Button _button;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _button = GetComponent<Button>();
         _button.onClick.AddListener(TaskOnClick);
@@ -23,7 +23,7 @@ public class ButtonToggleSprite : MonoBehaviour
         } // try
         catch(Exception e)
         {
-            Debug.LogError("Pls, add some sprite to the button pressed option." + e);
+            Debug.LogError("Please, add some sprite to the button pressed option." + e);
         } // catch
     } // Start
 

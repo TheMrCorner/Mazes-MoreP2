@@ -30,8 +30,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Debugging")]
     public bool _debugging = false;         // Sets if debug mode is on, for avoiding some changes
-    public string _package = "Classic";     // Sets game difficulty
-    public int _level = 0;                  // Sets the level to be loaded
+
+
+    private string _package = "Classic";     // Sets game difficulty
+    private int _level = 1;                  // Sets the level to be loaded
 
     // SCALING DATA
     private Vector2 _scalingReferenceResolution;
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour
     private Random _rnd;
     private PlayerData _player;
     private RectTransform _topPanel;
+    private RectTransform _bottomPanel;
+    private MainMenuManager _mainMenu;
     private int _lastScene;
     private bool _adReward = false;
     private bool _isPaused = false;
@@ -141,6 +145,10 @@ public class GameManager : MonoBehaviour
             {
                 GetInstance()._topPanel = child.GetComponent<RectTransform>();
             } // if
+            else if (child.name == "Bottom")
+            {
+                GetInstance()._bottomPanel = child.GetComponent<RectTransform>();
+            } // if
         } // foreach
     } // ReloadPanels
 
@@ -219,21 +227,17 @@ public class GameManager : MonoBehaviour
     //    */
 
 
-    //    /*
-    //    /// <summary>
-    //    /// Function called when the Level is completed. Updates player information
-    //    /// with the new level completed. 
-    //    /// </summary>
-    //    public void LevelCompleted()
-    //    {
-    //        // Checks if the actual level is the last one completed
-    //        if (GetInstance()._level == GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty])
-    //        {
-    //            // If so, unlocks the next level
-    //            GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty] += 1;
-    //        }
-    //    }
-    //    */
+
+    /// <summary>
+    /// Function called when the Level is completed. Updates the level and
+    /// calls the level manager so it shows the end panel
+    /// </summary>
+    public void LevelCompleted()
+    {
+        _level++;
+        _levelManager.ShowEndMenu();
+    }
+
 
     /*
     /// <summary>
@@ -260,6 +264,12 @@ public class GameManager : MonoBehaviour
     public void AdEnded()
     {
         GetInstance()._player._hints++;
+
+        // MainMenu
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            _mainMenu.AdCompleted();
+        } // if
     } // AdEnded
     #endregion
 
@@ -326,38 +336,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-//    /*
-//    /// <summary>
-//    /// Loads the next level after completing one. Checks if it is the last level of it's
-//    /// difficulty and if so, loads the next difficulty and it's first level. If the difficuñty
-//    /// is the last one, returns to the first difficulty.
-//    /// </summary>
-//    public void NextLevel()
-//    {
-//        // Increase actual level
-//        GetInstance()._level += 1;
-
-//        // Check which level is the next one
-//        if (GetInstance()._level > 100)
-//        {
-//            // Load the level 1
-//            GetInstance()._level = 1;
-
-//            // Increase difficulty
-//            GetInstance()._difficulty += 1;
-//            // Check difficulty after increase
-//            if (GetInstance()._difficulty > GetInstance()._maxDifficulty)
-//            {
-//                // Return to first difficulty
-//                GetInstance()._difficulty = 0;
-//            }
-//        }
-
-//        // Reloads the LevelScene
-//        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-//    }
-//    */
-
 
     /// <summary>
     /// 
@@ -375,6 +353,50 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(1);
     } // ChangeToLevelSelection
 
+
+    public void ChangeToLevel()
+    {
+        // Update last Scene
+        GetInstance()._lastScene = SceneManager.GetActiveScene().buildIndex;
+
+        // Load LevelSelection scene
+        SceneManager.LoadScene(2);
+    } // ChangeToLevel
+
+    //    /*
+    //    /// <summary>
+    //    /// Loads the next level after completing one. Checks if it is the last level of it's
+    //    /// difficulty and if so, loads the next difficulty and it's first level. If the difficuñty
+    //    /// is the last one, returns to the first difficulty.
+    //    /// </summary>
+    //    public void NextLevel()
+    //    {
+    //        // Increase actual level
+    //        GetInstance()._level += 1;
+
+    //        // Check which level is the next one
+    //        if (GetInstance()._level > 100)
+    //        {
+    //            // Load the level 1
+    //            GetInstance()._level = 1;
+
+    //            // Increase difficulty
+    //            GetInstance()._difficulty += 1;
+    //            // Check difficulty after increase
+    //            if (GetInstance()._difficulty > GetInstance()._maxDifficulty)
+    //            {
+    //                // Return to first difficulty
+    //                GetInstance()._difficulty = 0;
+    //            }
+    //        }
+
+    //        // Reloads the LevelScene
+    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //    }
+    //    */
+
+
+
     #endregion
 
     #region Setters
@@ -389,12 +411,28 @@ public class GameManager : MonoBehaviour
     {
         // Set the camera
         GetInstance()._cam = c;
-    }
+    } // SetCamera
+
+    public void SetCanvas(Canvas c)
+    {
+        GetInstance()._cnv = c;
+        ReloadPanels();
+    } // SetCanvas
 
     public void SetPackage(string p)
     {
-        _package = p;
+        GetInstance()._package = p;
     } // SetPackage
+
+    public void SetLevel(int i)
+    {
+        GetInstance()._level = i;
+    } // SetLevel
+
+    public void SetMainMenuManager(MainMenuManager mg)
+    {
+        GetInstance()._mainMenu = mg;
+    } // SetMainMenuManager
     #endregion
 
     #region Getters
@@ -417,6 +455,16 @@ public class GameManager : MonoBehaviour
         return GetInstance()._cnv;
     }
 
+    public float GetTopPanelHeight()
+    {
+        return GetInstance()._topPanel.rect.height;
+    } // GetTopPanelHeight
+
+    public float GetBottomPanelHeight()
+    {
+        return GetInstance()._bottomPanel.rect.height;
+    } // GetTopPanelHeight
+
     /// <summary>
     /// Gives the reference resolution used when scaling things for later use. 
     /// </summary>
@@ -428,7 +476,7 @@ public class GameManager : MonoBehaviour
 
     public int GetNumPackages()
     {
-        return _levels.Length;
+        return GetInstance()._levels.Length;
     } // GetNumPackages
 
     /// <summary>
@@ -439,14 +487,19 @@ public class GameManager : MonoBehaviour
     /// <returns></returns>
     public string GetPackageName()
     {
-        return _package;
+        return GetInstance()._package;
     } // GetPackageName
 
 
     public LevelPackage GetLevelPackage(int i)
     {
-        return _levels[i];
+        return GetInstance()._levels[i];
     } // GetPackage
+
+    public int GetLevel()
+    {
+        return GetInstance()._level;
+    } // GetLevel
 
     /// <summary>
     /// 
@@ -458,13 +511,13 @@ public class GameManager : MonoBehaviour
     /// 
     /// </summary>
     /// <returns> (LevelPackage) Selected LevelPackage. </returns>
-    public LevelPackage getLevelPackage()
+    public LevelPackage GetLevelPackage()
     {
-        for (int i = 0; i < _levels.Length; i++)
+        for (int i = 0; i < GetInstance()._levels.Length; i++)
         {
-            if (_levels[i].name == _package)
+            if (GetInstance()._levels[i].name == _package)
             {
-                return _levels[i];
+                return GetInstance()._levels[i];
             } // if
         } // for
 
@@ -480,7 +533,7 @@ public class GameManager : MonoBehaviour
     /// <returns> (PlayerData) Actual player data loaded. </returns>
     public PlayerData GetPlayerData()
     {
-        return _player;
+        return GetInstance()._player;
     } // GetPlayerData
     #endregion
 

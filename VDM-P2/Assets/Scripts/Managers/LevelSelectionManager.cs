@@ -33,7 +33,7 @@ public class LevelSelectionManager : MonoBehaviour
         GameManager.GetInstance().SetCamera(_sceneCamera);
 
         // First get level package for loading information
-        _lp = GameManager.GetInstance().getLevelPackage();
+        _lp = GameManager.GetInstance().GetLevelPackage();
 
         _levelsCompleted = GameManager.GetInstance().GetPlayerData()._completedLevelsPackage[_lp.name];
 
@@ -146,13 +146,13 @@ public class LevelSelectionManager : MonoBehaviour
         bt.GetComponent<LevelSelectionButton>().SetColor(_lp.playerColor);
 
         // If the button that is instantiating is lower or equal to the competed level
-        if (_currentButton < _levelsCompleted)
+        if (_currentButton - 1 < _levelsCompleted)
         {
             // Sets this level button active and interactable
             bt.GetComponent<LevelSelectionButton>().SetCompleted(true);
             bt.GetComponent<LevelSelectionButton>().SetInteractable(true);
         } // if
-        else if(_currentButton == _levelsCompleted)
+        else if(_currentButton - 1 == _levelsCompleted)
         {
             bt.GetComponent<LevelSelectionButton>().SetCompleted(false);
             bt.GetComponent<LevelSelectionButton>().SetInteractable(true);

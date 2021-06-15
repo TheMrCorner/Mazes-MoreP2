@@ -7,7 +7,11 @@ public class LevelManager : MonoBehaviour
     //TODO: do we still use the underscore for public fields like this?
     [Tooltip("Board Manager object")]
     public BoardManager _boardManager;
-
+    public Canvas _canvas;
+    public Camera _camera;
+    public RectTransform _topPanel;
+    public RectTransform _botPanel;
+    public GameObject _endPanel;
 
     // ----------------------------------------------
     // --------------- UNITY METHODS ----------------
@@ -19,10 +23,22 @@ public class LevelManager : MonoBehaviour
         {
             Debug.LogError("Board Manager reference not set");
         }
+        if (_endPanel == null)
+        {
+            Debug.LogError("End panel reference not set");
+        }
         else
         {
             _boardManager.Init(this);
         }
+    }
+
+    private void Start()
+    {
+        GameManager.GetInstance().SetCamera(_camera);
+        GameManager.GetInstance().SetCanvas(_canvas);
+
+        PlayLevel();
     }
 
     // Update is called once per frame
@@ -36,9 +52,24 @@ public class LevelManager : MonoBehaviour
     // ----------------------------------------------
 
     // ------------------- PUBLIC -------------------
-    public void PlayLevel(int level)
+    public void ShowEndMenu()
     {
-        Map map = Map.FromJson("Assets/Levels/" + GameManager.GetInstance().GetPackageName() + "/" + level.ToString() + ".json");
+        _endPanel.SetActive(true);
+    }
+
+
+    public void PlayLevel()
+    {
+        _endPanel.SetActive(false);
+
+        LevelPackage lp = GameManager.GetInstance().GetLevelPackage();
+        int level = GameManager.GetInstance().GetLevel();
+
+        string levelUWU = lp.levels[level].ToString();
+
+        Map map = Map.FromJson(lp.levels[level].ToString());
+
+        _boardManager.EmptyBoard();
         _boardManager.SetMap(map);
     }
 
