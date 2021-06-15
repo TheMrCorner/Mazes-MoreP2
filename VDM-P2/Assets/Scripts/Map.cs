@@ -66,7 +66,7 @@ public class Map
     /// <param name="w">Wall array</param>
     /// <param name="i">Ice floor array</param>
     /// <param name="e">Enemy array</param>
-    public Map(int c, int r, Point s, Point[] h, Wall[] w, PointDouble[] i, Point[] e)
+    public Map(int c, int r, Point s, Point f, Point[] h, Wall[] w, PointDouble[] i, Point[] e)
     {
         X = c + 1; Y = r + 1;
         tileInfoMatrix = new TileInfo[X, Y]; //one extra col & row to draw the bottom and right walls of the map
@@ -79,6 +79,8 @@ public class Map
         }
 
         start.x = s.x; start.y = s.y + 1; // +1 to account for bottom row being just there for the walls
+        finish.x = f.x; finish.y = f.y + 1;
+        tileInfoMatrix[finish.x, finish.y].goal = true;
 
         // hint information
         //tileInfoMatrix[s.x, Mathf.Abs(s.y - r + 1)].hintPoint = true;
@@ -118,6 +120,7 @@ public class Map
     public TileInfo[,] tileInfoMatrix;
     public Vector2[] hintArray;
     public Point start;
+    public Point finish;
     public int X, Y;
 
     /// <summary>
@@ -129,7 +132,7 @@ public class Map
     {
         //string jsonS = File.ReadAllText(path);
         JSONmap jsonmap = JsonUtility.FromJson<JSONmap>(path);
-        Map map = new Map(jsonmap.c, jsonmap.r, jsonmap.s, jsonmap.h, jsonmap.w, jsonmap.i, jsonmap.e);
+        Map map = new Map(jsonmap.c, jsonmap.r, jsonmap.s, jsonmap.f, jsonmap.h, jsonmap.w, jsonmap.i, jsonmap.e);
 
         return map;
     }

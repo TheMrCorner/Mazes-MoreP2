@@ -10,8 +10,9 @@ public class BoardManager : MonoBehaviour
     public RectTransform _bottomPanel;
     // TODO: Pause menu etc.
 
-    public Tile tilePrefab;
-    public Character characterPrefab;
+    public GameObject _board;
+    public Tile _tilePrefab;
+    public Character _characterPrefab;
 
     Tile[,] _tiles;
     Character _character;
@@ -52,15 +53,17 @@ public class BoardManager : MonoBehaviour
         {
             for (int x = 0; x < map.X; ++x)
             {
-                _tiles[x, y] = Instantiate(tilePrefab, new Vector3(x, y, 0), Quaternion.identity, transform);
+                _tiles[x, y] = Instantiate(_tilePrefab, new Vector3(x, y, 0), Quaternion.identity, _board.transform);
                 SetTile(map.tileInfoMatrix[x, y], _tiles[x, y]);
             }
         }
 
-        _character = Instantiate(characterPrefab, new Vector3(_start.x, _start.y, 0), Quaternion.identity, transform);
+        _character = Instantiate(_characterPrefab, new Vector3(_start.x, _start.y, 0), Quaternion.identity, _board.transform);
         _character._tileX = _start.x; _character._tileY = _start.y;
 
-        gameObject.transform.Translate(new Vector3(-(map.X - 1) / 2.0f, -(map.Y - 1)/2.0f));
+        //gameObject.transform.Translate(new Vector3(-(map.X - 1) / 2.0f, -(map.Y - 1)/2.0f));
+        gameObject.transform.Translate(new Vector3(-(map.X - 1) / 2.0f, -(map.Y - 1) / 2.0f));
+        _board.transform.position = gameObject.transform.position;
         //TODO: scale, but using which method? ResizeObjectScale
     } // SetMap
 
@@ -75,6 +78,15 @@ public class BoardManager : MonoBehaviour
             _character.TryToMove(_tiles, it);
         } // else
     } // ReceiveInput
+
+    public void EmptyBoard()
+    {
+        DestroyImmediate(_board);
+        _board = new GameObject();
+
+        gameObject.transform.position = new Vector3(0, 0, 0);
+        _board.transform.position = new Vector3(0, 0, 0);
+    }
 } // BoardManager
 
 

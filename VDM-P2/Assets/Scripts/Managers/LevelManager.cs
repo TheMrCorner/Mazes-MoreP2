@@ -54,6 +54,8 @@ public class LevelManager : MonoBehaviour
         string levelUWU = lp.levels[level].ToString();
 
         Map map = Map.FromJson(lp.levels[level].ToString());
+
+        _boardManager.EmptyBoard();
         _boardManager.SetMap(map);
     }
 

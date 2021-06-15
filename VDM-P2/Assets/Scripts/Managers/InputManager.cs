@@ -69,25 +69,21 @@ public class InputManager : MonoBehaviour
             {   //If the horizontal movement is greater than the vertical movement...
                 if ((lp.x > fp.x))  //If the movement was to the right)
                 {   //Right swipe
-                    Debug.Log("Right Swipe");
                     it = InputType.S_RIGHT;
                 }
                 else
                 {   //Left swipe
-                    Debug.Log("Left Swipe");
                     it = InputType.S_LEFT;
                 }
             }
             else
             {   //the vertical movement is greater than the horizontal movement
                 if (lp.y > fp.y)  //If the movement was up
-                {   //Up swipe
-                    Debug.Log("Up Swipe");
+                {   //Up swipe                    
                     it = InputType.S_UP;
                 }
                 else
                 {   //Down swipe
-                    Debug.Log("Down Swipe");
                     it = InputType.S_DOWN;
                 }
             }

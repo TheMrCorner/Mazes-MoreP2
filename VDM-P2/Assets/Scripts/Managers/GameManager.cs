@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
 
     private string _package = "Classic";     // Sets game difficulty
-    private int _level = 50;                  // Sets the level to be loaded
+    private int _level = 1;                  // Sets the level to be loaded
 
     // SCALING DATA
     private Vector2 _scalingReferenceResolution;
@@ -222,21 +222,23 @@ public class GameManager : MonoBehaviour
     //    */
 
 
-    //    /*
-    //    /// <summary>
-    //    /// Function called when the Level is completed. Updates player information
-    //    /// with the new level completed. 
-    //    /// </summary>
-    //    public void LevelCompleted()
-    //    {
-    //        // Checks if the actual level is the last one completed
-    //        if (GetInstance()._level == GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty])
-    //        {
-    //            // If so, unlocks the next level
-    //            GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty] += 1;
-    //        }
-    //    }
-    //    */
+
+    /// <summary>
+    /// Function called when the Level is completed. Updates player information
+    /// with the new level completed. 
+    /// </summary>
+    public void LevelCompleted()
+    {
+        //// Checks if the actual level is the last one completed
+        //if (GetInstance()._level == GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty])
+        //{
+        //    // If so, unlocks the next level
+        //    GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty] += 1;
+        //}
+        _level++;
+        _levelManager.PlayLevel();
+    }
+
 
     /*
     /// <summary>
