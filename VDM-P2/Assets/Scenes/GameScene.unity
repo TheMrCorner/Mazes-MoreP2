@@ -1491,9 +1491,10 @@ MonoBehaviour:
   _botPanel: {fileID: 379639955}
   _levelAndMode: {fileID: 420174133}
   _hints: {fileID: 644650094}
-  _pausePanel: {fileID: 0}
-  _restorePanel: {fileID: 0}
-  _hintsPanel: {fileID: 0}
+  _pausePanel: {fileID: 965458}
+  _restorePanel: {fileID: 1180481681}
+  _hintsPanel: {fileID: 1159839339}
+  _optionsPanel: {fileID: 556159302}
 --- !u!4 &1473360928
 Transform:
   m_ObjectHideFlags: 0
