@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
     public BoardManager _boardManager;
     public Canvas _canvas;
     public Camera _camera;
+    public RectTransform _topPanel;
+    public RectTransform _botPanel;
 
 
     // ----------------------------------------------

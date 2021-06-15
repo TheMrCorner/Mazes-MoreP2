@@ -1018,8 +1018,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _boardManager: {fileID: 1475886331}
-  _canvas: {fileID: 0}
-  _camera: {fileID: 0}
+  _canvas: {fileID: 1773830069}
+  _camera: {fileID: 834456358}
+  _topPanel: {fileID: 193775296}
+  _botPanel: {fileID: 379639955}
 --- !u!4 &1473360928
 Transform:
   m_ObjectHideFlags: 0
@@ -1063,12 +1065,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d78cba910575c4c9e8287baa5edfe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topPanel: {fileID: 0}
-  _bottomPanel: {fileID: 0}
+  _sideMargin: 0
+  _topMargin: 0
   tilePrefab: {fileID: 6286852929541987446, guid: 08913cedcd07ca74b91580cdde420295,
     type: 3}
   characterPrefab: {fileID: 3343766663099479138, guid: 101e20cf1a1cc294c8540968b3dc9b89,
     type: 3}
+  position: {fileID: 0}
 --- !u!4 &1475886332
 Transform:
   m_ObjectHideFlags: 0
