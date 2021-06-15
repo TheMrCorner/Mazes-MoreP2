@@ -224,19 +224,13 @@ public class GameManager : MonoBehaviour
 
 
     /// <summary>
-    /// Function called when the Level is completed. Updates player information
-    /// with the new level completed. 
+    /// Function called when the Level is completed. Updates the level and
+    /// calls the level manager so it shows the end panel
     /// </summary>
     public void LevelCompleted()
     {
-        //// Checks if the actual level is the last one completed
-        //if (GetInstance()._level == GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty])
-        //{
-        //    // If so, unlocks the next level
-        //    GetInstance()._currentPlayerData._completedLevelsInDifficulty[GetInstance()._difficulty] += 1;
-        //}
         _level++;
-        _levelManager.PlayLevel();
+        _levelManager.ShowEndMenu();
     }
 
 

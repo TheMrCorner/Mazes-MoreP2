@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     public BoardManager _boardManager;
     public Canvas _canvas;
     public Camera _camera;
+    public GameObject _endPanel;
 
 
     // ----------------------------------------------
@@ -20,6 +21,10 @@ public class LevelManager : MonoBehaviour
         if (_boardManager == null)
         {
             Debug.LogError("Board Manager reference not set");
+        }
+        if (_endPanel == null)
+        {
+            Debug.LogError("End panel reference not set");
         }
         else
         {
@@ -46,8 +51,16 @@ public class LevelManager : MonoBehaviour
     // ----------------------------------------------
 
     // ------------------- PUBLIC -------------------
+    public void ShowEndMenu()
+    {
+        _endPanel.SetActive(true);
+    }
+
+
     public void PlayLevel()
     {
+        _endPanel.SetActive(false);
+
         LevelPackage lp = GameManager.GetInstance().GetLevelPackage();
         int level = GameManager.GetInstance().GetLevel();
 
