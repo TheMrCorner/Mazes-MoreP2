@@ -57,7 +57,8 @@ public class Character : MonoBehaviour
             {
                 UpdateTrails(board, _nextDir);
                 yield return StartCoroutine("UpdatePosition", _nextDir);
-                //UpdatePosition(nextDir);
+                if (board[_tileX, _tileY].IsGoal())
+                    crossroad = true;
                 _comingFrom = GetOppositeDir(_nextDir);
             }
             else
@@ -65,7 +66,6 @@ public class Character : MonoBehaviour
         }
 
         _moving = false;
-        Debug.Log("moving = false");
 
         if (board[_tileX, _tileY].IsGoal())
             GameManager.GetInstance().LevelCompleted();

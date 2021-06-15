@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
 
     private string _package = "Classic";     // Sets game difficulty
-    private int _level = 0;                  // Sets the level to be loaded
+    private int _level = 15;                  // Sets the level to be loaded
 
     // SCALING DATA
     private Vector2 _scalingReferenceResolution;

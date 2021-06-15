@@ -99,7 +99,7 @@ public class Map
         {
             bool left = (wall.o.x == wall.d.x);
             bool top = (wall.o.y == wall.d.y);
-            int x = Mathf.Min(wall.o.x, wall.o.x);
+            int x = Mathf.Min(wall.o.x, wall.d.x);
             int y = Mathf.Max(Mathf.Abs(wall.o.y), Mathf.Abs(wall.d.y));
             if (top) tileInfoMatrix[x, y].wallTop = true;
             if (left) tileInfoMatrix[x, y].wallLeft = true;
