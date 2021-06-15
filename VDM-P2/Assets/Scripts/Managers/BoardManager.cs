@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class BoardManager : MonoBehaviour
 {
+    [Header("Configuration")]
+    public RectTransform _topPanel;
+    public RectTransform _bottomPanel;
+    // TODO: Pause menu etc.
+
     public Tile tilePrefab;
     public Character characterPrefab;
 
@@ -27,7 +32,7 @@ public class BoardManager : MonoBehaviour
         if (info.goal) tile.EnableGoal();
         if (info.iceFloor) tile.EnableIce();
         if (info.wallLeft || info.wallTop) tile.EnableWalls(infoWalls);
-    }
+    } // SetTile
 
 
     // ------------------- PUBLIC -------------------
@@ -35,7 +40,7 @@ public class BoardManager : MonoBehaviour
     public void Init(LevelManager levelManager)
     {
         _levelManager = levelManager;
-    }
+    } // Init
 
     public void SetMap(Map map)
     {
@@ -56,22 +61,21 @@ public class BoardManager : MonoBehaviour
         _character._tileX = _start.x; _character._tileY = _start.y;
 
         gameObject.transform.Translate(new Vector3(-(map.X - 1) / 2.0f, -(map.Y - 1)/2.0f));
-        //TODO: scale, but using which method? ResizeObjectScale?
-    }
+        //TODO: scale, but using which method? ResizeObjectScale
+    } // SetMap
 
     public void ReceiveInput(InputManager.InputType it)
     {
         if (it == InputManager.InputType.TAP)
         {
             Debug.Log("Tap");
-        }
+        } // if
         else
         {
             _character.TryToMove(_tiles, it);
-        }
-    }
-
-}
+        } // else
+    } // ReceiveInput
+} // BoardManager
 
 
 ///// <summary>

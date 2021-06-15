@@ -7,6 +7,8 @@ public class LevelManager : MonoBehaviour
     //TODO: do we still use the underscore for public fields like this?
     [Tooltip("Board Manager object")]
     public BoardManager _boardManager;
+    public Canvas _canvas;
+    public Camera _camera;
 
 
     // ----------------------------------------------
@@ -25,6 +27,14 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        GameManager.GetInstance().SetCamera(_camera);
+        GameManager.GetInstance().SetCanvas(_canvas);
+
+        PlayLevel();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -36,9 +46,14 @@ public class LevelManager : MonoBehaviour
     // ----------------------------------------------
 
     // ------------------- PUBLIC -------------------
-    public void PlayLevel(int level)
+    public void PlayLevel()
     {
-        Map map = Map.FromJson("Assets/Levels/" + GameManager.GetInstance().GetPackageName() + "/" + level.ToString() + ".json");
+        LevelPackage lp = GameManager.GetInstance().GetLevelPackage();
+        int level = GameManager.GetInstance().GetLevel();
+
+        string levelUWU = lp.levels[level].ToString();
+
+        Map map = Map.FromJson(lp.levels[level].ToString());
         _boardManager.SetMap(map);
     }
 

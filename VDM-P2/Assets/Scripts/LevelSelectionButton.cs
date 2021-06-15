@@ -47,8 +47,8 @@ public class LevelSelectionButton : MonoBehaviour
 
     public void TaskOnClick()
     {
-        //GameManager.GetInstance().InitLevel(_level);
-        Debug.Log("Pressed button: " + _level);
+        GameManager.GetInstance().SetLevel(_level - 1);
+        GameManager.GetInstance().ChangeToLevel();
     }
 
     /// <summary>

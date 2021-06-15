@@ -33,7 +33,7 @@ public class LevelSelectionManager : MonoBehaviour
         GameManager.GetInstance().SetCamera(_sceneCamera);
 
         // First get level package for loading information
-        _lp = GameManager.GetInstance().getLevelPackage();
+        _lp = GameManager.GetInstance().GetLevelPackage();
 
         _levelsCompleted = GameManager.GetInstance().GetPlayerData()._completedLevelsPackage[_lp.name];
 

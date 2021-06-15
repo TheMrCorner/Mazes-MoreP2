@@ -127,8 +127,8 @@ public class Map
     /// <returns>An completed instance of the Map class</returns>
     public static Map FromJson(string path)
     {
-        string jsonS = File.ReadAllText(path);
-        JSONmap jsonmap = JsonUtility.FromJson<JSONmap>(jsonS);
+        //string jsonS = File.ReadAllText(path);
+        JSONmap jsonmap = JsonUtility.FromJson<JSONmap>(path);
         Map map = new Map(jsonmap.c, jsonmap.r, jsonmap.s, jsonmap.h, jsonmap.w, jsonmap.i, jsonmap.e);
 
         return map;
