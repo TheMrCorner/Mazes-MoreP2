@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     [Header("Texts and data settings")]
     public Text _levelAndMode;
     public Text _hints;
+    public Text _hinstPanel;
 
     [Header("Options panels")]
     public GameObject _pausePanel;
@@ -49,7 +50,7 @@ public class LevelManager : MonoBehaviour
 
         _levelAndMode.text = GameManager.GetInstance().GetPackageName() + 
             " - " + GameManager.GetInstance().GetLevel().ToString();
-        _hints.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();
+        _hints.text = _hinstPanel.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();
 
         _pausePanel.SetActive(false);
         _restorePanel.SetActive(false);
@@ -91,36 +92,42 @@ public class LevelManager : MonoBehaviour
 
     public void PauseGame()
     {
+        _optionsPanel.SetActive(true);
         _pausePanel.SetActive(true);
         _paused = true;
     } // PauseGame
 
     public void UnPauseGame()
     {
+        _optionsPanel.SetActive(false);
         _pausePanel.SetActive(false);
         _paused = false;
     } // UnPauseGame
 
     public void RestoreGameScreen()
     {
+        _optionsPanel.SetActive(true);
         _restorePanel.SetActive(true);
         _paused = true;
     } // PauseGame
 
     public void UnRestoreGameScreen()
     {
+        _optionsPanel.SetActive(false);
         _restorePanel.SetActive(false);
         _paused = false;
     } // UnPauseGame
 
     public void HintsScreen()
     {
+        _optionsPanel.SetActive(true);
         _hintsPanel.SetActive(true);
         _paused = true;
     } // PauseGame
 
     public void UnHintsScreen()
     {
+        _optionsPanel.SetActive(false);
         _hintsPanel.SetActive(false);
         _paused = false;
     } // UnPauseGame
