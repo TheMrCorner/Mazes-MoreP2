@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     private Random _rnd;
     private PlayerData _player;
     private RectTransform _topPanel;
+    private MainMenuManager _mainMenu;
     private int _lastScene;
     private bool _adReward = false;
     private bool _isPaused = false;
@@ -260,6 +261,12 @@ public class GameManager : MonoBehaviour
     public void AdEnded()
     {
         GetInstance()._player._hints++;
+
+        // MainMenu
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            _mainMenu.AdCompleted();
+        } // if
     } // AdEnded
     #endregion
 
@@ -393,8 +400,13 @@ public class GameManager : MonoBehaviour
 
     public void SetPackage(string p)
     {
-        _package = p;
+        GetInstance()._package = p;
     } // SetPackage
+
+    public void SetMainMenuManager(MainMenuManager mg)
+    {
+        GetInstance()._mainMenu = mg;
+    } // SetMainMenuManager
     #endregion
 
     #region Getters
