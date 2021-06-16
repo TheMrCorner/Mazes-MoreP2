@@ -86,11 +86,11 @@ public class Map
         //tileInfoMatrix[s.x, Mathf.Abs(s.y - r + 1)].hintPoint = true;
         hintArray = new Vector2[h.Length + 1];
         int index = 0;
-        hintArray[index] = new Vector2(s.x, Mathf.Abs(s.y - r + 1));
+        hintArray[index] = new Vector2(start.x, start.y);
         foreach (Point hint in h)
         {
             ++index;
-            hintArray[index] = new Vector2(hint.x, Mathf.Abs(hint.y - r + 1));
+            hintArray[index] = new Vector2(hint.x, hint.y + 1);
             //tileInfoMatrix[hint.x, Mathf.Abs(hint.y - r + 1)].hintPoint = true;
         }
 
@@ -100,7 +100,7 @@ public class Map
             bool left = (wall.o.x == wall.d.x);
             bool top = (wall.o.y == wall.d.y);
             int x = Mathf.Min(wall.o.x, wall.d.x);
-            int y = Mathf.Max(Mathf.Abs(wall.o.y), Mathf.Abs(wall.d.y));
+            int y = Mathf.Max(wall.o.y, wall.d.y);
             if (top) tileInfoMatrix[x, y].wallTop = true;
             if (left) tileInfoMatrix[x, y].wallLeft = true;
         }

@@ -28,6 +28,14 @@ public class Tile : MonoBehaviour
     private GameObject _trailSouth;
     [SerializeField] [Tooltip("Child component that stores the west trail")]
     private GameObject _trailWest;
+    [SerializeField] [Tooltip("Child component that stores the north hint")]
+    private GameObject _hintNorth;
+    [SerializeField] [Tooltip("Child component that stores the east hint")]
+    private GameObject _hintEast;
+    [SerializeField] [Tooltip("Child component that stores the south hint")]
+    private GameObject _hintSouth;
+    [SerializeField] [Tooltip("Child component that stores the west hint")]
+    private GameObject _hintWest;
 
     /// <summary>
     /// Stores the number of times the player has gone over the tile.
@@ -151,6 +159,49 @@ public class Tile : MonoBehaviour
                 break;
             case TrailType.WEST:
                 _trailWest.SetActive(false);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void EnableHint(TrailType dir)
+    {
+        switch (dir)
+        {
+            case TrailType.NORTH:
+                _hintNorth.SetActive(true);
+                break;
+            case TrailType.SOUTH:
+                _hintSouth.SetActive(true);
+                break;
+            case TrailType.EAST:
+                _hintEast.SetActive(true);
+                break;
+            case TrailType.WEST:
+                _hintWest.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+
+    public void DisableHint(TrailType dir)
+    {
+        switch (dir)
+        {
+            case TrailType.NORTH:
+                _hintNorth.SetActive(false);
+                break;
+            case TrailType.SOUTH:
+                _hintSouth.SetActive(false);
+                break;
+            case TrailType.EAST:
+                _hintEast.SetActive(false);
+                break;
+            case TrailType.WEST:
+                _hintWest.SetActive(false);
                 break;
             default:
                 break;
