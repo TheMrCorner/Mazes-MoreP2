@@ -56,36 +56,45 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
 
     IEnumerator ShowBannerWhenInitialized()
     {
-        while (!Advertisement.isInitialized)
+        if (!GameManager.GetInstance().GetPlayerData()._adsRemoved)
         {
-            yield return new WaitForSeconds(0.5f);
-        }
-        Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
-        Advertisement.Banner.Show(placementBannerID);
+            while (!Advertisement.isInitialized)
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+            Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
+            Advertisement.Banner.Show(placementBannerID);
+        } // if
     } // ShowBannerWhenInitialized
 
     public void ShowVideo()
     {
-        if (Advertisement.IsReady(placementVideo))
+        if (!GameManager.GetInstance().GetPlayerData()._adsRemoved)
         {
-            Advertisement.Show(placementVideo);
+            if (Advertisement.IsReady(placementVideo))
+            {
+                Advertisement.Show(placementVideo);
+            } // if
+            else
+            {
+                Debug.Log("Rewarded video is not ready at the moment! Try again later!");
+            } // else
         } // if
-        else
-        {
-            Debug.Log("Rewarded video is not ready at the moment! Try again later!");
-        } // else
     } // ShowVideo
 
     public void ShowRewardedVideo()
     {
-        if (Advertisement.IsReady(placementIdRewardedVideo))
+        if (!GameManager.GetInstance().GetPlayerData()._adsRemoved)
         {
-            Advertisement.Show(placementIdRewardedVideo);
+            if (Advertisement.IsReady(placementIdRewardedVideo))
+            {
+                Advertisement.Show(placementIdRewardedVideo);
+            } // if
+            else
+            {
+                Debug.Log("Rewarded video is not ready at the moment! Try again later!");
+            } // else
         } // if
-        else
-        {
-            Debug.Log("Rewarded video is not ready at the moment! Try again later!");
-        } // else
     } // ShowRewardedVideo
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult res)

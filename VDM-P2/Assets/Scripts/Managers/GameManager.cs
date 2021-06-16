@@ -111,10 +111,7 @@ public class GameManager : MonoBehaviour
             // Get Player information and store it
             _player = FileLoader.ReadPlayerData(packagesNames);
 
-            _player._hints = 100;
-
             DontDestroyOnLoad(_instance);
-
         }
         else if (_instance != this)
         {
@@ -237,6 +234,7 @@ public class GameManager : MonoBehaviour
     public void LevelCompleted()
     {
         _level++;
+        GetInstance()._player._completedLevelsPackage[_package]++;
         _levelManager.ShowEndMenu();
     }
 
@@ -263,9 +261,24 @@ public class GameManager : MonoBehaviour
     //    }
     //    */
 
+    public void AddHints(int hints)
+    {
+        GetInstance()._player._hints += hints;
+    } // AddHints
+
+    public void RemoveAds()
+    {
+        GetInstance()._player._adsRemoved = true;
+    } // RemoveAds
+
     public void HintShown()
     {
         GetInstance()._player._hints--;
+
+        if (_levelManager != null)
+        {
+            _levelManager.UpdateTexts();
+        } // if
     } // HintShown
 
     public void AdEnded()
@@ -546,13 +559,18 @@ public class GameManager : MonoBehaviour
 
     #region AppLifeManagement
     /// <summary>
-    /// Function that will manage the close of the app, saving the player's current status.
+    /// 
+    /// Function that will manage the close of the app, saving the player's current status. Not
+    /// working in mobile (?).
+    /// 
     /// </summary>
     private void OnApplicationQuit()
     {
         // Save player information
         FileLoader.SavePlayerData(GetInstance()._player);
     } // OnApplicationQuit
+
+
 
     #endregion
 }

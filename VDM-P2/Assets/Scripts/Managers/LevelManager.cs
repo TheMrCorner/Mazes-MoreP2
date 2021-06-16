@@ -25,6 +25,8 @@ public class LevelManager : MonoBehaviour
     public GameObject _restorePanel;
     public GameObject _hintsPanel;
     public GameObject _optionsPanel;
+    public GameObject _storePanel;
+    public GameObject _completeHintsPanel;
     public Button _homeEndedButton;
     public Button _homePauseButton;
 
@@ -81,6 +83,7 @@ public class LevelManager : MonoBehaviour
 
     public void PlayLevel()
     {
+        AdManager.GetInstance().ShowVideo();
         _levelAndMode.text = GameManager.GetInstance().GetPackageName() +
                " - " + GameManager.GetInstance().GetLevel().ToString();
         _hints.text = _hinstPanel.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();
@@ -88,6 +91,8 @@ public class LevelManager : MonoBehaviour
         _pausePanel.SetActive(false);
         _restorePanel.SetActive(false);
         _hintsPanel.SetActive(false);
+        _storePanel.SetActive(false);
+        _completeHintsPanel.SetActive(false);
         _optionsPanel.SetActive(false);
         _endPanel.SetActive(false);
 
@@ -101,6 +106,11 @@ public class LevelManager : MonoBehaviour
         _boardManager.EmptyBoard();
         _boardManager.SetMap(map);
     }
+
+    public void UpdateTexts()
+    {
+        _hints.text = _hinstPanel.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();
+    } // UpdateTexts
 
     public void ReceiveInput(InputManager.InputType it)
     {
@@ -119,8 +129,8 @@ public class LevelManager : MonoBehaviour
 
     public void UnPauseGame()
     {
-        _optionsPanel.SetActive(false);
         _pausePanel.SetActive(false);
+        _optionsPanel.SetActive(false);
         _paused = false;
     } // UnPauseGame
 
@@ -133,8 +143,8 @@ public class LevelManager : MonoBehaviour
 
     public void UnRestoreGameScreen()
     {
-        _optionsPanel.SetActive(false);
         _restorePanel.SetActive(false);
+        _optionsPanel.SetActive(false);
         _paused = false;
     } // UnPauseGame
 
@@ -147,28 +157,39 @@ public class LevelManager : MonoBehaviour
 
     public void UnHintsScreen()
     {
-        _optionsPanel.SetActive(false);
         _hintsPanel.SetActive(false);
+        _optionsPanel.SetActive(false);
         _paused = false;
+        UpdateTexts();
     } // UnPauseGame
 
     public void StoreScreen()
     {
+        _optionsPanel.SetActive(true);
+        _storePanel.SetActive(true);
+        _paused = true;
 
     } // StoreScreen
 
     public void UnStoreScreen()
     {
-
+        _storePanel.SetActive(false);
+        _optionsPanel.SetActive(false);
+        _paused = false;
+        UpdateTexts();
     } // UnStoreScreen
 
     public void HintsCompletedScreen()
     {
-
+        _optionsPanel.SetActive(true);
+        _completeHintsPanel.SetActive(true);
+        _paused = true;
     } // HintsCompletedScreen
 
     public void UnHintsCompletedScreen()
     {
-
+        _completeHintsPanel.SetActive(false);
+        _optionsPanel.SetActive(false);
+        _paused = false;
     } // UnHintsCompletedScreen
 } // LevelManager
