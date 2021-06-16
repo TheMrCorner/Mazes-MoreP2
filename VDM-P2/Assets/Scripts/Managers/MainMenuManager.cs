@@ -187,13 +187,22 @@ public class MainMenuManager : MonoBehaviour
     {
         LevelPackage lp = GameManager.GetInstance().GetLevelPackage(package);
 
-        b.GetComponent<PackageSelectionButton>().SetPackageName(lp.name);
+        if (lp.name != "ad")
+        {
+            b.GetComponent<PackageSelectionButton>().SetPackageName(lp.name);
 
-        float completedLevels = (float)GameManager.GetInstance().GetPlayerData()._completedLevelsPackage[lp.name];
-        float nLevels = lp.levels.Length;
-        int percentage = (int)((completedLevels / nLevels) * 100);
+            float completedLevels = (float)GameManager.GetInstance().GetPlayerData()._completedLevelsPackage[lp.name];
+            float nLevels = lp.levels.Length;
+            int percentage = (int)((completedLevels / nLevels) * 100);
 
-        b.GetComponent<PackageSelectionButton>().SetPercentage(percentage);
+            b.GetComponent<PackageSelectionButton>().SetPercentage(percentage);
+            b.GetComponent<PackageSelectionButton>().SetNormalButton();
+        } // if
+        else
+        {
+            b.GetComponent<PackageSelectionButton>().SetAd(lp.levels[0].ToString());
+        }
+
         b.GetComponent<PackageSelectionButton>().SetSprites(lp.buttonUp, lp.buttonDown);
     } // SetButton
 } // MainMenuManager
