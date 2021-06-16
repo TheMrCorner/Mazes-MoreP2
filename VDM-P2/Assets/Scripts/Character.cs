@@ -45,7 +45,7 @@ public class Character : MonoBehaviour
     {
         UpdateTrails(board, _nextDir);
         yield return StartCoroutine("UpdatePosition", _nextDir);
-        if (_addEndTileTrail)
+        if (_addEndTileTrail) 
         {
             _endTile.IncrementTrailCounter(_endTileTrailDir);
             _addEndTileTrail = false;
@@ -74,10 +74,15 @@ public class Character : MonoBehaviour
                 crossroad = true; // we found a crossroad
         }
 
-        _moving = false;
-
         if (board[_tileX, _tileY].IsGoal())
+        {
             GameManager.GetInstance().LevelCompleted();
+        }
+        else
+        {
+            _moving = false;
+        }
+            
     }
 
     /// <summary>
