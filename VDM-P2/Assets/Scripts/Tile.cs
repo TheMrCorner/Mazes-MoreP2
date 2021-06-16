@@ -240,6 +240,11 @@ public class Tile : MonoBehaviour
         return _goal.active;
     }
      
+    public bool IsIce()
+    {
+        return _iceFloor.active;
+    }
+
     public void IncrementTrailCounter(TrailType tt)
     {
         if (_trailCounter[(int)tt] == 0)
