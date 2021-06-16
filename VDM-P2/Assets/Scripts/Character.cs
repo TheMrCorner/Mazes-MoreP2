@@ -28,6 +28,10 @@ public class Character : MonoBehaviour
     bool _addEndTileTrail = false;
     TrailType _endTileTrailDir;
 
+    // for easy re-starting of the character
+    int _tileStartX, _tileStartY;
+    Vector3 _startPos;
+
     void Awake()
     {
         _directions = new Stack<TrailType>();
@@ -378,7 +382,30 @@ public class Character : MonoBehaviour
 
         return opposite;
     } // GetOppositeDir
+
+    private void UnShowDirections()
+    {
+        _east.gameObject.SetActive(false);
+        _west.gameObject.SetActive(false);
+        _north.gameObject.SetActive(false);
+        _south.gameObject.SetActive(false);
+    } // UnShowDirections
+
     // ------------------- PUBLIC -------------------
+
+    public void SaveStartingPoint()
+    {
+        _tileStartX = _tileX;
+        _tileStartY = _tileY;
+        _startPos = transform.position;
+    }
+
+    public void ResetCharacterPos()
+    {
+        _tileX = _tileStartX;
+        _tileY = _tileStartY;
+        transform.position = _startPos;
+    }
 
     public void ShowDirections(Tile[,] board)
     {
@@ -403,13 +430,7 @@ public class Character : MonoBehaviour
             _south.gameObject.SetActive(false);
     } // ShowDirections
 
-    private void UnShowDirections()
-    {
-        _east.gameObject.SetActive(false);
-        _west.gameObject.SetActive(false);
-        _north.gameObject.SetActive(false);
-        _south.gameObject.SetActive(false);
-    } // UnShowDirections
+    
 
     public void SetPositions(int X, int Y)
     {
