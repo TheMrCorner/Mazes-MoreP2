@@ -203,7 +203,7 @@ public class BoardManager : MonoBehaviour
     {
         // Init board sizes and variables
         _tiles = new Tile[map.X, map.Y];
-        _hintArray = map.hintArray;
+        _hintArray = map.hintArray; _tilesHint = Mathf.CeilToInt(_hintArray.Length / 3.0f);
         _start = map.start;
 
         // Calculate space available for board
