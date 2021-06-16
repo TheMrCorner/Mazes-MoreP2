@@ -104,15 +104,16 @@ public class BoardManager : MonoBehaviour
     private IEnumerator ShowHint()
     {
         int i;
-        for (i = 0; i < _tilesHint && i < _hintArray.Length; i++)
+        for (i = 0; i < _tilesHint && (i + _currentHint) < (_hintArray.Length - 1); i++)
         {
-            TrailType h = GetDir(_hintArray[i], _hintArray[i + 1]);
-            _tiles[(int)_hintArray[i].x, (int)_hintArray[i].y].EnableHint(h);
-            _tiles[(int)_hintArray[i + 1].x, (int)_hintArray[i + 1].y].EnableHint(GetOppositeDir(h));
+            int access = i + _currentHint;
+            TrailType h = GetDir(_hintArray[access], _hintArray[access + 1]);
+            _tiles[(int)_hintArray[access].x, (int)_hintArray[access].y].EnableHint(h);
+            _tiles[(int)_hintArray[access + 1].x, (int)_hintArray[access + 1].y].EnableHint(GetOppositeDir(h));
             yield return null;
         } // for
 
-        _currentHint = i;
+        _currentHint += i;
     } // ShowHint
 
     /// <summary>

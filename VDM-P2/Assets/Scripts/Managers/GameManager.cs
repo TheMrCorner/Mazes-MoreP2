@@ -552,7 +552,7 @@ public class GameManager : MonoBehaviour
     {
         // Save player information
         FileLoader.SavePlayerData(GetInstance()._player);
-    }
+    } // OnApplicationQuit
 
     #endregion
 }
