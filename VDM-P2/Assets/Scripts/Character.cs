@@ -18,15 +18,14 @@ public class Character : MonoBehaviour
     TrailType _nextDir;
     bool _moving = false;
 
+    // helper variables for their use inside coroutines
+    Tile _endTile;                      
+    bool _addEndTileTrail = false;
+    TrailType _endTileTrailDir;
+
     void Awake()
     {
         _directions = new Stack<TrailType>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
 
@@ -46,7 +45,11 @@ public class Character : MonoBehaviour
     {
         UpdateTrails(board, _nextDir);
         yield return StartCoroutine("UpdatePosition", _nextDir);
-        //UpdatePosition(nextDir);
+        if (_addEndTileTrail)
+        {
+            _endTile.IncrementTrailCounter(_endTileTrailDir);
+            _addEndTileTrail = false;
+        }
         _comingFrom = GetOppositeDir(_nextDir);
 
         bool crossroad = false;
@@ -59,6 +62,12 @@ public class Character : MonoBehaviour
                 yield return StartCoroutine("UpdatePosition", _nextDir);
                 if (board[_tileX, _tileY].IsGoal())
                     crossroad = true;
+
+                if (_addEndTileTrail)
+                {
+                    _endTile.IncrementTrailCounter(_endTileTrailDir);
+                    _addEndTileTrail = false;
+                }
                 _comingFrom = GetOppositeDir(_nextDir);
             }
             else
@@ -202,7 +211,10 @@ public class Character : MonoBehaviour
     {
         _directions.Push(currentDir);
         startTile.IncrementTrailCounter(currentDir);
-        endTile.IncrementTrailCounter(oppositeDir);
+        //endTile.IncrementTrailCounter(oppositeDir);
+        _addEndTileTrail = true;
+        _endTile = endTile;
+        _endTileTrailDir = oppositeDir;
     }
 
     
