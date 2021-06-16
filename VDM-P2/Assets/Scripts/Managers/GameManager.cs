@@ -264,6 +264,8 @@ public class GameManager : MonoBehaviour
     public void AddHints(int hints)
     {
         GetInstance()._player._hints += hints;
+        if(_levelManager != null)
+            _levelManager.UpdateTexts();
     } // AddHints
 
     public void RemoveAds()
@@ -570,7 +572,21 @@ public class GameManager : MonoBehaviour
         FileLoader.SavePlayerData(GetInstance()._player);
     } // OnApplicationQuit
 
-
+    /// <summary>
+    /// 
+    /// Save data also when application loses focus, to avoid
+    /// losing data and etc.
+    /// 
+    /// </summary>
+    /// <param name="focus"> (bool) Focus status. </param>
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+        {
+            // Save player information
+            FileLoader.SavePlayerData(GetInstance()._player);
+        } // if
+    } // OnApplicationFocus
 
     #endregion
 }
