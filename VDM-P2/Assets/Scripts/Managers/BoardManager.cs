@@ -174,6 +174,24 @@ public class BoardManager : MonoBehaviour
         return new Vector2(tileSizeX, tileSizeY);
     } // CalculateSize
 
+    /// <summary>
+    /// Resets the trail counters for every tile in the board, also removing the visuals
+    /// </summary>
+    void RemoveTrails()
+    {
+        foreach (Tile tile in _tiles)
+        {
+            while (tile.IsNorthTrail())
+                tile.DecreaseTrailCounter(TrailType.NORTH);
+            while (tile.IsSouthTrail())
+                tile.DecreaseTrailCounter(TrailType.SOUTH);
+            while (tile.IsEastTrail())
+                tile.DecreaseTrailCounter(TrailType.EAST);
+            while (tile.IsWestTrail())
+                tile.DecreaseTrailCounter(TrailType.WEST);
+        }
+    }
+
     // ------------------- PUBLIC -------------------
 
     public void Init(LevelManager levelManager)
@@ -185,7 +203,7 @@ public class BoardManager : MonoBehaviour
     {
         // Init board sizes and variables
         _tiles = new Tile[map.X, map.Y];
-        _hintArray = map.hintArray;
+        _hintArray = map.hintArray; _tilesHint = Mathf.CeilToInt(_hintArray.Length / 3.0f);
         _start = map.start;
 
         // Calculate space available for board
@@ -227,6 +245,9 @@ public class BoardManager : MonoBehaviour
         // Relocate board
         gameObject.transform.Translate(new Vector3((-(map.X - 1) / 2.0f) * factor, ((-(map.Y - 1) / 2.0f) * factor) - 2));
         _board.transform.Translate(new Vector3((-(map.X - 1) / 2.0f) * factor, ((-(map.Y - 1) / 2.0f) * factor) - 1));
+
+        // Save character position for restart
+        _character.SaveStartingPoint();
     } // SetMap
 
     public void ReceiveInput(InputManager.InputType it)
@@ -258,6 +279,11 @@ public class BoardManager : MonoBehaviour
         return -1;
     } // TryShowHint
 
+    public void ResetBoard()
+    {
+        _character.ResetCharacterPos();
+        RemoveTrails();
+    }
 
     public void EmptyBoard()
     {

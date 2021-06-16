@@ -28,6 +28,10 @@ public class Character : MonoBehaviour
     bool _addEndTileTrail = false;
     TrailType _endTileTrailDir;
 
+    // for easy re-starting of the character
+    int _tileStartX, _tileStartY;
+    Vector3 _startPos;
+
     void Awake()
     {
         _directions = new Stack<TrailType>();
@@ -48,6 +52,7 @@ public class Character : MonoBehaviour
     /// <returns></returns>
     IEnumerator MoveCharacter(Tile[,] board)
     {
+        // the first step has to follow the direction of the swipe
         UpdateTrails(board, _nextDir);
         yield return StartCoroutine("UpdatePosition", _nextDir);
         if (_addEndTileTrail) 
@@ -57,16 +62,30 @@ public class Character : MonoBehaviour
         }
         _comingFrom = GetOppositeDir(_nextDir);
 
-        bool crossroad = false;
-        // keep moving until we find a crossroad in the board
-        while (!crossroad)
+
+        // for the next ones any direction is fine as long as it doesnt go backwards
+        bool canMove = true;
+        while (canMove) // keep moving until we find a crossroad in the board
         {
-            if (OnlyOneWay(board)) // for the next ones any is fine as long as it doesnt go backwards
+            if (board[_tileX, _tileY].IsIce()) 
+            {
+                if (!CanMoveStraight(board))
+                {
+                    canMove = false;
+                }
+            }
+            else if (!OnlyOneWay(board)) 
+            {
+                canMove = false;
+                
+            }
+
+            if (canMove)
             {
                 UpdateTrails(board, _nextDir);
                 yield return StartCoroutine("UpdatePosition", _nextDir);
                 if (board[_tileX, _tileY].IsGoal())
-                    crossroad = true;
+                    canMove = false;
 
                 if (_addEndTileTrail)
                 {
@@ -75,8 +94,6 @@ public class Character : MonoBehaviour
                 }
                 _comingFrom = GetOppositeDir(_nextDir);
             }
-            else
-                crossroad = true; // we found a crossroad
         }
 
         if (board[_tileX, _tileY].IsGoal())
@@ -230,6 +247,39 @@ public class Character : MonoBehaviour
         _endTileTrailDir = oppositeDir;
     }
 
+
+    bool CanMoveStraight(Tile[,] board)
+    {
+        bool canMoveStraight = false;
+
+        switch (_nextDir)
+        {
+            case TrailType.NORTH:
+                if (!IsNorthAWall(board))
+                    canMoveStraight = true;
+                break;
+            case TrailType.SOUTH:
+                if (!IsSouthAWall(board))
+                    canMoveStraight = true;
+                break;
+            case TrailType.EAST:
+                if (!IsEastAtWall(board))
+                    canMoveStraight = true;
+                break;
+            case TrailType.WEST:
+                if (!IsWestAWall(board))
+                    canMoveStraight = true;
+                break;
+            case TrailType.START:
+                break;
+            default:
+                return canMoveStraight;
+        }
+
+        _comingFrom = GetOppositeDir(_nextDir);
+        return canMoveStraight;
+    }
+
     bool OnlyOneWay(Tile[,] board)
     {
         bool onlyOneWay = true;
@@ -332,7 +382,30 @@ public class Character : MonoBehaviour
 
         return opposite;
     } // GetOppositeDir
+
+    private void UnShowDirections()
+    {
+        _east.gameObject.SetActive(false);
+        _west.gameObject.SetActive(false);
+        _north.gameObject.SetActive(false);
+        _south.gameObject.SetActive(false);
+    } // UnShowDirections
+
     // ------------------- PUBLIC -------------------
+
+    public void SaveStartingPoint()
+    {
+        _tileStartX = _tileX;
+        _tileStartY = _tileY;
+        _startPos = transform.position;
+    }
+
+    public void ResetCharacterPos()
+    {
+        _tileX = _tileStartX;
+        _tileY = _tileStartY;
+        transform.position = _startPos;
+    }
 
     public void ShowDirections(Tile[,] board)
     {
@@ -357,13 +430,7 @@ public class Character : MonoBehaviour
             _south.gameObject.SetActive(false);
     } // ShowDirections
 
-    private void UnShowDirections()
-    {
-        _east.gameObject.SetActive(false);
-        _west.gameObject.SetActive(false);
-        _north.gameObject.SetActive(false);
-        _south.gameObject.SetActive(false);
-    } // UnShowDirections
+    
 
     public void SetPositions(int X, int Y)
     {
@@ -402,28 +469,20 @@ public class Character : MonoBehaviour
             switch (it)
             {
                 case InputManager.InputType.S_UP:
-                    _comingFrom = TrailType.SOUTH;
                     _nextDir = TrailType.NORTH;
-                    if (!IsNorthAWall(board)) // for the first movement, it has to follow the swipe direction
-                        hasMoved = true;
+                    hasMoved = CanMoveStraight(board);// for the first movement, it has to follow the swipe direction
                     break;
                 case InputManager.InputType.S_DOWN:
-                    _comingFrom = TrailType.NORTH;
                     _nextDir = TrailType.SOUTH;
-                    if (!IsSouthAWall(board)) // for the first movement, it has to follow the swipe direction
-                        hasMoved = true;
+                    hasMoved = CanMoveStraight(board);// for the first movement, it has to follow the swipe direction
                     break;
                 case InputManager.InputType.S_RIGHT:
-                    _comingFrom = TrailType.WEST;
                     _nextDir = TrailType.EAST;
-                    if (!IsEastAtWall(board)) // for the first movement, it has to follow the swipe direction
-                        hasMoved = true;
+                    hasMoved = CanMoveStraight(board);// for the first movement, it has to follow the swipe direction
                     break;
                 case InputManager.InputType.S_LEFT:
-                    _comingFrom = TrailType.EAST;
                     _nextDir = TrailType.WEST;
-                    if (!IsWestAWall(board)) // for the first movement, it has to follow the swipe direction
-                        hasMoved = true;
+                    hasMoved = CanMoveStraight(board);// for the first movement, it has to follow the swipe direction
                     break;
                 case InputManager.InputType.TAP:
                 case InputManager.InputType.NONE:
