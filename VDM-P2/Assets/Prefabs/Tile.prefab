@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 5453139148505604393, guid: f9dffd7fa2d57b74382f673802b05519,
     type: 3}
-  m_Color: {r: 0.28057137, g: 0.9150943, b: 0.40594307, a: 1}
+  m_Color: {r: 0.2901961, g: 0.6901961, b: 0.3019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -154,7 +154,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 5453139148505604393, guid: f9dffd7fa2d57b74382f673802b05519,
     type: 3}
-  m_Color: {r: 0.28057137, g: 0.9150943, b: 0.40594307, a: 1}
+  m_Color: {r: 0.2901961, g: 0.6901961, b: 0.3019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -318,7 +318,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 5453139148505604393, guid: f9dffd7fa2d57b74382f673802b05519,
     type: 3}
-  m_Color: {r: 0.28057137, g: 0.9150943, b: 0.40594307, a: 1}
+  m_Color: {r: 0.2901961, g: 0.6901961, b: 0.3019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -400,7 +400,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: -3286624129414447285, guid: 6b14632e3432b864ba9c1fed3261b383,
     type: 3}
-  m_Color: {r: 0.17194732, g: 0.5283019, b: 0.22250147, a: 1}
+  m_Color: {r: 0.2901961, g: 0.6901961, b: 0.3019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -473,6 +473,10 @@ MonoBehaviour:
   _trailEast: {fileID: 1789556934448105469}
   _trailSouth: {fileID: 6472608996074912709}
   _trailWest: {fileID: 5797285821375626627}
+  _hintNorth: {fileID: 7066135430209620928}
+  _hintEast: {fileID: 7147682392766610532}
+  _hintSouth: {fileID: 8416841060576607865}
+  _hintWest: {fileID: 4513176140351514161}
 --- !u!1 &6286852930276636552
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +795,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: 5453139148505604393, guid: f9dffd7fa2d57b74382f673802b05519,
     type: 3}
-  m_Color: {r: 0.28057137, g: 0.9150943, b: 0.40594307, a: 1}
+  m_Color: {r: 0.2901961, g: 0.6901961, b: 0.3019608, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1

@@ -8,6 +8,11 @@ public class Character : MonoBehaviour
     [Tooltip("Sprite component of the character")]
     private SpriteRenderer _characterSprite;
 
+    [Header("Arrow")]
+    public SpriteRenderer _north;
+    public SpriteRenderer _south;
+    public SpriteRenderer _west;
+    public SpriteRenderer _east;
     
     [HideInInspector]
     public int _tileX, _tileY;          // used for moving along the board
@@ -80,9 +85,10 @@ public class Character : MonoBehaviour
         }
         else
         {
+            ShowDirections(board);
+
             _moving = false;
-        }
-            
+        }   
     }
 
     /// <summary>
@@ -136,11 +142,13 @@ public class Character : MonoBehaviour
 
 
     /// <summary>
+    /// 
     /// Checks the corresponding tiles depending on the direction taken, then checks if
     /// it needs to undo trails or add them instead
+    /// 
     /// </summary>
-    /// <param name="board">(Tile[,]) Tile matrix that stores the board's tiles</param>
-    /// <param name="dir">(TrailType) Direction of movement</param>
+    /// <param name="board"> (Tile[,]) Tile matrix that stores the board's tiles. </param>
+    /// <param name="dir"> (TrailType) Direction of movement. </param>
     void UpdateTrails(Tile[,] board, TrailType dir)
     {
         Tile startTile = board[_tileX, _tileY];
@@ -178,7 +186,7 @@ public class Character : MonoBehaviour
             default:
                 break;
         }
-    }
+    } // UpdateTrails
     
     /// <summary>
     /// Checks wether an undo of the trail is necessary, and follows the appropriate 
@@ -221,8 +229,6 @@ public class Character : MonoBehaviour
         _endTile = endTile;
         _endTileTrailDir = oppositeDir;
     }
-
-    
 
     bool OnlyOneWay(Tile[,] board)
     {
@@ -325,13 +331,60 @@ public class Character : MonoBehaviour
         }
 
         return opposite;
-    }
+    } // GetOppositeDir
     // ------------------- PUBLIC -------------------
+
+    public void ShowDirections(Tile[,] board)
+    {
+        if (!IsEastAtWall(board) && _comingFrom != TrailType.EAST)
+            _east.gameObject.SetActive(true);
+        else
+            _east.gameObject.SetActive(false);
+
+        if (!IsWestAWall(board) && _comingFrom != TrailType.WEST)
+            _west.gameObject.SetActive(true);
+        else
+            _west.gameObject.SetActive(false);
+
+        if (!IsNorthAWall(board) && _comingFrom != TrailType.NORTH)
+            _north.gameObject.SetActive(true);
+        else
+            _north.gameObject.SetActive(false);
+
+        if (!IsSouthAWall(board) && _comingFrom != TrailType.SOUTH)
+            _south.gameObject.SetActive(true);
+        else
+            _south.gameObject.SetActive(false);
+    } // ShowDirections
+
+    private void UnShowDirections()
+    {
+        _east.gameObject.SetActive(false);
+        _west.gameObject.SetActive(false);
+        _north.gameObject.SetActive(false);
+        _south.gameObject.SetActive(false);
+    } // UnShowDirections
+
+    public void SetPositions(int X, int Y)
+    {
+        _tileX = X;
+        _tileY = Y;
+        _comingFrom = TrailType.START;
+    } // SetPositions
 
     public void ChangeCharacterColor(Color color)
     {
         _characterSprite.color = color;
-    }
+        _north.color = color;
+        _east.color = color;
+        _west.color = color;
+        _south.color = color;
+    } // ChangeCharacterColor
+
+    public void ShowHints(Tile[,] board, Vector2[] hints, int max, int current)
+    {
+
+    } // ShowHints
 
     /// <summary>
     /// For as long as the character is allowed to move, it will perform the checks in 
@@ -380,6 +433,7 @@ public class Character : MonoBehaviour
 
             if (hasMoved)
             {
+                UnShowDirections();
                 StartCoroutine("MoveCharacter", board);
             }
             else

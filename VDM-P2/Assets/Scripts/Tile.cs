@@ -7,7 +7,7 @@ public struct WallType
     public bool top, left;
 }
 
-public enum TrailType { NORTH, SOUTH, EAST, WEST};
+public enum TrailType { NORTH, SOUTH, EAST, WEST, START};
 
 public class Tile : MonoBehaviour
 {
@@ -95,6 +95,15 @@ public class Tile : MonoBehaviour
     {
         _iceFloor.SetActive(false);
     }
+
+    public void SetColor(Color c)
+    {
+        _trailEast.GetComponent<SpriteRenderer>().color = c;
+        _trailWest.GetComponent<SpriteRenderer>().color = c;
+        _trailNorth.GetComponent<SpriteRenderer>().color = c;
+        _trailSouth.GetComponent<SpriteRenderer>().color = c;
+        _goal.GetComponent<SpriteRenderer>().color = c;
+    } // SetTrailColor
 
     /// <summary> Enables the given wall sprites </summary>
     public void EnableWalls(WallType walls)

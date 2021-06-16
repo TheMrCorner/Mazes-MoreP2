@@ -111,6 +111,8 @@ public class GameManager : MonoBehaviour
             // Get Player information and store it
             _player = FileLoader.ReadPlayerData(packagesNames);
 
+            _player._hints = 100;
+
             DontDestroyOnLoad(_instance);
 
         }
@@ -260,6 +262,11 @@ public class GameManager : MonoBehaviour
     //        GetInstance()._lm.ReloadLevel();
     //    }
     //    */
+
+    public void HintShown()
+    {
+        GetInstance()._player._hints--;
+    } // HintShown
 
     public void AdEnded()
     {

@@ -25,6 +25,8 @@ public class LevelManager : MonoBehaviour
     public GameObject _restorePanel;
     public GameObject _hintsPanel;
     public GameObject _optionsPanel;
+    public Button _homeEndedButton;
+    public Button _homePauseButton;
 
     private bool _paused = false;
 
@@ -54,14 +56,8 @@ public class LevelManager : MonoBehaviour
         GameManager.GetInstance().SetCamera(_camera);
         GameManager.GetInstance().SetCanvas(_canvas);
 
-        _levelAndMode.text = GameManager.GetInstance().GetPackageName() + 
-            " - " + GameManager.GetInstance().GetLevel().ToString();
-        _hints.text = _hinstPanel.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();
-
-        _pausePanel.SetActive(false);
-        _restorePanel.SetActive(false);
-        _hintsPanel.SetActive(false);
-        _optionsPanel.SetActive(false);
+        _homePauseButton.onClick.AddListener(GameManager.GetInstance().ReturnToMenu);
+        _homeEndedButton.onClick.AddListener(GameManager.GetInstance().ReturnToMenu);
 
         PlayLevel();
     }
@@ -85,6 +81,14 @@ public class LevelManager : MonoBehaviour
 
     public void PlayLevel()
     {
+        _levelAndMode.text = GameManager.GetInstance().GetPackageName() +
+               " - " + GameManager.GetInstance().GetLevel().ToString();
+        _hints.text = _hinstPanel.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();
+
+        _pausePanel.SetActive(false);
+        _restorePanel.SetActive(false);
+        _hintsPanel.SetActive(false);
+        _optionsPanel.SetActive(false);
         _endPanel.SetActive(false);
 
         LevelPackage lp = GameManager.GetInstance().GetLevelPackage();
@@ -147,4 +151,24 @@ public class LevelManager : MonoBehaviour
         _hintsPanel.SetActive(false);
         _paused = false;
     } // UnPauseGame
+
+    public void StoreScreen()
+    {
+
+    } // StoreScreen
+
+    public void UnStoreScreen()
+    {
+
+    } // UnStoreScreen
+
+    public void HintsCompletedScreen()
+    {
+
+    } // HintsCompletedScreen
+
+    public void UnHintsCompletedScreen()
+    {
+
+    } // UnHintsCompletedScreen
 } // LevelManager
