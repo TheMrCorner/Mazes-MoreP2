@@ -108,7 +108,7 @@ public class Map
         // ice floor information
         foreach (PointDouble ice in i)
         {
-            tileInfoMatrix[Mathf.FloorToInt((float)ice.x), Mathf.FloorToInt(Mathf.Abs((float)(ice.y - r + 1)))].iceFloor = true;
+            tileInfoMatrix[Mathf.FloorToInt((float)ice.x), Mathf.FloorToInt(Mathf.Abs((float)(ice.y + 1)))].iceFloor = true;
         }
     }
 
