@@ -107,17 +107,14 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
     /// </summary>
     public void ShowRewardedVideo()
     {
-        if (!GameManager.GetInstance().GetPlayerData()._adsRemoved)
+        if (Advertisement.IsReady(placementIdRewardedVideo))
         {
-            if (Advertisement.IsReady(placementIdRewardedVideo))
-            {
-                Advertisement.Show(placementIdRewardedVideo);
-            } // if
-            else
-            {
-                Debug.Log("Rewarded video is not ready at the moment! Try again later!");
-            } // else
+            Advertisement.Show(placementIdRewardedVideo);
         } // if
+        else
+        {
+            Debug.Log("Rewarded video is not ready at the moment! Try again later!");
+        } // else
     } // ShowRewardedVideo
 
     /// <summary>
