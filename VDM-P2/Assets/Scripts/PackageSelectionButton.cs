@@ -8,6 +8,8 @@ public class PackageSelectionButton : MonoBehaviour
     public Text _percentage;
     public Button _butComponent;
 
+    private string _link;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +19,6 @@ public class PackageSelectionButton : MonoBehaviour
         // Make sure transition is spriteSwap
         _butComponent.transition = Selectable.Transition.SpriteSwap;
 
-        // Add listener
-        _butComponent.onClick.AddListener(TaskOnClick);
     } // Start
 
     void TaskOnClick()
@@ -26,6 +26,11 @@ public class PackageSelectionButton : MonoBehaviour
         GameManager.GetInstance().SetPackage(_title.text);
         GameManager.GetInstance().ChangeToLevelSelection();
     } // TaskOnClick
+
+    void OpenLink()
+    {
+        GameManager.GetInstance().OpenLink(_link);
+    } // OpenLink
 
     public void SetSprites(Sprite normal, Sprite pressed)
     {
@@ -47,4 +52,18 @@ public class PackageSelectionButton : MonoBehaviour
     {
         _percentage.text = percentage.ToString() + "%";
     } // SetPercentage
+
+    public void SetNormalButton()
+    {
+        // Add listener
+        _butComponent.onClick.AddListener(TaskOnClick);
+    } // SetNormalButton
+
+    public void SetAd(string l)
+    {
+        _title.gameObject.SetActive(false);
+        _percentage.gameObject.SetActive(false);
+        _link = l;
+        _butComponent.onClick.AddListener(OpenLink);
+    } // SetAd
 } // PackageSelectionButton

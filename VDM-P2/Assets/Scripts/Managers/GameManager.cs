@@ -213,66 +213,6 @@ public class GameManager : MonoBehaviour
         return xp;
     }
 
-    //    /*
-    //    /// <summary>
-    //    /// Function called by the InputManager when the player touches the 
-    //    /// screen. Checks if the actual scene is the Game one, and manages all
-    //    /// necesary communication with the LevelManager. 
-    //    /// </summary>
-    //    /// <param name="touchPosition">Position of the Input in Screen</param>
-    //    public void ScreenTouched(Vector2 touchPosition)
-    //    {
-    //        // Check if the actual scene is the game scene
-    //        if (SceneManager.GetActiveScene().buildIndex == 2)
-    //        {
-    //            // Check if the Input happened in the play zone
-    //            if (IsInPlayZone(touchPosition))
-    //            {
-    //                // Inform the LevelManager
-    //                touchPosition = GetInstance()._scalator.ScreenToWorldPosition(touchPosition);
-    //                GetInstance()._lm.ScreenTouched(touchPosition);
-    //            }
-    //        }
-    //        // If not, the GameManager doesn't have to manage the input
-    //    }
-    //    */
-
-
-    //    /*
-    //    /// <summary>
-    //    /// Function called when the InputManager detects that the player has 
-    //    /// released the scren (stopped touching it). Informs the LevelManager
-    //    /// if the current scene is the Game scene. 
-    //    /// </summary>
-    //    public void ScreenReleased()
-    //    {
-    //        // Check actual scene is GameScene
-    //        if (SceneManager.GetActiveScene().buildIndex == 2)
-    //            GetInstance()._lm.ScreenReleased();
-    //    }
-    //    */
-
-
-    //    /*
-    //    /// <summary>
-    //    /// Checks if some coordinates are between the two panels, top and bottom.
-    //    /// </summary>
-    //    /// <param name="position">Coordinates to check</param>
-    //    /// <returns>Whether position is in PlayZone or not</returns>
-    //    public bool IsInPlayZone(Vector2 position)
-    //    {
-    //        // Check if actual scene is GameScene
-    //        if (SceneManager.GetActiveScene().buildIndex == 2)
-    //            // Return if the coordinates are in the PlayZone
-    //            return position.y < (GetInstance()._scalator.CurrentResolution().y - panelSuperiorHeight()
-    //                * GetInstance()._cnv.scaleFactor) && position.y > (panelInferiorHeight() * GetInstance()._cnv.scaleFactor);
-    //        else
-    //            return false;
-    //    }
-    //    */
-
-
-
     /// <summary>
     /// Function called when the Level is completed. Updates the level and
     /// calls the level manager so it shows the end panel
@@ -583,6 +523,19 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region AppLifeManagement
+    /// <summary>
+    /// 
+    /// Eventhough it's not an applifemanagement method, here are all
+    /// the methods that interact with external data. This method opens
+    /// a browser window with the provided link.
+    /// 
+    /// </summary>
+    /// <param name="link"> (string) Link. </param>
+    public void OpenLink(string link)
+    {
+        Application.OpenURL(link);
+    } // OpenLink
+
     /// <summary>
     /// 
     /// Function that will manage the close of the app, saving the player's current status. Not

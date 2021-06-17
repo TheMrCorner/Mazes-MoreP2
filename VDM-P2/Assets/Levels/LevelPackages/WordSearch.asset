@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a31e85dfe0b3948b02e42782dfb068, type: 3}
+  m_Name: WordSearch
+  m_EditorClassIdentifier: 
+  name: ad
+  levels:
+  - {fileID: 4900000, guid: 2e0429f6dae558c4f8d641e93e08e8f0, type: 3}
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  buttonUp: {fileID: -6036317830051604518, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}
+  buttonDown: {fileID: 7089743556490917721, guid: 59c606787c761d44e8ef2835c6f0a155,
+    type: 3}
