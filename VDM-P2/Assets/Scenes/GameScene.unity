@@ -1265,7 +1265,7 @@ MonoBehaviour:
   m_Sprite: {fileID: -9098535406953848826, guid: 59c606787c761d44e8ef2835c6f0a155,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 5390817084826497582, guid: b4a4dcf63562e0d43abce54647f00ea1,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_Sprite: {fileID: -5605356649831221300, guid: 81a2b0017c67ce84f9caa74198c10673,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3527,7 +3527,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 5390817084826497582, guid: 59c606787c761d44e8ef2835c6f0a155,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4084,7 +4084,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 5390817084826497582, guid: 68419d8632a020c43a811f081b58f5cb,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4292,7 +4292,7 @@ MonoBehaviour:
   m_Sprite: {fileID: -9098535406953848826, guid: 59c606787c761d44e8ef2835c6f0a155,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -4671,7 +4671,7 @@ MonoBehaviour:
   m_Sprite: {fileID: -5605356649831221300, guid: 81a2b0017c67ce84f9caa74198c10673,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5020,7 +5020,7 @@ MonoBehaviour:
   m_Sprite: {fileID: 4904439665288990146, guid: f9dffd7fa2d57b74382f673802b05519,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5239,7 +5239,7 @@ MonoBehaviour:
   m_Sprite: {fileID: -5605356649831221300, guid: 81a2b0017c67ce84f9caa74198c10673,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5314,7 +5314,7 @@ MonoBehaviour:
   m_Sprite: {fileID: -4650518636092720140, guid: 59c606787c761d44e8ef2835c6f0a155,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5732,7 +5732,7 @@ MonoBehaviour:
   m_Sprite: {fileID: -3130854747165568494, guid: 6b14632e3432b864ba9c1fed3261b383,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -5853,7 +5853,7 @@ MonoBehaviour:
   m_Sprite: {fileID: -5605356649831221300, guid: 81a2b0017c67ce84f9caa74198c10673,
     type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6048,7 +6048,6 @@ MonoBehaviour:
     type: 3}
   _characterPrefab: {fileID: 3343766663099479138, guid: 101e20cf1a1cc294c8540968b3dc9b89,
     type: 3}
-  position: {fileID: 0}
   _tilesHint: 5
 --- !u!224 &2189792642962666402
 RectTransform:
