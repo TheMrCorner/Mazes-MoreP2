@@ -129,6 +129,24 @@ public class FileLoader
             // If data is corrupted, create new data
             if (hash == checkHash && totalTimePlayed == checkTime)
             {
+                // New packages
+                if(d._completedLevelsPackage.Count < packages.Length)
+                {
+                    for (int i = 0; i < packages.Length; i++)
+                    {
+                        // Check if there is no ad
+                        if(packages[i] != "ad")
+                        {
+                            // Check if it is in dictionary
+                            if (!d._completedLevelsPackage.ContainsKey(packages[i]))
+                            {
+                                // If not, add it to it
+                                d._completedLevelsPackage.Add(packages[i], 0);
+                            } // if
+                        } // if
+                    } // for
+                } // if
+
                 return d;
             } // if
             else
