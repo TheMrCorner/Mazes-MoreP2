@@ -3537,9 +3537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b945e8086e534964f91bdd8cfef470c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onText: {fileID: 1965042118}
-  _offText: {fileID: 621235414}
-  _alphaValue: 0
 --- !u!114 &1278226197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4956,7 +4953,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: -8819316508635484259, guid: b4a4dcf63562e0d43abce54647f00ea1,
+    m_PressedSprite: {fileID: 4348492581985570511, guid: 68419d8632a020c43a811f081b58f5cb,
       type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
@@ -5899,7 +5896,6 @@ MonoBehaviour:
   _buttonZone: {fileID: 352257725}
   _columns: {fileID: 528446159}
   _button: {fileID: 8538590761321462351, guid: 1ae72b8a16c196d4bba3a26fab4c72e3, type: 3}
-  _hintsMessage: {fileID: 0}
   _hintsMessagePanel: {fileID: 1540926705}
   _topPanel: {fileID: 1015502868}
   _bottomPanel: {fileID: 1154540075}
