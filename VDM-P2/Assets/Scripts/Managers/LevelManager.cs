@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    //TODO: do we still use the underscore for public fields like this?
     [Tooltip("Board Manager object")]
     public BoardManager _boardManager;
     public Canvas _canvas;
@@ -13,7 +12,10 @@ public class LevelManager : MonoBehaviour
     public RectTransform _topPanel;
     public RectTransform _botPanel;
 
+    [Header("End menu elements")]
     public GameObject _endPanel;
+    public Slider _levelSlider;
+    public Text _levelText;
 
     [Header("Texts and data settings")]
     public Text _levelAndMode;
@@ -78,6 +80,8 @@ public class LevelManager : MonoBehaviour
     public void ShowEndMenu()
     {
         _endPanel.SetActive(true);
+        _levelText.text = (GameManager.GetInstance().CalculatePlayerLevel() + 1).ToString();
+        _levelSlider.value = GameManager.GetInstance().PercentageLevelCompleted();
     }
 
 

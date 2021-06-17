@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
     private string _package = "Classic";     // Sets game difficulty
     private int _level = 15;                  // Sets the level to be loaded
 
+    private int _playerLevel = 0;
+
     // SCALING DATA
     private Vector2 _scalingReferenceResolution;
     private Scaling _scalator;
@@ -165,7 +167,51 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region GameManagement
+    int XPFunction(int completedLevels)
+    {
+        float playerLevel = Mathf.Pow((completedLevels / 3), 0.75f);
 
+        return Mathf.FloorToInt(playerLevel);
+    }
+
+    int ReverseXPFunction(int playerLevel)
+    {
+        float completedLevels = 3 * Mathf.Pow(playerLevel, 1.35f);
+
+        return Mathf.RoundToInt(completedLevels);
+    }
+
+    public int CalculatePlayerLevel()
+    {
+        int completedLevels = CalculateCompletedLevels();
+        Debug.Log(completedLevels);
+        _playerLevel = XPFunction(completedLevels);
+        return _playerLevel;
+    }
+
+    public float PercentageLevelCompleted()
+    {
+        int completedLevels = CalculateCompletedLevels();
+        int currentPlayerLevel = XPFunction(completedLevels);
+        int levelsToNext = ReverseXPFunction(currentPlayerLevel + 1);
+        int levelsToCurrent = ReverseXPFunction(currentPlayerLevel);
+
+        Debug.Log(levelsToNext);
+        Debug.Log(((float)(completedLevels) - levelsToCurrent) / (levelsToNext - levelsToCurrent));
+        return ((float)(completedLevels) - levelsToCurrent) / (levelsToNext - levelsToCurrent);
+    }
+
+    int CalculateCompletedLevels ()
+    {
+        int xp = 0;
+
+        foreach (var completedLevels in _player._completedLevelsPackage)
+        {
+            xp += completedLevels.Value;
+        }
+
+        return xp;
+    }
 
     //    /*
     //    /// <summary>
@@ -237,29 +283,6 @@ public class GameManager : MonoBehaviour
         GetInstance()._player._completedLevelsPackage[_package]++;
         _levelManager.ShowEndMenu();
     }
-
-
-    /*
-    /// <summary>
-    /// Function called by Buttons to return the level to it's initial state. 
-    /// </summary>
-    public void ResetLevel()
-    {
-        // Call LevelManager to reset the level
-        GetInstance()._lm.ReloadLevel();
-    }
-    */
-
-    //    /*
-    //    /// <summary>
-    //    /// Function called by Buttons to return the level to it's initial state. 
-    //    /// </summary>
-    //    public void ResetLevel()
-    //    {
-    //        // Call LevelManager to reset the level
-    //        GetInstance()._lm.ReloadLevel();
-    //    }
-    //    */
 
     public void AddHints(int hints)
     {

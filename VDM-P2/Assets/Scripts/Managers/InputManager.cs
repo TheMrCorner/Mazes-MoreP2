@@ -90,7 +90,7 @@ public class InputManager : MonoBehaviour
         }
         else
         {   //It's a tap as the drag distance is less than 20% of the screen height
-            Debug.Log("Tap");
+            //Debug.Log("Tap");
             it = InputType.TAP;
         }
 
