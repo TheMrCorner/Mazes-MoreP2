@@ -1,8 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// Detects if ads have been removed and deactivates the button.
+/// 
+/// </summary>
 public class AdDetector : MonoBehaviour
 {
     Button _btn;
@@ -15,6 +18,11 @@ public class AdDetector : MonoBehaviour
         UpdateButtonStatus();
     } // Start
 
+    /// <summary>
+    /// 
+    /// Update button status to block it when necessary.
+    /// 
+    /// </summary>
     public void UpdateButtonStatus()
     {
         if (GameManager.GetInstance().GetPlayerData()._adsRemoved)

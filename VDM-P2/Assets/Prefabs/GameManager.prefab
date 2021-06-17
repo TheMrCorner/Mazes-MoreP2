@@ -48,11 +48,7 @@ MonoBehaviour:
   _levelManager: {fileID: 0}
   _levels:
   - {fileID: 11400000, guid: 79d6440740fec814e91e9e49c123565a, type: 2}
-  - {fileID: 11400000, guid: 812368f26721f07439ee1a34f959a38f, type: 2}
-  - {fileID: 11400000, guid: 243b6c82cd0e6f147b6bca15e0c396cd, type: 2}
   - {fileID: 11400000, guid: 9ae2a21f2a44ef74e801a3c7784836c5, type: 2}
-  - {fileID: 11400000, guid: 58f65dff7bca0214fbdcc30c278e2589, type: 2}
-  - {fileID: 11400000, guid: ea5f9ae06e1e71849b63d457f1d1dc79, type: 2}
   - {fileID: 11400000, guid: c3b58e11ad5e1d2419168086540e9a96, type: 2}
   - {fileID: 11400000, guid: 3c8c3448e3dd08343b15f7920fe05044, type: 2}
   - {fileID: 11400000, guid: c6534fe82e561c44faeebef293b3f294, type: 2}

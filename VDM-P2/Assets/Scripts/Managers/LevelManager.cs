@@ -1,36 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// Class that manages the Level and shows all the 
+/// different panels to the player, as well as creates 
+/// the board.
+/// 
+/// </summary>
 public class LevelManager : MonoBehaviour
 {
-    //TODO: do we still use the underscore for public fields like this?
     [Tooltip("Board Manager object")]
-    public BoardManager _boardManager;
-    public Canvas _canvas;
-    public Camera _camera;
-    public RectTransform _topPanel;
-    public RectTransform _botPanel;
-
-    public GameObject _endPanel;
+    public BoardManager _boardManager;            // BoardManager instance
+    public Canvas _canvas;                        // Canvas of the scene
+    public Camera _camera;                        // Camera 
+    public RectTransform _topPanel;               // Top panel of canvas
+    public RectTransform _botPanel;               // Bottom panel of canvas
+    public GameObject _endPanel;                  // End panel of the level
 
     [Header("Texts and data settings")]
-    public Text _levelAndMode;
-    public Text _hints;
-    public Text _hinstPanel;
+    public Text _levelAndMode;                    // Level and mode text
+    public Text _hints;                           // Hints text
+    public Text _hinstPanel;                      // Hints panel to confirm usage
 
     [Header("Options panels")]
-    public GameObject _pausePanel;
-    public GameObject _restorePanel;
-    public GameObject _hintsPanel;
-    public GameObject _optionsPanel;
-    public GameObject _storePanel;
-    public GameObject _completeHintsPanel;
-    public Button _homeEndedButton;
-    public Button _homePauseButton;
+    public GameObject _pausePanel;                // Pause panel GO
+    public GameObject _restorePanel;              // Restore panel GO
+    public GameObject _hintsPanel;                // Hints panel GO
+    public GameObject _optionsPanel;              // Options panel GO
+    public GameObject _storePanel;                // Store panel GO
+    public GameObject _completeHintsPanel;        // Complete usage of hints GO
+    public Button _homeEndedButton;               // Home button Level complete panel
+    public Button _homePauseButton;               // Home button level paused
 
-    private bool _paused = false;
+    private bool _paused = false;                 // Pause flag for Input control
 
 
     // ----------------------------------------------
@@ -42,16 +45,16 @@ public class LevelManager : MonoBehaviour
         if (_boardManager == null)
         {
             Debug.LogError("Board Manager reference not set");
-        }
+        } // if
         if (_endPanel == null)
         {
             Debug.LogError("End panel reference not set");
-        }
+        } // if
         else
         {
             _boardManager.Init(this);
-        }
-    }
+        } // else
+    } // Awake
 
     private void Start()
     {
@@ -62,32 +65,38 @@ public class LevelManager : MonoBehaviour
         _homeEndedButton.onClick.AddListener(GameManager.GetInstance().ReturnToMenu);
 
         PlayLevel();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    } // Start
 
     // ----------------------------------------------
     // --------------- CUSTOM METHODS ---------------
     // ----------------------------------------------
 
     // ------------------- PUBLIC -------------------
+    /// <summary>
+    /// 
+    /// Shows the ending panel.
+    ///
+    /// </summary>
     public void ShowEndMenu()
     {
         _endPanel.SetActive(true);
-    }
+        _paused = true;
+    } // ShowEndMenu
 
-
+    /// <summary>
+    /// 
+    /// Sets all the scene to play the next level. 
+    /// 
+    /// </summary>
     public void PlayLevel()
     {
+        // Set info
         AdManager.GetInstance().ShowVideo();
         _levelAndMode.text = GameManager.GetInstance().GetPackageName() +
                " - " + GameManager.GetInstance().GetLevel().ToString();
         _hints.text = _hinstPanel.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();
 
+        // Deactivate all unnecessary panels
         _pausePanel.SetActive(false);
         _restorePanel.SetActive(false);
         _hintsPanel.SetActive(false);
@@ -96,22 +105,32 @@ public class LevelManager : MonoBehaviour
         _optionsPanel.SetActive(false);
         _endPanel.SetActive(false);
 
+        // Prepare board
         LevelPackage lp = GameManager.GetInstance().GetLevelPackage();
         int level = GameManager.GetInstance().GetLevel();
-
-        string levelUWU = lp.levels[level].ToString();
 
         Map map = Map.FromJson(lp.levels[level].ToString());
 
         _boardManager.EmptyBoard();
         _boardManager.SetMap(map);
-    }
+    } // PlayLevel
 
+    /// <summary>
+    /// 
+    /// Update the hints texts with the new information (bought hints).
+    /// 
+    /// </summary>
     public void UpdateTexts()
     {
         _hints.text = _hinstPanel.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();
     } // UpdateTexts
 
+    /// <summary>
+    /// 
+    /// Receive new Input and process it. 
+    /// 
+    /// </summary>
+    /// <param name="it"> (InputType) Type of new input. </param>
     public void ReceiveInput(InputManager.InputType it)
     {
         if (!_paused)
@@ -120,6 +139,11 @@ public class LevelManager : MonoBehaviour
         } // if
     } // ReceiveInput
 
+    /// <summary>
+    /// 
+    /// Call to pause the game, activates the necessary panels.
+    /// 
+    /// </summary>
     public void PauseGame()
     {
         _optionsPanel.SetActive(true);
@@ -127,6 +151,11 @@ public class LevelManager : MonoBehaviour
         _paused = true;
     } // PauseGame
 
+    /// <summary>
+    /// 
+    /// Resume game. 
+    /// 
+    /// </summary>
     public void UnPauseGame()
     {
         _pausePanel.SetActive(false);
@@ -134,6 +163,11 @@ public class LevelManager : MonoBehaviour
         _paused = false;
     } // UnPauseGame
 
+    /// <summary>
+    /// 
+    /// Show restore panel option.
+    /// 
+    /// </summary>
     public void RestoreGameScreen()
     {
         _optionsPanel.SetActive(true);
@@ -141,6 +175,11 @@ public class LevelManager : MonoBehaviour
         _paused = true;
     } // PauseGame
 
+    /// <summary>
+    /// 
+    /// Deactivate restore panel. 
+    /// 
+    /// </summary>
     public void UnRestoreGameScreen()
     {
         _restorePanel.SetActive(false);
@@ -148,6 +187,11 @@ public class LevelManager : MonoBehaviour
         _paused = false;
     } // UnPauseGame
 
+    /// <summary>
+    /// 
+    /// Show the hints screen. 
+    /// 
+    /// </summary>
     public void HintsScreen()
     {
         _optionsPanel.SetActive(true);
@@ -155,6 +199,11 @@ public class LevelManager : MonoBehaviour
         _paused = true;
     } // PauseGame
 
+    /// <summary>
+    /// 
+    /// Hide the Hints' Screen.
+    /// 
+    /// </summary>
     public void UnHintsScreen()
     {
         _hintsPanel.SetActive(false);
@@ -163,6 +212,11 @@ public class LevelManager : MonoBehaviour
         UpdateTexts();
     } // UnPauseGame
 
+    /// <summary>
+    /// 
+    /// Show store screen.
+    /// 
+    /// </summary>
     public void StoreScreen()
     {
         _optionsPanel.SetActive(true);
@@ -171,6 +225,11 @@ public class LevelManager : MonoBehaviour
 
     } // StoreScreen
 
+    /// <summary>
+    /// 
+    /// Hide storescreen. 
+    /// 
+    /// </summary>
     public void UnStoreScreen()
     {
         _storePanel.SetActive(false);
@@ -179,6 +238,11 @@ public class LevelManager : MonoBehaviour
         UpdateTexts();
     } // UnStoreScreen
 
+    /// <summary>
+    /// 
+    /// Show the panel that notifies when all hints have been used.
+    /// 
+    /// </summary>
     public void HintsCompletedScreen()
     {
         _optionsPanel.SetActive(true);
@@ -186,6 +250,11 @@ public class LevelManager : MonoBehaviour
         _paused = true;
     } // HintsCompletedScreen
 
+    /// <summary>
+    /// 
+    /// Hide the hints completed panel.
+    /// 
+    /// </summary>
     public void UnHintsCompletedScreen()
     {
         _completeHintsPanel.SetActive(false);

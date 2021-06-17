@@ -51,7 +51,7 @@ public class TileInfo
     public bool wallTop = false, wallLeft = false;
     public bool iceFloor = false;
     public bool goal = false;
-}
+} 
 
 [System.Serializable]
 public class Map
@@ -75,8 +75,8 @@ public class Map
             for (int row = 0; row <= r; ++row)
             {
                 tileInfoMatrix[col, row] = new TileInfo();
-            }
-        }
+            } // for
+        } // for
 
         start.x = s.x; start.y = s.y + 1; // +1 to account for bottom row being just there for the walls
         finish.x = f.x; finish.y = f.y + 1;
@@ -92,7 +92,7 @@ public class Map
             ++index;
             hintArray[index] = new Vector2(hint.x, hint.y + 1);
             //tileInfoMatrix[hint.x, Mathf.Abs(hint.y - r + 1)].hintPoint = true;
-        }
+        } // foreach
 
         // wall information
         foreach (Wall wall in w)
@@ -103,14 +103,14 @@ public class Map
             int y = Mathf.Max(wall.o.y, wall.d.y);
             if (top) tileInfoMatrix[x, y].wallTop = true;
             if (left) tileInfoMatrix[x, y].wallLeft = true;
-        }
+        } // foreach
 
         // ice floor information
         foreach (PointDouble ice in i)
         {
             tileInfoMatrix[Mathf.FloorToInt((float)ice.x), Mathf.FloorToInt(Mathf.Abs((float)(ice.y + 1)))].iceFloor = true;
-        }
-    }
+        } // foreach
+    } // Constructor
 
 
     /// <summary> 
@@ -135,5 +135,5 @@ public class Map
         Map map = new Map(jsonmap.c, jsonmap.r, jsonmap.s, jsonmap.f, jsonmap.h, jsonmap.w, jsonmap.i, jsonmap.e);
 
         return map;
-    }
-}
+    } // FromJson
+} // Map

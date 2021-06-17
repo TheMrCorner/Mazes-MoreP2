@@ -1,8 +1,13 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
+/// <summary>
+/// 
+/// Class to control and call for functions related to 
+/// ads.
+/// 
+/// </summary>
 public class AdManager : MonoBehaviour, IUnityAdsListener
 {
     // Singleton instance
@@ -43,17 +48,25 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         Advertisement.AddListener(GetInstance());
         Advertisement.Initialize(_gameID, true);
         StartCoroutine(ShowBannerWhenInitialized());
-    }
+    } // Start
 
     /// <summary>
+    /// 
     /// Function that returns the instance of AdManager.
+    /// 
     /// </summary>
-    /// <returns>AdManager instance of singleton</returns>
+    /// <returns> (AdManager) Instance of singleton. </returns>
     public static AdManager GetInstance()
     {
         return _instance;
     } // GetInstance
 
+    /// <summary>
+    /// 
+    /// Function that shows a banner in everyscene at the bottom center.
+    /// 
+    /// </summary>
+    /// <returns> (WaitForSeconds) Seconds between ads. </returns>
     IEnumerator ShowBannerWhenInitialized()
     {
         if (!GameManager.GetInstance().GetPlayerData()._adsRemoved)
@@ -67,6 +80,11 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         } // if
     } // ShowBannerWhenInitialized
 
+    /// <summary>
+    /// 
+    /// Function that shows an ad in video form. 
+    /// 
+    /// </summary>
     public void ShowVideo()
     {
         if (!GameManager.GetInstance().GetPlayerData()._adsRemoved)
@@ -82,6 +100,11 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         } // if
     } // ShowVideo
 
+    /// <summary>
+    /// 
+    /// Function to show a rewarded ad. 
+    /// 
+    /// </summary>
     public void ShowRewardedVideo()
     {
         if (!GameManager.GetInstance().GetPlayerData()._adsRemoved)
@@ -97,6 +120,13 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         } // if
     } // ShowRewardedVideo
 
+    /// <summary>
+    /// 
+    /// Function to notify and control the state of the ads. 
+    /// 
+    /// </summary>
+    /// <param name="placementId"> (string) Type of ad. </param>
+    /// <param name="res"> (ShowResult) Result of the ad. </param>
     public void OnUnityAdsDidFinish(string placementId, ShowResult res)
     {
         if (placementId == placementIdRewardedVideo)
@@ -112,14 +142,20 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         } // if
     } // OnUnityAdsDidFinish
 
-    public void OnUnityAdsReady(string placementId)
-    {
-    }
-
+    /// <summary>
+    /// 
+    /// Method to notify when an ad errored.
+    /// 
+    /// </summary>
+    /// <param name="message"> (string) Error message. </param>
     public void OnUnityAdsDidError(string message)
     {
         Debug.LogError("Ad errored: " + message);
     }
 
+    // Implementation method.
+    public void OnUnityAdsReady(string placementId) { }
+
+    // Implementation method
     public void OnUnityAdsDidStart(string placementId) { }
 } // AdManager

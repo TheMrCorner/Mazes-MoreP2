@@ -1,21 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// Class that will control the level selection buttons.
+/// 
+/// </summary>
 public class LevelSelectionButton : MonoBehaviour
 {
     [Header("Color configuration")]
-    public Color _textColor;
-    public Color _lockColor;
-
+    public Color _textColor;           // Color of the text
+    public Color _lockColor;           // Color of the lock button
+     
     // Button Management
-    Image _sprite;
-    GameObject _lText;
-    GameObject _lock;
-    Color _color;
-    int _level;
-    bool _completed;
+    Image _sprite;                     // Sprite to use
+    GameObject _lText;                 // Level text
+    GameObject _lock;                  // Lock image
+    Color _color;                      // Color to use
+    int _level;                        // Level that will initiate
+    bool _completed;                   // Check if level is complete
 
     private void Awake()
     {
@@ -33,7 +36,7 @@ public class LevelSelectionButton : MonoBehaviour
                 _lock = child.gameObject;
             } // else if
         } // foreach
-    }
+    } // Awake
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +48,16 @@ public class LevelSelectionButton : MonoBehaviour
         bt.onClick.AddListener(TaskOnClick);
     } // Start
 
+    /// <summary>
+    /// 
+    /// What the button will do when clicked.
+    /// 
+    /// </summary>
     public void TaskOnClick()
     {
         GameManager.GetInstance().SetLevel(_level - 1);
         GameManager.GetInstance().ChangeToLevel();
-    }
+    } // TaskOnClick
 
     /// <summary>
     /// 
@@ -98,6 +106,12 @@ public class LevelSelectionButton : MonoBehaviour
         _lText.GetComponent<Text>().text = (_level).ToString();
     } // SetLevel
 
+    /// <summary>
+    /// 
+    /// Set if the level is complete or not. 
+    /// 
+    /// </summary>
+    /// <param name="c"></param>
     public void SetCompleted(bool c)
     {
         _completed = c;
@@ -115,6 +129,12 @@ public class LevelSelectionButton : MonoBehaviour
         _color = c;
     } // SetColor
 
+    /// <summary>
+    /// 
+    /// Set if the button will be interactable or not.
+    /// 
+    /// </summary>
+    /// <param name="i"> (bool) State. </param>
     public void SetInteractable(bool i){
         this.gameObject.GetComponent<Button>().interactable = i;
 

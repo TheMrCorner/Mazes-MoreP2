@@ -1,36 +1,37 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// 
+/// This class is the one in charge to manage the 
+/// whole game and board, check what is happening 
+/// and show the hints. 
+/// 
+/// </summary>
 public class BoardManager : MonoBehaviour
 {
-
     [Header("Configuration")]
-    public int _sideMargin;
-    public int _topMargin;
-    public GameObject _board;
-    public Tile _tilePrefab;
-    public Character _characterPrefab;
-    public Transform position;
-    public int _tilesHint; // Number of tiles for hint
+    public int _sideMargin;                     // Space to the sides
+    public int _topMargin;                      // Space to the top
+    public GameObject _board;                   // Board gameObject
+    public Tile _tilePrefab;                    // Tile prefab to instantiate
+    public Character _characterPrefab;          // Character prefab to instantiate
+    public int _tilesHint;                      // Number of tiles to show for a hint
 
     // Calculate space remaining for the board
-    private float _topPanel;
-    private float _bottomPanel;
-    // TODO: Pause menu etc.
-
+    private float _topPanel;                    // Top panel in canvas
+    private float _bottomPanel;                 // Bottom panel in canvas
    
-    private Tile[,] _tiles;
-    private Character _character;
-    private Vector2[] _hintArray;
-    private int _currentHint = 0;
-    private Point _start;
+    private Tile[,] _tiles;                     // Map
+    private Character _character;               // Character object
+    private Vector2[] _hintArray;               // Hint array  
+    private int _currentHint = 0;               // Last hint shown
+    private Point _start;                       // Start point
 
-    private LevelManager _levelManager;
+    private LevelManager _levelManager;         // LevelManager
 
     // Space that the board will take
-    private Vector2 _resolution;
+    private Vector2 _resolution;                // Space for the board
 
     // ----------------------------------------------
     // --------------- CUSTOM METHODS ---------------
@@ -38,6 +39,13 @@ public class BoardManager : MonoBehaviour
 
     // ------------------ PRIVATE -------------------
 
+    /// <summary>
+    /// 
+    /// Method to set the tile with it's information.
+    /// 
+    /// </summary>
+    /// <param name="info"> (TileInfo) Info of the tile. </param>
+    /// <param name="tile"> (Tile) Tile to set. </param>
     private void SetTile(TileInfo info, Tile tile)
     {
         WallType infoWalls; infoWalls.left = info.wallLeft; infoWalls.top = info.wallTop;
@@ -46,7 +54,17 @@ public class BoardManager : MonoBehaviour
         if (info.wallLeft || info.wallTop) tile.EnableWalls(infoWalls);
     } // SetTile
 
-
+    /// <summary>
+    /// 
+    /// Gives the direction to follow for the hints. Substracts one 
+    /// to the other and then checks which direction it will 
+    /// take. Since there are no diagonals, it's sure that the
+    /// values will be between -1 and 1.
+    /// 
+    /// </summary>
+    /// <param name="a"> (Vector2) Origin position. </param>
+    /// <param name="b"> (Vector2) Next position. </param>
+    /// <returns> (TrailType) Next direction. </returns>
     private TrailType GetDir(Vector2 a, Vector2 b)
     {
         Vector2 res = b - a;
@@ -101,6 +119,12 @@ public class BoardManager : MonoBehaviour
         return opposite;
     } // GetOppositeDir
 
+    /// <summary>
+    /// 
+    /// Coroutine to show the hints. 
+    /// 
+    /// </summary>
+    /// <returns> (yiel return) null. </returns>
     private IEnumerator ShowHint()
     {
         int i;
@@ -175,7 +199,9 @@ public class BoardManager : MonoBehaviour
     } // CalculateSize
 
     /// <summary>
-    /// Resets the trail counters for every tile in the board, also removing the visuals
+    /// 
+    /// Resets the trail counters for every tile in the board, also removing the visuals.
+    /// 
     /// </summary>
     void RemoveTrails()
     {
@@ -189,16 +215,29 @@ public class BoardManager : MonoBehaviour
                 tile.DecreaseTrailCounter(TrailType.EAST);
             while (tile.IsWestTrail())
                 tile.DecreaseTrailCounter(TrailType.WEST);
-        }
-    }
+        } // foreach
+    } // RemoveTrails
 
     // ------------------- PUBLIC -------------------
 
+    /// <summary>
+    /// 
+    /// Initiates the BoardManager. 
+    /// 
+    /// </summary>
+    /// <param name="levelManager"> (LevelManager) Manager of the level. </param>
     public void Init(LevelManager levelManager)
     {
         _levelManager = levelManager;
     } // Init
 
+    /// <summary>
+    /// 
+    /// Sets the map, scaling everything to fit in the 
+    /// space left by the top and bottom panel.
+    /// 
+    /// </summary>
+    /// <param name="map"> (Map) Map to read the data. </param>
     public void SetMap(Map map)
     {
         // Init board sizes and variables
@@ -250,6 +289,12 @@ public class BoardManager : MonoBehaviour
         _character.SaveStartingPoint();
     } // SetMap
 
+    /// <summary>
+    /// 
+    /// Receives the input and processes it.
+    /// 
+    /// </summary>
+    /// <param name="it"> (InputType) Type of the input. </param>
     public void ReceiveInput(InputManager.InputType it)
     {
         if (it == InputManager.InputType.TAP)
@@ -262,6 +307,13 @@ public class BoardManager : MonoBehaviour
         } // else
     } // ReceiveInput
 
+    /// <summary>
+    /// 
+    /// Function to show a hint. Tries to do it and if it fails
+    /// then returns a different value.
+    /// 
+    /// </summary>
+    /// <returns> (int) 0 correct; -1 no hints; -2 All hints for level used. </returns>
     public int TryShowHint()
     {
         if(_currentHint >= _hintArray.Length)
@@ -279,12 +331,23 @@ public class BoardManager : MonoBehaviour
         return -1;
     } // TryShowHint
 
+    /// <summary>
+    /// 
+    /// Resets the board to it's initial state but the
+    /// hints stay.
+    /// 
+    /// </summary>
     public void ResetBoard()
     {
         _character.ResetCharacterPos();
         RemoveTrails();
-    }
+    } // ResetBoard
 
+    /// <summary>
+    /// 
+    /// Cleans the board to use it again. 
+    /// 
+    /// </summary>
     public void EmptyBoard()
     {
         DestroyImmediate(_board);

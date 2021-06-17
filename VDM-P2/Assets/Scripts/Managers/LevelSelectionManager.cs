@@ -3,6 +3,13 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 
+/// This class is in charge of instantiating all the buttons for 
+/// selecting a level dynamically. Looks for the number of levels 
+/// in the current package and the displays all buttons.
+/// 
+/// </summary>
 public class LevelSelectionManager : MonoBehaviour
 {
     [Header("Configuration")]
@@ -23,8 +30,8 @@ public class LevelSelectionManager : MonoBehaviour
     public int _bottomLimit = 10;                   // Distance to bottom
     public int _spaceRaws = 12;                     // Space between raws
 
-    private int _currentButton;                             // Number of buttons in this bundle
-    private LevelPackage _lp;                               // Current level package
+    private int _currentButton;                     // Number of buttons in this bundle
+    private LevelPackage _lp;                       // Current level package
 
     // Start is called before the first frame update
     void Start()
@@ -57,8 +64,15 @@ public class LevelSelectionManager : MonoBehaviour
         _levelPlayer.text = Math.Floor(GameManager.GetInstance().GetPlayerData()._playerLevel).ToString();
         // Instantiate all
         InstantiateRaws(raws);
-    }
+    } // Start
 
+    /// <summary>
+    /// 
+    /// Format the name of the package to show it with spaces.
+    /// 
+    /// </summary>
+    /// <param name="n"> (string) Name without formatting. </param>
+    /// <returns> (string) New name formatted. </returns>
     private string FormatPackageName(string n)
     {
         StringBuilder name = new StringBuilder(n.Length * 2);
@@ -82,7 +96,7 @@ public class LevelSelectionManager : MonoBehaviour
     /// Instantiate each raw with buttons considering the buttons zone and the top and bottom limits
     /// 
     /// </summary>
-    /// <param name="num">Number of raws per colum</param>
+    /// <param name="num"> (int) Number of raws per colum. </param>
     public void InstantiateRaws(int num)
     {
         GameObject r;

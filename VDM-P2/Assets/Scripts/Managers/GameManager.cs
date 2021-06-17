@@ -3,85 +3,64 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
+/// 
 /// GameManager class. Manages all changes between scenes, the levels that will be
-/// played and the challenges. 
+/// played and the information of the player. 
 /// 
-/// Has all the information about the player: how many coins they have, levels completed
-/// per difficulty and medals gained in challenges. Manages the changes in their stats
-/// and saves it when the app is closed. 
+/// Has all the information about the player. Manages the changes in their stats
+/// and saves it when the app is closed or when it loses focus.
 /// 
-/// Manages the time left for a challenge and notifies the MainMenu when a challenge is 
-/// available. 
+/// Has the instance of the different level packages, including the ads. 
 /// 
-/// Has the instance of the different AssetBundles. All the scripts will access this instances
-/// to retrieve all prefab information.
 /// </summary>
 public class GameManager : MonoBehaviour
 {
     #region Variables
     /// </summary>
     [Header("Resolution Configuration")]
-    public Canvas _cnv;
-    public Camera _cam;
+    public Canvas _cnv;                           // Canvas of the scene
+    public Camera _cam;                           // Camera of the scene
 
     [Header("Levels")]
-    public LevelManager _levelManager = null;
-    public LevelPackage[] _levels;          // Array of LevelPackages
+    public LevelManager _levelManager = null;     // LevelManager for level
+    public LevelPackage[] _levels;                // Array of LevelPackages
 
     [Header("Debugging")]
-    public bool _debugging = false;         // Sets if debug mode is on, for avoiding some changes
+    public bool _debugging = false;               // Sets if debug mode is on, for avoiding some changes
 
 
-    private string _package = "Classic";     // Sets game difficulty
-    private int _level = 15;                  // Sets the level to be loaded
+    private string _package = "Classic";          // Sets game difficulty
+    private int _level = 15;                      // Sets the level to be loaded
 
     // SCALING DATA
-    private Vector2 _scalingReferenceResolution;
-    private Scaling _scalator;
+    private Vector2 _scalingReferenceResolution;  // Reference resolution for scaling
+    private Scaling _scalator;                    // Scaling object
 
     // GAME/SCENE MANAGEMENT
-    private Random _rnd;
-    private PlayerData _player;
-    private RectTransform _topPanel;
-    private RectTransform _bottomPanel;
-    private MainMenuManager _mainMenu;
-    private int _lastScene;
-    private bool _adReward = false;
-    private bool _isPaused = false;
+    private PlayerData _player;                   // Player data
+    private RectTransform _topPanel;              // Top panel of the canvas
+    private RectTransform _bottomPanel;           // Bottom panel of the canvas
+    private MainMenuManager _mainMenu;            // MainMenuManager to change things and update data
+    private int _lastScene;                       // Last scene to return to it if necessary
 
     #endregion
 
-    //    #region Utilities
-    //    /// <summary>
-    //    /// Converts the actual date and hour into seconds.
-    //    /// </summary>
-    //    /// <returns>Date transformed in seconds</returns>
-    //    int ConvertDateToSecond()
-    //    {
-    //        int totalHours = 0;
-
-    //        totalHours += System.DateTime.Now.Second;
-    //        totalHours += System.DateTime.Now.Minute * 60;
-    //        totalHours += System.DateTime.Now.Hour * 60 * 60;
-    //        totalHours += System.DateTime.Now.Day * 24 * 60 * 60;
-    //        totalHours += System.DateTime.Now.Month * 30 * 24 * 60 * 60;
-
-    //        return totalHours;
-    //    }
-    //    #endregion
-
     #region StartUpGameManager
     /// <summary>
+    /// 
     /// Variable that stores the instance of the GameManager, Singleton
+    /// 
     /// </summary>
     private static GameManager _instance;
 
     /// <summary>
+    /// 
     /// Awake function of GameManager. Checks if another instance of this GameObject exists and 
     /// if not, initializes all required atributes and values of the GameManager, creating a new
     /// one. 
     /// 
     /// If the GameManager already exists, destroy this gameObject. 
+    /// 
     /// </summary>
     private void Awake()
     {
@@ -105,21 +84,18 @@ public class GameManager : MonoBehaviour
             Vector2 res = new Vector2(Screen.width, Screen.height);
             _scalator = new Scaling(res, _scalingReferenceResolution, (int)_cam.orthographicSize);
 
-            // Initialize random value
-            _rnd = new Random();
-
             // Get Player information and store it
             _player = FileLoader.ReadPlayerData(packagesNames);
 
             DontDestroyOnLoad(_instance);
-        }
+        } // if
         else if (_instance != this)
         {
             _instance._levelManager = _levelManager;
 
             Destroy(gameObject);
-        }
-    }
+        } // else if
+    } // Awake
 
 
     // ------------------- PUBLIC -------------------
@@ -167,39 +143,25 @@ public class GameManager : MonoBehaviour
     #region GameManagement
 
     /// <summary>
+    /// 
     /// Function called when the Level is completed. Updates the level and
-    /// calls the level manager so it shows the end panel
+    /// calls the level manager so it shows the end panel.
+    /// 
     /// </summary>
     public void LevelCompleted()
     {
         _level++;
-        GetInstance()._player._completedLevelsPackage[_package]++;
+        if(GetInstance()._player._completedLevelsPackage[_package] <= _level)
+            GetInstance()._player._completedLevelsPackage[_package]++;
         _levelManager.ShowEndMenu();
-    }
+    } // LevelCompleted
 
-
-    /*
     /// <summary>
-    /// Function called by Buttons to return the level to it's initial state. 
+    /// 
+    /// Function called when the buying hints option is used.
+    /// 
     /// </summary>
-    public void ResetLevel()
-    {
-        // Call LevelManager to reset the level
-        GetInstance()._lm.ReloadLevel();
-    }
-    */
-
-    //    /*
-    //    /// <summary>
-    //    /// Function called by Buttons to return the level to it's initial state. 
-    //    /// </summary>
-    //    public void ResetLevel()
-    //    {
-    //        // Call LevelManager to reset the level
-    //        GetInstance()._lm.ReloadLevel();
-    //    }
-    //    */
-
+    /// <param name="hints"> (int) Number of hints bought. </param>
     public void AddHints(int hints)
     {
         GetInstance()._player._hints += hints;
@@ -207,11 +169,21 @@ public class GameManager : MonoBehaviour
             _levelManager.UpdateTexts();
     } // AddHints
 
+    /// <summary>
+    /// 
+    /// Function called when the removing ads purchase is completed.
+    /// 
+    /// </summary>
     public void RemoveAds()
     {
         GetInstance()._player._adsRemoved = true;
     } // RemoveAds
 
+    /// <summary>
+    /// 
+    /// Function called when a hint is used. 
+    /// 
+    /// </summary>
     public void HintShown()
     {
         GetInstance()._player._hints--;
@@ -222,6 +194,11 @@ public class GameManager : MonoBehaviour
         } // if
     } // HintShown
 
+    /// <summary>
+    /// 
+    /// Function called when a rewarded ad ended successfully.
+    /// 
+    /// </summary>
     public void AdEnded()
     {
         GetInstance()._player._hints++;
@@ -234,68 +211,29 @@ public class GameManager : MonoBehaviour
     } // AdEnded
     #endregion
 
-    #region LevelSelectionManagement
-
-    /// <summary>
-    /// 
-    /// Sets the top text for the LevelSelection menu. Selects the right name 
-    /// from the collection of difficulty names and puts it in the Text.
-    /// 
-    /// </summary>
-    public void CreateTextLevelSelectionMenu()
-    {
-
-    }
-
-
-    //    /*
-    //    /// <summary>
-    //    /// Function that notifies when an ad has ended and manages what happens next. 
-    //    /// If the ad played was a rewarded ad, gives coins to the player. If the ad 
-    //    /// was for doubling the bounty earned in a challenge, calls that function. 
-    //    /// If the ad was for initiating a challenge, calls all necessary functions. 
-    //    /// </summary>
-    //    public void AdEnded()
-    //    {
-    //        // Ad for coins reward
-    //        if (GetInstance()._adRewardCoins)
-    //        {
-    //            AddCoins();
-    //        }
-    //        // Ad for double reward in challenge
-    //        else if (GetInstance()._adDoubleChallenge)
-    //        {
-    //            AddChallengeExtraCoins();
-    //        }
-    //        // Ad for playing a Challenge
-    //        else if (GetInstance()._adChallengeInit)
-    //        {
-    //            InitChallenge();
-    //        }
-    //    }
-    //    */
-    #endregion
-
     #region SceneManagement
-
     /// <summary>
-    /// Function called by the Back buttons. Loads the last scene that was playing. 
+    /// 
+    /// Loads the last scene that was playing. 
+    /// 
     /// </summary>
     public void ReturnToLastScene()
     {
         // Loads the last scene
         SceneManager.LoadScene(GetInstance()._lastScene);
-    }
+    } // ReturnToLastScene
 
 
     /// <summary>
+    /// 
     /// Return to the MainMenu Scene. 
+    /// 
     /// </summary>
     public void ReturnToMenu()
     {
         // Load MainMenu scene
         SceneManager.LoadScene(0);
-    }
+    } // ReturnToMenu
 
 
     /// <summary>
@@ -314,7 +252,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(1);
     } // ChangeToLevelSelection
 
-
+    /// <summary>
+    /// 
+    /// Change to GameScene and play level.
+    /// 
+    /// </summary>
     public void ChangeToLevel()
     {
         // Update last Scene
@@ -323,41 +265,6 @@ public class GameManager : MonoBehaviour
         // Load LevelSelection scene
         SceneManager.LoadScene(2);
     } // ChangeToLevel
-
-    //    /*
-    //    /// <summary>
-    //    /// Loads the next level after completing one. Checks if it is the last level of it's
-    //    /// difficulty and if so, loads the next difficulty and it's first level. If the difficuñty
-    //    /// is the last one, returns to the first difficulty.
-    //    /// </summary>
-    //    public void NextLevel()
-    //    {
-    //        // Increase actual level
-    //        GetInstance()._level += 1;
-
-    //        // Check which level is the next one
-    //        if (GetInstance()._level > 100)
-    //        {
-    //            // Load the level 1
-    //            GetInstance()._level = 1;
-
-    //            // Increase difficulty
-    //            GetInstance()._difficulty += 1;
-    //            // Check difficulty after increase
-    //            if (GetInstance()._difficulty > GetInstance()._maxDifficulty)
-    //            {
-    //                // Return to first difficulty
-    //                GetInstance()._difficulty = 0;
-    //            }
-    //        }
-
-    //        // Reloads the LevelScene
-    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //    }
-    //    */
-
-
-
     #endregion
 
     #region Setters
@@ -374,22 +281,46 @@ public class GameManager : MonoBehaviour
         GetInstance()._cam = c;
     } // SetCamera
 
+    /// <summary>
+    /// 
+    /// Set the current canvas. 
+    /// 
+    /// </summary>
+    /// <param name="c"> (Canvas) Canvas of the scene. </param>
     public void SetCanvas(Canvas c)
     {
         GetInstance()._cnv = c;
         ReloadPanels();
     } // SetCanvas
 
+    /// <summary>
+    /// 
+    /// Sets the package selected by the player.
+    /// 
+    /// </summary>
+    /// <param name="p"> (string) Package selected. </param>
     public void SetPackage(string p)
     {
         GetInstance()._package = p;
     } // SetPackage
 
+    /// <summary>
+    /// 
+    /// Sets the Level selected by the player.
+    /// 
+    /// </summary>
+    /// <param name="i"> (int) Level selected. </param>
     public void SetLevel(int i)
     {
         GetInstance()._level = i;
     } // SetLevel
 
+    /// <summary>
+    /// 
+    /// Sets the MainMenuManager.
+    /// 
+    /// </summary>
+    /// <param name="mg"> (MainMenuManager) Current Main menu. </param>
     public void SetMainMenuManager(MainMenuManager mg)
     {
         GetInstance()._mainMenu = mg;
@@ -399,42 +330,66 @@ public class GameManager : MonoBehaviour
     #region Getters
 
     /// <summary>
+    /// 
     /// Gives access to the scalator instance.
+    /// 
     /// </summary>
-    /// <returns>Scaling scaling instance stored in GM instance</returns>
+    /// <returns> (Scaling) Scaling instance stored in GM instance. </returns>
     public Scaling GetScaling()
     {
         return GetInstance()._scalator;
-    }
+    } // GetScaling
 
     /// <summary>
+    /// 
     /// Gives access to the canvas stored in instance.
+    /// 
     /// </summary>
-    /// <returns>Canvas canvas access</returns>
+    /// <returns> (Canvas) Canvas access. </returns>
     public Canvas GetCanvas()
     {
         return GetInstance()._cnv;
-    }
+    } // GetCanvas
 
+    /// <summary>
+    /// 
+    /// Returns the height of the top panel.
+    /// 
+    /// </summary>
+    /// <returns> (float) Panel height. </returns>
     public float GetTopPanelHeight()
     {
         return GetInstance()._topPanel.rect.height;
     } // GetTopPanelHeight
 
+    /// <summary>
+    /// 
+    /// Returns the height of the bottom panel in pixels.
+    /// 
+    /// </summary>
+    /// <returns> (float) Height of panel </returns>
     public float GetBottomPanelHeight()
     {
         return GetInstance()._bottomPanel.rect.height;
     } // GetTopPanelHeight
 
     /// <summary>
+    /// 
     /// Gives the reference resolution used when scaling things for later use. 
+    /// 
     /// </summary>
-    /// <returns>Vector2 Reference resolution</returns>
-    public Vector2 getReferenceResolution()
+    /// <returns> (Vector2) Reference resolution. </returns>
+    public Vector2 GetReferenceResolution()
     {
         return GetInstance()._scalingReferenceResolution;
-    }
+    } // GetReferenceResolution
 
+    /// <summary>
+    /// 
+    /// Gives the number of packages registered in the game.
+    /// 
+    /// </summary>
+    /// <returns> (int) Number of packages. </returns>
     public int GetNumPackages()
     {
         return GetInstance()._levels.Length;
@@ -442,21 +397,34 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// 
-    /// Get the name of the current 
+    /// Get the name of the current package selected.
     /// 
     /// </summary>
-    /// <returns></returns>
+    /// <returns> (string) Package name.</returns>
     public string GetPackageName()
     {
         return GetInstance()._package;
     } // GetPackageName
 
-
+    /// <summary>
+    /// 
+    /// Gives access to a level package selected
+    /// by number, necessary for button instantiation.
+    /// 
+    /// </summary>
+    /// <param name="i"> (int) Package to access. </param>
+    /// <returns> (LevelPackage) Package with data. </returns>
     public LevelPackage GetLevelPackage(int i)
     {
         return GetInstance()._levels[i];
     } // GetPackage
 
+    /// <summary>
+    /// 
+    /// Gives access to the actual level selected.
+    /// 
+    /// </summary>
+    /// <returns> (int) Current level. </returns>
     public int GetLevel()
     {
         return GetInstance()._level;
@@ -515,7 +483,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 
     /// Function that will manage the close of the app, saving the player's current status. Not
-    /// working in mobile (?).
+    /// working in mobile.
     /// 
     /// </summary>
     private void OnApplicationQuit()
