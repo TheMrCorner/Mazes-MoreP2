@@ -21,6 +21,12 @@ public class LevelManager : MonoBehaviour
     public GameObject _endPanel;                  // EndPanel of the level
     public Slider _levelSlider;                   // Slider of the level
     public Text _levelText;                       // Text
+    
+    [Header("Final menu elements")]
+    public Button _finalHomeButton;               // Home button for the final menu
+    public GameObject _finalPanel;                // EndPanel of the level
+    public Slider _finalLevelSlider;              // Slider of the level
+    public Text _finalLevelText;
 
     [Header("Texts and data settings")]
     public Text _levelAndMode;                    // Level and mode text
@@ -67,6 +73,7 @@ public class LevelManager : MonoBehaviour
 
         _homePauseButton.onClick.AddListener(GameManager.GetInstance().ReturnToMenu);
         _homeEndedButton.onClick.AddListener(GameManager.GetInstance().ReturnToMenu);
+        _finalHomeButton.onClick.AddListener(GameManager.GetInstance().ReturnToMenu);
 
         PlayLevel();
     } // Start
@@ -88,6 +95,15 @@ public class LevelManager : MonoBehaviour
         _levelSlider.value = GameManager.GetInstance().PercentageLevelCompleted();
         _paused = true;
     } // ShowEndMenu
+
+
+    public void ShowFinalMenu()
+    {
+        _finalPanel.SetActive(true);
+        _finalLevelText.text = (GameManager.GetInstance().CalculatePlayerLevel() + 1).ToString();
+        _finalLevelSlider.value = GameManager.GetInstance().PercentageLevelCompleted();
+        _paused = true;
+    }
 
     /// <summary>
     /// 

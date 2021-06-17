@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
 
     private string _package = "Classic";          // Sets game difficulty
-    private int _level = 15;                      // Sets the level to be loaded
+    private int _level = 99;                      // Sets the level to be loaded
 
     private int _playerLevel = 0;
 
@@ -227,9 +227,17 @@ public class GameManager : MonoBehaviour
     public void LevelCompleted()
     {
         _level++;
-        if(GetInstance()._player._completedLevelsPackage[_package] <= _level)
-            GetInstance()._player._completedLevelsPackage[_package]++;
-        _levelManager.ShowEndMenu();
+        if (_level < GameManager.GetInstance().GetLevelPackage().levels.Length)
+        {
+            if (GetInstance()._player._completedLevelsPackage[_package] <= _level)
+                GetInstance()._player._completedLevelsPackage[_package]++;
+            _levelManager.ShowEndMenu();
+        }
+        else
+        {
+            _levelManager.ShowFinalMenu();
+        }
+        
     } // LevelCompleted
 
     /// <summary>
