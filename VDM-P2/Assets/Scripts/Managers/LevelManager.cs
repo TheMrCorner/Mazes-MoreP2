@@ -16,7 +16,11 @@ public class LevelManager : MonoBehaviour
     public Camera _camera;                        // Camera 
     public RectTransform _topPanel;               // Top panel of canvas
     public RectTransform _botPanel;               // Bottom panel of canvas
-    public GameObject _endPanel;                  // End panel of the level
+
+    [Header("End menu elements")]
+    public GameObject _endPanel;                  // EndPanel of the level
+    public Slider _levelSlider;                   // Slider of the level
+    public Text _levelText;                       // Text
 
     [Header("Texts and data settings")]
     public Text _levelAndMode;                    // Level and mode text
@@ -80,6 +84,8 @@ public class LevelManager : MonoBehaviour
     public void ShowEndMenu()
     {
         _endPanel.SetActive(true);
+        _levelText.text = (GameManager.GetInstance().CalculatePlayerLevel() + 1).ToString();
+        _levelSlider.value = GameManager.GetInstance().PercentageLevelCompleted();
         _paused = true;
     } // ShowEndMenu
 
@@ -92,6 +98,7 @@ public class LevelManager : MonoBehaviour
     {
         // Set info
         AdManager.GetInstance().ShowVideo();
+        _paused = false;
         _levelAndMode.text = GameManager.GetInstance().GetPackageName() +
                " - " + GameManager.GetInstance().GetLevel().ToString();
         _hints.text = _hinstPanel.text = GameManager.GetInstance().GetPlayerData()._hints.ToString();

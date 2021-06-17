@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     private string _package = "Classic";          // Sets game difficulty
     private int _level = 15;                      // Sets the level to be loaded
 
+    private int _playerLevel = 0;
+
     // SCALING DATA
     private Vector2 _scalingReferenceResolution;  // Reference resolution for scaling
     private Scaling _scalator;                    // Scaling object
@@ -141,6 +143,80 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region GameManagement
+    /// <summary>
+    /// 
+    /// Function to calculate the level of the player.
+    /// 
+    /// </summary>
+    /// <param name="completedLevels"> (int) Total completed levels. </param>
+    /// <returns> (int) Level of the player. </returns>
+    int XPFunction(int completedLevels)
+    {
+        float playerLevel = Mathf.Pow((completedLevels / 3), 0.75f);
+
+        return Mathf.FloorToInt(playerLevel);
+    } // XPFunction
+
+    /// <summary>
+    /// 
+    /// Reverse of the function to calculate the level.
+    /// 
+    /// </summary>
+    /// <param name="playerLevel"> (int) Player level. </param>
+    /// <returns> (int) Completed levels. </returns>
+    int ReverseXPFunction(int playerLevel)
+    {
+        float completedLevels = 3 * Mathf.Pow(playerLevel, 1.35f);
+
+        return Mathf.RoundToInt(completedLevels);
+    } // ReverseXPFunction
+    
+    /// <summary>
+    /// 
+    /// Calculates the current playerlevel.
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public int CalculatePlayerLevel()
+    {
+        int completedLevels = CalculateCompletedLevels();
+        _playerLevel = XPFunction(completedLevels);
+        return _playerLevel;
+    } // CalculatePlayerLevel
+
+    /// <summary>
+    /// 
+    /// Calculate percentage of levels completedlevels.
+    /// 
+    /// </summary>
+    /// <returns> (float) Percentage of levels compelted. </returns>
+    public float PercentageLevelCompleted()
+    {
+        int completedLevels = CalculateCompletedLevels();
+        int currentPlayerLevel = XPFunction(completedLevels);
+        int levelsToNext = ReverseXPFunction(currentPlayerLevel + 1);
+        int levelsToCurrent = ReverseXPFunction(currentPlayerLevel);
+
+        return ((float)(completedLevels) - levelsToCurrent) / (levelsToNext - levelsToCurrent);
+    }// PercentageLevelCompleted
+
+    /// <summary>
+    /// 
+    /// Calculate completed levels necessary for level.
+    /// 
+    /// </summary>
+    /// <returns> (int) Levels for level. </returns>
+    int CalculateCompletedLevels ()
+    {
+        int xp = 0;
+
+        foreach (var completedLevels in _player._completedLevelsPackage)
+        {
+            xp += completedLevels.Value;
+        }
+
+        return xp;
+    } // CalculateCompletedLevels.
 
     /// <summary>
     /// 

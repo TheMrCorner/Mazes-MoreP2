@@ -299,7 +299,7 @@ public class BoardManager : MonoBehaviour
     {
         if (it == InputManager.InputType.TAP)
         {
-            Debug.Log("Tap");
+            //Debug.Log("Tap");
         } // if
         else
         {
